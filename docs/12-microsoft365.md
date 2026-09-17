@@ -339,3 +339,67 @@ Bestätigung sofort angezeigt.
 **Diese vier zu fragen, ob sie Teams benutzen, ist überschaubar.** Und wenn sie es nicht
 tun: Vier Personen für ein Werkzeug zu gewinnen, das die Schule schon bezahlt, ist
 leichter, als die Zustellbarkeit eines Landesmailservers zu beeinflussen.
+
+### 8.3 Weiterer Befund: auch Gmail blockte — das bestätigt die Absenderdiagnose
+
+Die Mails des früheren Flows wurden **sowohl bei `@schule.hessen.de` als auch bei privaten
+Adressen (Gmail)** blockiert.
+
+**Das ist ein aussagekräftiger Befund.** Zwei voneinander unabhängige, unterschiedlich
+betriebene Mailsysteme weisen dieselben Mails ab — dann liegt die Ursache nicht bei den
+Empfängern, sondern beim **Absender**. Gmail prüft SPF, DKIM und DMARC besonders streng;
+ein Absender ohne gültige Authentifizierung wird dort verlässlich einsortiert oder
+abgewiesen.
+
+Damit verdichtet sich der Verdacht aus 7.6: **Die Absenderdomäne des Mandanten ist für den
+Versand über Microsoft nicht berechtigt.**
+
+### 8.4 Das ist behebbar — und lohnt unabhängig von diesem Vorhaben
+
+Vier Schritte, keine Programmierung:
+
+| # | Schritt | Wo |
+|---|---|---|
+| 1 | **Absenderdomäne feststellen.** Lautet der Absender auf `@senckenberg-schule.de` oder auf `@<mandant>.onmicrosoft.com`? Letzteres wird von strengen Filtern grundsätzlich blockiert und muss auf die eigene Domäne umgestellt werden | Microsoft-365-Verwaltung, oder Kopfzeilen einer erhaltenen Mail |
+| 2 | **SPF ergänzen:** `include:spf.protection.outlook.com` in den TXT-Eintrag der Domäne. Der IONOS-Versand kann dabei bleiben — ein SPF-Eintrag kann mehrere Absender erlauben | IONOS, DNS-Einstellungen |
+| 3 | **DKIM einschalten.** In Exchange Online für eigene Domänen **nicht automatisch aktiv**: im Microsoft-Verwaltungsportal aktivieren, dann die beiden vorgegebenen CNAME-Einträge bei IONOS anlegen | Microsoft + IONOS |
+| 4 | **DMARC setzen**, zunächst zurückhaltend (`p=none` mit Berichtsadresse), nach erfolgreicher Prüfung schärfen | IONOS, DNS |
+
+**Der Aufwand liegt bei etwa einer halben Stunde**, wenn man die Anleitung neben sich hat.
+Danach akzeptieren Gmail und der Landesdienst die Mails — und zwar auch alle anderen Mails
+der Schuldomäne, nicht nur die des Antragssystems.
+
+**Diese Arbeit verbessert jeden Umsetzungsweg gleichzeitig.** Ein eigener Webserver würde
+ebenfalls als `@senckenberg-schule.de` versenden und stünde vor genau denselben
+Anforderungen.
+
+### 8.5 Private Adressen sind ohnehin ausgeschlossen
+
+Unabhängig von der Zustellbarkeit: **Benachrichtigungen gehen niemals an private
+Adressen.** Auch nicht an eine, die zuverlässig funktioniert.
+
+Schon die Nachricht „Antrag DB-2026-0147 wurde genehmigt" an eine private Gmail-Adresse
+wäre eine Verarbeitung von Beschäftigtendaten in einem Postfach außerhalb der Kontrolle
+der Schule — und über die Zeit entstünde dort ein Abwesenheitsarchiv des Kollegiums.
+Regel D-03 und das Konzept in Dokument 08 schließen das aus.
+
+Zulässige Empfänger sind ausschließlich:
+* die dienstliche Adresse `@schule.hessen.de`,
+* ein Postfach im Mandanten der Schule,
+* ein Kanal innerhalb des Mandanten (Teams).
+
+**Damit ist Gmail kein Ausweichweg, sondern für dieses Vorhaben gesperrt.**
+
+### 8.6 Die Fragen, die jetzt die Richtung entscheiden
+
+In dieser Reihenfolge:
+
+| # | Frage | Wenn ja | Wenn nein |
+|---|---|---|---|
+| 1 | **Haben alle Lehrkräfte ein Microsoft-365-Konto, das sie nutzen und dessen Anmeldung sie kennen?** | Die Anmeldung ist gelöst — der tragende Vorteil von Microsoft 365 | Dann trägt der Weg nicht. Zurück zu Schulportal, IServ oder eigenem Hosting |
+| 2 | **Nutzen zumindest die vier Personen mit besonderen Rechten Teams?** | Benachrichtigungen laufen intern, kein Zustellungsproblem | Arbeitsvorrat als angepinnte Liste, ohne Hinweise |
+| 3 | **Lassen sich SPF und DKIM in Ordnung bringen (8.4)?** | E-Mail wird zusätzlich nutzbar, auch an `@schule.hessen.de` | Der Ablauf bleibt vollständig innerhalb des Mandanten |
+
+**Frage 1 ist die entscheidende.** Wird Microsoft 365 an der Schule nur von einzelnen
+genutzt, während das Kollegium mit der Landesadresse arbeitet, dann ist die Anmeldung
+**nicht** gelöst — und der Hauptgrund für diesen Weg fällt weg.

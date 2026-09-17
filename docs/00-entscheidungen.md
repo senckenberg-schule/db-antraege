@@ -1003,3 +1003,25 @@ nicht → **es braucht eine echte Anmeldung** → Microsoft 365, Schulportal ode
 
 Die schlechte Zustellbarkeit spricht damit **für** Microsoft 365, nicht dagegen: Der
 anmeldungsfreie Entwurf war es, der E-Mail unverzichtbar machte.
+
+### E-8.6 Keine Benachrichtigungen an private Adressen
+Zulässige Empfänger sind ausschließlich die dienstliche Adresse `@schule.hessen.de`, ein
+Postfach im Mandanten der Schule oder ein Kanal innerhalb des Mandanten. **Private
+Adressen sind ausgeschlossen**, auch wenn sie zuverlässig funktionieren: Schon die Zeile
+„Antrag … genehmigt" an eine private Adresse wäre eine Verarbeitung von
+Beschäftigtendaten außerhalb der Kontrolle der Schule, und über die Zeit entstünde dort
+ein Abwesenheitsarchiv des Kollegiums.
+
+### Befund: auch Gmail blockte
+Die Mails des früheren Flows wurden bei `@schule.hessen.de` **und** bei Gmail abgewiesen.
+Zwei unabhängige Mailsysteme, dieselbe Ablehnung → die Ursache liegt beim **Absender**.
+Das erhärtet den Verdacht fehlender SPF-/DKIM-Berechtigung für die Mandantendomäne.
+**Behebbar in etwa einer halben Stunde** (Absenderdomäne prüfen, SPF ergänzen, DKIM
+aktivieren, DMARC setzen) — und die Arbeit verbessert jeden Umsetzungsweg zugleich.
+Einzelheiten: [12-microsoft365.md](12-microsoft365.md), Abschnitt 8.4.
+
+### Die offene Kernfrage
+**Haben alle Lehrkräfte ein Microsoft-365-Konto, das sie nutzen und dessen Anmeldung sie
+kennen?** Davon hängt ab, ob der Weg über Microsoft 365 überhaupt trägt — sein Hauptvorteil
+ist die vorhandene Anmeldung. Wird der Mandant nur von einzelnen genutzt, während das
+Kollegium mit der Landesadresse arbeitet, fällt dieser Vorteil weg.
