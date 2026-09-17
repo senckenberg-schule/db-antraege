@@ -163,25 +163,53 @@ an welchem Haus liegt, ergibt sich aus dem Stundenplan und ist der Vertretungspl
 ohnehin bekannt. Ein zweites Stundenfeld je Standort würde das Formular verkomplizieren,
 ohne eine Frage zu beantworten, die jemand tatsächlich hat.
 
-### E-3.3 Bei Unterrichtsgängen wird der Standort abgeleitet, nicht abgefragt
-**Jede Klasse gehört fest zu einem Standort.** Daraus folgt für Antragsart 2:
-Die betroffenen Standorte ergeben sich **automatisch aus den gewählten Lerngruppen**.
+### E-3.3 Standortangabe ist auch bei Unterrichtsgängen zwingend — *korrigiert*
 
-Anzeige zur Kontrolle („Betroffener Standort: Standort A — abgeleitet aus 9b, 10a"),
-manuell überschreibbar für Ausnahmefälle. Das spart eine Eingabe und schließt einen
-Widerspruch zwischen Klassenangabe und Standortangabe von vornherein aus.
+> **Korrektur.** Eine frühere Fassung dieses Punktes sah vor, den Standort bei Antragsart 2
+> automatisch aus den gewählten Lerngruppen abzuleiten. Das ist **nicht möglich:**
+> An beiden Standorten existieren **gleichlautende Klassenbezeichnungen**.
 
-### E-3.4 Daraus folgt: Stammdatenliste „Klassen"
-Benötigt wird eine gepflegte Liste der Lerngruppen mit Standortzuordnung — einmal je
-Schuljahr zu aktualisieren. Klein, aber Voraussetzung für E-3.3 und für die strukturierte
-Erfassung betroffener Klassen (statt Freitext).
+**„9b" identifiziert keine Lerngruppe.** Eindeutig ist erst das Paar
+**Standort + Bezeichnung** — also `9b (Standort A)` gegenüber `9b (Standort B)`.
+
+Daraus folgt für **alle** Antragsarten: Die Standortauswahl aus E-3.1 ist eine
+**Pflichtangabe und wird nirgends abgeleitet.**
+
+### E-3.4 Reihenfolge im Formular: erst Standort, dann Lerngruppen
+
+Statt den Standort aus der Klasse zu erschließen, dreht das Formular die Abhängigkeit um:
+
+```
+1. Betroffener Standort *   ○ Standort A   ○ Standort B   ○ Beide Standorte
+2. Betroffene Lerngruppen * → Auswahlliste, gefiltert auf den gewählten Standort
+                              (bei „Beide": alle, jeweils mit Standort beschriftet)
+```
+
+*Warum das die bessere Lösung ist:* Die Auswahlliste zeigt nie zwei identisch benannte
+Klassen nebeneinander, zwischen denen man sich vertippen kann. Eine Verwechslung wird
+damit nicht erkannt und gemeldet, sondern **von vornherein unmöglich gemacht** — die
+zuverlässigere Art, einen Fehler zu vermeiden.
+
+*Nebeneffekt:* Ein Unterrichtsgang mit Gruppen beider Standorte ist sauber abbildbar, weil
+jede ausgewählte Gruppe ihren Standort mitführt.
+
+### E-3.5 Lerngruppen brauchen einen zusammengesetzten Schlüssel
+
+Konsequenz für das Datenmodell, die früh feststehen muss, weil sie später teuer zu
+korrigieren wäre:
+
+* Eine Lerngruppe wird **nie allein über ihre Bezeichnung** identifiziert, sondern über
+  `(Standort, Bezeichnung, Schuljahr)`.
+* Die Stammdatenliste aus E-3.4 führt beide Standorte getrennt.
+* In jeder Anzeige — Antrag, Übersicht der Vertretungsplanung, Archiv, E-Mail-Betreff —
+  wird eine Lerngruppe **immer mit Standort** ausgegeben. Nie nur „9b".
 
 ### Wirkung der Standortangabe — Zusammenfassung
 
 | Empfänger | Wirkt der Standort? |
 |---|---|
 | Schulleitung | nein — entscheidet standortübergreifend (E-1.1) |
-| Vertretungsplanung | nein als Verteilkriterium — eine Zuständigkeit für beide Häuser (E-1.3); der Standort ist dort **Inhalt** |
+| Vertretungsplanung | nein als Verteilkriterium — eine Zuständigkeit für beide Häuser (E-1.3); der Standort ist dort **Inhalt** und zur Unterscheidung gleichnamiger Klassen unverzichtbar |
 | **Sekretariat** | **ja** — bestimmt, welches der beiden Sekretariate informiert wird (E-1.4) |
 
 Die Standortauswahl hat damit genau **einen** verteilungsrelevanten Zweck. Das ist wenig —
