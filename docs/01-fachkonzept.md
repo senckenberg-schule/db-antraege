@@ -1,292 +1,201 @@
-# 01 — Fachkonzept: Rollen, Antragsarten, Workflow
+# 01 — Fachkonzept (aktueller Stand)
 
-## 1. Zielbild
+Beschreibt das System so, wie es nach den Schritten 1–8 beschlossen ist. Wie die
+Entscheidungen zustande kamen — einschließlich der Korrekturen unterwegs — steht in
+[00-entscheidungen.md](00-entscheidungen.md).
 
-Heute laufen Anträge als Papierformular, Mail oder Zuruf. Daraus folgen die bekannten
-Probleme: Anträge versanden, die Vertretungsplanung erfährt zu spät von einer genehmigten
-Abwesenheit, niemand weiß, ob ein Antrag noch offen ist, und der Stand eines Vorgangs
-existiert nur im Kopf der Schulleitung.
+---
 
-Das System löst genau vier Dinge:
+## 1. Was das System tut
 
-1. **Ein Eingang.** Jeder Antrag entsteht über ein Formular, nicht per Mail.
-2. **Eine Entscheidung mit Begründung.** Genehmigen / Ablehnen / Rückfrage, jeweils mit Kommentar.
-3. **Automatische, rollengerechte Weitergabe.** Die richtigen Personen an den richtigen
-   Standorten erfahren das Richtige — und nur das.
-4. **Ein nachvollziehbarer Stand.** Antragsteller und Schulleitung sehen jederzeit, wo ein Vorgang steht.
+Anträge auf **Dienst-/Unterrichtsbefreiung** und für **Unterrichtsgänge** laufen heute über
+Zettel, Mail und Zuruf. Das System ersetzt das durch vier Dinge:
 
-### Bewusste Abgrenzung — was das System *nicht* tut
+1. **Ein Eingang.** Jeder Antrag entsteht über ein Formular.
+2. **Eine Entscheidung mit Begründung.** Genehmigen, ablehnen oder rückfragen.
+3. **Automatische Weitergabe** an die Stundenplanung des betroffenen Standorts.
+4. **Ein nachvollziehbarer Stand.** Sichtbar, wo ein Vorgang steht und wer entschieden hat.
 
-Diese Abgrenzung ist wichtig für Akzeptanz, Personalratsbeteiligung und Datenschutz:
+### Was es ausdrücklich nicht tut
 
-* **Keine Krankmeldung.** Krankmeldungen bleiben im bestehenden Verfahren. Sie sind
-  Gesundheitsdaten (Art. 9 DSGVO) und haben in diesem System nichts zu suchen.
-* **Keine Arbeitszeiterfassung**, keine Auswertung von Abwesenheitshäufigkeiten pro Person,
-  keine Ranglisten, keine Leistungs- oder Verhaltenskontrolle.
-* **Kein Ersatz für den Vertretungsplan.** Das System *meldet* der Vertretungsplanung einen
-  Bedarf; geplant wird weiterhin im Vertretungsplanwerkzeug.
-* **Keine Personalakte.** Anträge werden nach festen Fristen gelöscht (siehe Dokument 03).
+* **Keine Krankmeldungen.** Sie bleiben im bisherigen Verfahren — es sind Gesundheitsdaten.
+* **Keine Arbeitszeiterfassung**, keine Abwesenheitsstatistik je Person, keine Leistungs-
+  oder Verhaltenskontrolle.
+* **Kein Ersatz für den Vertretungsplan.** Das System meldet einen Bedarf; geplant wird in
+  Untis.
+* **Keine Personalakte.** Vorgänge werden nach 12 Monaten gelöscht.
+* **Keine mehrtägigen Fahrten.** Dafür fehlen Kosten, Beschlusslage und Notfallkontakt;
+  sie laufen vorerst im bisherigen Verfahren.
 
 ---
 
 ## 2. Rollen
 
-| Rolle | Kürzel | Aufgabe im System |
-|---|---|---|
-| **Antragstellende Person** | AS | Stellt Anträge, beantwortet Rückfragen, zieht Anträge zurück. Sieht nur eigene Anträge. |
-| **Schulleitung** | SL | Entscheidet: genehmigen, ablehnen, Rückfrage. Sieht alle Anträge. |
-| **Vertretung der Schulleitung** | SL-V | Identische Rechte wie SL. Notwendig, damit Abwesenheit der SL keinen Stillstand erzeugt. |
-| **Vertretungs-/Stundenplanung** | STP | Erhält genehmigte Abwesenheiten **ihres Standorts** in reduzierter Sicht (ohne Antragsgrund). Kein Entscheidungsrecht. |
-| **Sekretariat** | SEK | Erhält genehmigte Vorgänge **seines Standorts**, soweit organisatorisch relevant (Fahrtkosten, Elterninfo, Schlüssel, Busbestellung). Kein Entscheidungsrecht. |
-| **Administration** | ADM | Benutzer- und Rollenverwaltung, Stammdaten, Antragsarten, Fristen. **Kein** fachlicher Zugriff auf Antragsinhalte im Normalbetrieb. |
+| Rolle | Anzahl | Standort | Rechte |
+|---|---|---|---|
+| **Antragstellende Person** | alle Lehrkräfte und LiV | — | Antrag stellen, bestätigen, ergänzen, zurückziehen, stornieren |
+| **Schulleitung** | 1 | beide | entscheiden, alle Anträge sehen |
+| **Stellvertretende Schulleitung** | 1 | beide | identisch — für Abwesenheitsfälle |
+| **Stundenplanung** | 2 | **je Standort** | genehmigte Vorgänge des eigenen Standorts, vollständig |
+| **Administration** | 1–2 | — | Konfiguration, kein fachlicher Zugriff |
 
-**Grundsatz:** Rollen werden **pro Standort** vergeben (z. B. „STP Runkel"). Eine Person
-kann mehrere Rollen und mehrere Standorte haben (typisch: SL für beide Standorte,
-Sekretariat nur für einen).
-
-**Grundsatz:** Jede Person ist immer auch AS — auch die Schulleitung stellt Anträge.
-Ein Antrag der SL wird nicht von ihr selbst entschieden (siehe Sonderfälle, Abschnitt 8).
+Schulleitung und Stellvertretung haben **dieselbe Rolle** — kein umschaltbarer
+Vertretungsmodus. Wer entschieden hat, steht am Vorgang. Über den **eigenen** Antrag
+entscheidet niemand selbst.
 
 ---
 
 ## 3. Antragsarten
 
-Alle Antragsarten durchlaufen **denselben Workflow** (Abschnitt 6). Sie unterscheiden sich in
-drei Punkten: Formularfelder, Regelfrist, und wer nach der Genehmigung informiert wird.
+Beide teilen ein Formulargerüst und unterscheiden sich in drei Feldern.
 
-| # | Antragsart | Typischer Fall | Regelfrist vor Beginn | Info nach Genehmigung an |
-|---|---|---|---|---|
-| **A** | **Dienstbefreiung** | Arzttermin, Umzug, familiäre Anlässe, Prüfungstermin | 5 Werktage | STP (betroffene Standorte) |
-| **B** | **Dienstreise / Fortbildung** | Fortbildung, Tagung, Dienstbesprechung extern | 10 Werktage | STP, SEK (Reisekosten) |
-| **C** | **Unterrichtsgang / Exkursion** | Museumsbesuch, Betriebsbesichtigung, Waldtag — eintägig, ohne Übernachtung | 10 Werktage | STP, SEK |
-| **D** | **Mehrtägige Schulfahrt / Großveranstaltung** | Klassenfahrt, Studienfahrt, Schulfest, Projektwoche | 6 Wochen bzw. nach Fahrtenkonzept | STP, SEK, ggf. weitere |
+### Antragsart 1 — Dienst-/Unterrichtsbefreiung
+Eine Person ist abwesend. Begründung über eine Auswahl:
+**Fortbildung · Dienstliche Gründe · Arztbesuch · Persönliche Gründe · Sonstiges**
 
-Die Liste ist **konfigurierbar** — eine neue Antragsart darf keine Programmierung erfordern,
-sondern nur die Definition von Feldern, Frist und Empfängerkreis.
+*Fortbildung* verlangt entweder „Ort und Thema" oder einen Anhang.
+*Persönliche Gründe* und *Sonstiges* verlangen einen kurzen Freitext.
 
-### Unterschied C/D zu A/B — der wichtigste fachliche Punkt
-
-Bei A und B ist **eine Person** abwesend. Bei C und D sind **Lerngruppen, Begleitpersonen und
-Räume** betroffen. Ein Unterrichtsgang erzeugt also typischerweise:
-
-* Abwesenheit der antragstellenden Lehrkraft **und aller Begleitpersonen**,
-* Ausfall bzw. Verlegung des Unterrichts **für eine oder mehrere Lerngruppen**,
-* freiwerdende Räume, ggf. Bus-/Raumbedarf, ggf. Mittagessen-Abmeldung.
-
-Das Formular muss diese Angaben erheben, weil sonst die Vertretungsplanung sie
-hinterherrecherchieren muss — und genau das ist der heutige Schmerzpunkt.
-**Begleitpersonen müssen dem Antrag zustimmen** (siehe Abschnitt 8.3), da für sie
-ebenfalls Unterricht ausfällt.
+### Antragsart 2 — Unterrichtsgang / Veranstaltung
+Lerngruppen sind unterwegs. Statt der Begründung: **Ziel und Anlass**, **betroffene
+Lerngruppen** und **begleitende Lehrkräfte**. Letztere werden mitgemeldet — ihre
+Abwesenheit erreicht die Stundenplanung ebenso. Eine Zustimmung wird nicht eingeholt.
 
 ---
 
-## 4. Standortmodell
+## 4. Standort
 
-Die Schule hat zwei Standorte. Das Konzept trennt konsequent zwei Fragen:
-
-| Frage | Bedeutung | Wer legt es fest |
-|---|---|---|
-| **Stammstandort** | Wo die antragstellende Person überwiegend eingesetzt ist | Stammdaten (Administration) |
-| **Betroffene Standorte** | Wo durch den Antrag Unterricht ausfällt / Organisation nötig wird | **Antragstellende Person im Formular** |
-
-Das sind **nicht** dieselbe Angabe. Eine Lehrkraft mit Stammstandort A kann am Antragstag
-ausschließlich in B unterrichten. Die Weiterleitung richtet sich **immer nach den betroffenen
-Standorten**, nie nach dem Stammstandort.
-
-### Auswahl im Formular
+Die Schule hat zwei Standorte: **Runkel** und **Villmar**. Im Formular:
 
 ```
-Betroffene Standorte:  ☐ Runkel    ☐ Villmar
-(mindestens einer, beide möglich)
+Betroffener Standort *     ○ Runkel     ○ Villmar     ○ Beide Standorte
 ```
 
-* Vorbelegung mit dem Stammstandort — als Vorschlag, änderbar.
-* Bei **beiden** Standorten: Der Antrag wird **einmal** gestellt und **einmal** entschieden,
-  aber die Folgeinformation geht an **beide** Standorts (STP Runkel *und* STP Villmar,
-  SEK Runkel *und* SEK Villmar).
-* Bei Antragsart C/D wird die Standortangabe aus den betroffenen Lerngruppen plausibilisiert:
-  Wenn eine Lerngruppe eines Standorts eingetragen ist, der nicht angehakt wurde, weist das
-  System darauf hin (Hinweis, keine Blockade).
+Pflichtangabe bei beiden Antragsarten, in beiden Zweigen (Einzeltag und Zeitraum).
+„Beide" ist **kein Sonderfall** — Lehrkräfte unterrichten regelmäßig an einem Tag an
+beiden Häusern.
 
-### Entscheidungszuständigkeit
+Die Angabe hat zwei Aufgaben:
 
-**Empfehlung:** Die Entscheidung liegt **immer bei der Schulleitung, standortübergreifend**.
-Ein Antrag = eine Entscheidung. Das vermeidet den Fall, dass ein Antrag an einem Standort
-genehmigt und am anderen abgelehnt wird — fachlich sinnlos, da die Person nur einmal
-abwesend sein kann.
+* **Verteilung:** Sie bestimmt, welche der beiden Stundenplanungen die Meldung erhält.
+  Bei „Beide": beide, jeweils mit dem vollständigen Vorgang.
+* **Inhalt:** An beiden Standorten gibt es **gleichlautende Lerngruppenbezeichnungen**.
+  „9b" allein ist mehrdeutig; erst mit dem Standort ist die Gruppe bestimmt.
 
-Falls Abteilungs-/Standortleitungen mitentscheiden sollen, ist das als **Vorprüfung** (Empfehlung
-ohne Bindungswirkung) abzubilden, nicht als zweite Genehmigungsstufe. Dieser Punkt ist in
-[05-offene-fragen.md](05-offene-fragen.md) als Entscheidung markiert.
+Lerngruppen werden als **Freitext** erfasst, nicht aus einer Liste gewählt — eine Liste
+müsste jedes Schuljahr gepflegt werden. Beim Tippen erscheinen Vorschläge aus früheren
+Anträgen des laufenden Schuljahres; diese Vorschlagsliste entsteht von selbst und
+veraltet von selbst.
+
+Keine Aufteilung der Stunden je Standort: Jede Stundenplanung kennt den Plan ihres Hauses.
 
 ---
 
-## 5. Statusmodell
+## 5. Ablauf
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Entwurf
-    Entwurf --> Eingereicht: Absenden
-    Entwurf --> [*]: Verwerfen
+    [*] --> Unbestaetigt: Formular abgesendet
+    Unbestaetigt --> Eingereicht: Bestätigungslink angeklickt
+    Unbestaetigt --> [*]: nach 24 h gelöscht
 
-    Eingereicht --> Rueckfrage: SL stellt Rückfrage (+ Kommentar)
-    Rueckfrage --> Eingereicht: AS antwortet (+ Kommentar)
+    Eingereicht --> Rueckfrage: Rückfrage (Kommentar Pflicht)
+    Rueckfrage --> Eingereicht: Antwort oder Änderung
 
-    Eingereicht --> Genehmigt: SL genehmigt (+ Kommentar optional)
-    Eingereicht --> Abgelehnt: SL lehnt ab (+ Kommentar Pflicht)
+    Eingereicht --> Genehmigt: Genehmigen (Kommentar optional)
+    Eingereicht --> Abgelehnt: Ablehnen (Kommentar Pflicht)
 
-    Eingereicht --> Zurueckgezogen: AS zieht zurück
-    Rueckfrage --> Zurueckgezogen: AS zieht zurück
+    Eingereicht --> Zurueckgezogen: Antragsteller
+    Rueckfrage --> Zurueckgezogen: Antragsteller
 
-    Genehmigt --> Storniert: Termin entfällt (AS oder SL)
-    Genehmigt --> Geaendert: Änderungsantrag
-
-    Geaendert --> Eingereicht: erneute Entscheidung nötig
-
+    Genehmigt --> Storniert: Antragsteller oder Schulleitung
+    Storniert --> [*]
     Abgelehnt --> [*]
     Zurueckgezogen --> [*]
-    Storniert --> [*]
-    Genehmigt --> [*]: Abschluss nach Ablauf
+    Genehmigt --> [*]: Zeitraum abgelaufen
 ```
 
-| Status | Bedeutung | Wer kann handeln |
-|---|---|---|
-| **Entwurf** | Angelegt, nicht abgeschickt. Nur für AS sichtbar. | AS |
-| **Eingereicht** | Liegt zur Entscheidung vor. | SL, SL-V; AS kann zurückziehen |
-| **Rückfrage** | SL hat eine Frage gestellt, der Ball liegt bei AS. | AS; SL kann nachfassen |
-| **Genehmigt** | Entscheidung positiv. Folgeinformationen sind raus. | AS (stornieren/ändern), SL |
-| **Abgelehnt** | Entscheidung negativ, **Kommentar verpflichtend**. | — (Endzustand) |
-| **Zurückgezogen** | AS hat den Antrag vor der Entscheidung zurückgenommen. | — (Endzustand) |
-| **Storniert** | Genehmigter Vorgang findet nicht statt. **Auslöser für Rückmeldung an STP/SEK.** | — (Endzustand) |
-| **Geändert** | Änderung an einem genehmigten Antrag; geht erneut in die Entscheidung. | SL |
+**Keine Fristenprüfung.** Es gibt keine verbindlichen Antragsfristen; das System bewertet
+den Zeitpunkt der Antragstellung nicht und mahnt niemanden. Der Arbeitsvorrat der
+Schulleitung ist nach **Beginn des Zeitraums** sortiert, nicht nach Eingang — was zuerst
+stattfindet, muss zuerst entschieden werden.
 
-**Kritisch, wird in Papierprozessen regelmäßig vergessen:** Der Übergang
-*Genehmigt → Storniert*. Wenn ein Arzttermin abgesagt wird oder eine Exkursion ausfällt,
-muss die Vertretungsplanung das ebenso zuverlässig erfahren wie die ursprüngliche Genehmigung.
-Das System behandelt die Stornierung deshalb als vollwertiges Ereignis mit eigener
-Benachrichtigung — nicht als stilles Löschen.
+**Keine Genehmigung durch Zeitablauf.** Über jeden Antrag entscheidet ein Mensch.
 
----
+**Stornieren ist kein Löschen.** Der Vorgang bleibt mit Status *storniert* erhalten,
+einschließlich der Angabe, wer storniert hat. Möglich bis zum Ende des Zeitraums. Die
+Stornierung löst dieselbe Benachrichtigungskette aus wie die Genehmigung — **eine
+Abwesenheit, die doch nicht stattfindet, muss die Stundenplanung ebenso zuverlässig
+erreichen wie die Zusage.**
 
-## 6. Ablauf im Detail
+**Änderung eines genehmigten Antrags:** stornieren und neu stellen, mit vorbelegten Werten.
+Kein eigener Status. Die Stundenplanung erhält zwei klare Meldungen statt einer
+Änderungsmeldung.
 
-### 6.1 Antrag stellen (AS)
-
-1. AS meldet sich an und wählt die Antragsart.
-2. Formular ausfüllen (Felder je Antragsart, siehe [02-datenmodell.md](02-datenmodell.md)).
-   Pflichtangaben in jedem Fall: Zeitraum, betroffene Standorte, Grund/Anlass,
-   Angaben zur Vertretungsregelung.
-3. **Fristprüfung:** Unterschreitet der Antrag die Regelfrist, erscheint ein Hinweis und
-   ein Pflichtfeld „Begründung der verspäteten Antragstellung". Der Antrag wird **nicht
-   blockiert** — kurzfristige Anlässe sind der Normalfall, nicht die Ausnahme.
-4. **Konflikthinweis (SOLL):** Liegt für denselben Zeitraum bereits ein genehmigter Antrag
-   für dieselbe Lerngruppe oder eine überschneidende Veranstaltung vor, wird darauf hingewiesen.
-5. Absenden → Status *Eingereicht*, Eingangsbestätigung an AS.
-
-### 6.2 Entscheiden (SL)
-
-Die Schulleitung sieht eine Liste offener Anträge, sortiert nach Beginn des beantragten
-Zeitraums (nicht nach Eingang — was zuerst stattfindet, muss zuerst entschieden werden).
-
-Drei Aktionen, **jeweils mit Kommentarfeld**:
-
-| Aktion | Kommentar | Wirkung |
-|---|---|---|
-| **Genehmigen** | optional | Status *Genehmigt*, Folgebenachrichtigungen werden ausgelöst |
-| **Ablehnen** | **verpflichtend** | Status *Abgelehnt*, nur AS wird informiert |
-| **Rückfrage** | **verpflichtend** | Status *Rückfrage*, AS wird informiert und antwortet im Vorgang |
-
-Alle Kommentare bilden einen **Verlauf am Vorgang** (Thread), keine E-Mail-Kette. Damit ist
-der Gesprächsstand auch dann vollständig, wenn die Vertretung der Schulleitung übernimmt.
-
-**Teilgenehmigung:** Wird bewusst **nicht** unterstützt. Wenn die SL etwas anderes genehmigen
-will als beantragt (z. B. nur ein Tag statt zwei), ist das eine Rückfrage — der Antrag wird
-angepasst und erneut entschieden. Das hält Antrag und Genehmigung deckungsgleich.
-
-### 6.3 Nachgelagerte Information
-
-Erst **nach Genehmigung** erfahren STP und SEK von dem Vorgang. Vorher nicht — ein abgelehnter
-oder zurückgezogener Antrag geht sie nichts an. Sie erhalten eine **reduzierte Sicht**
-(siehe [02-datenmodell.md](02-datenmodell.md), Abschnitt „Sichtbarkeit").
+**Rückfrage ist ein Dialog** am Vorgang: Die Schulleitung fragt, die antragstellende Person
+antwortet darunter. Der Antrag bleibt dabei bearbeitbar; jede Änderung erscheint im selben
+Verlauf („Stunden geändert: 1–3 → 1–4"). Kommentare sind nach dem Absenden nicht
+editierbar. Den Verlauf sehen nur die antragstellende Person und die Entscheidungsebene.
 
 ---
 
-## 7. Benachrichtigungsmatrix
+## 6. Benachrichtigungen
 
-Legende: **✉** = E-Mail-Benachrichtigung · **○** = nur im System sichtbar · **—** = keine Information
+**✉** = E-Mail · **○** = im System sichtbar · **—** = keine Information
 
-| Ereignis | AS | Begleit&shy;personen | SL / SL-V | STP (betroffene Standorte) | SEK (betroffene Standorte) |
-|---|---|---|---|---|---|
-| Antrag eingereicht | ✉ Eingangsbestätigung | ✉ Zustimmung erbeten (nur C/D) | ✉ | — | — |
-| Rückfrage gestellt | ✉ | — | ○ | — | — |
-| Rückfrage beantwortet | ○ | — | ✉ | — | — |
-| **Genehmigt** | ✉ | ✉ | ○ | ✉ (reduzierte Sicht) | ✉ (nur Art B/C/D) |
-| **Abgelehnt** | ✉ | ✉ | ○ | — | — |
-| Zurückgezogen (vor Entscheidung) | ○ | ✉ | ✉ | — | — |
-| **Storniert** (nach Genehmigung) | ✉ | ✉ | ✉ | ✉ | ✉ (sofern zuvor informiert) |
-| Änderungsantrag genehmigt | ✉ | ✉ | ○ | ✉ (Delta hervorgehoben) | ✉ |
-| Erinnerung: Antrag > 3 Werktage offen | — | — | ✉ | — | — |
-| Erinnerung: Antrag beginnt in < 48 h, noch offen | ✉ | — | ✉ | — | — |
+| Ereignis | Antragsteller | Schulleitung | Stundenplanung (betroffener Standort) |
+|---|---|---|---|
+| Formular abgesendet | ✉ Bestätigungslink | — | — |
+| Antrag bestätigt | ○ | ✉ | — |
+| Rückfrage gestellt | ✉ | ○ | — |
+| Rückfrage beantwortet | ○ | ✉ | — |
+| **Genehmigt** | ✉ | ○ | ✉ |
+| Abgelehnt | ✉ | ○ | — |
+| Zurückgezogen | ○ | ✉ | — |
+| **Storniert** | ✉ | ✉ | ✉ |
+| Erinnerung: offener Antrag beginnt bald | — | ✉ | — |
 
-**Regeln, die für jede Benachrichtigung gelten:**
+Wer storniert, erhält darüber keine Mail — nur die jeweils andere Seite.
 
-1. **Kein personenbezogener Inhalt in der E-Mail.** Betreff und Text nennen die Vorgangsnummer,
-   die Antragsart und die Aktion — nicht den Grund, nicht Gesundheitsbezüge, nicht Freitexte.
-   Beispiel: *„Antrag DB-2026-0147 (Dienstbefreiung) wurde genehmigt. Details im System: <Link>"*
-   Begründung: E-Mail ist auf dem Transportweg nicht durchgängig gesichert (Details in Dokument 03).
-2. **Empfängerkreis folgt den betroffenen Standorten**, nicht dem Stammstandort.
-3. **Sammelbenachrichtigung (SOLL):** STP und SEK können statt Einzelmails eine
-   Tageszusammenfassung wählen — mit Ausnahme von Stornierungen und Vorgängen, die innerhalb
-   von 48 Stunden beginnen; die gehen immer sofort raus.
-4. **Rollen-, nicht Personenadressierung.** Zugestellt wird an ein Rollenpostfach
-   (z. B. `sekretariat.runkel@…`), damit Urlaub und Personalwechsel den Prozess nicht unterbrechen.
+**Abgelehnte und zurückgezogene Anträge erreichen die Stundenplanung nicht** — auch nicht
+die Information, dass es sie gab. Informiert wird erst ab der Genehmigung.
+
+**Inhalt der E-Mails:** Vorgangsnummer, Antragsart, Ereignis, Link. Keine Begründungen,
+keine Kommentartexte, keine Lerngruppen. Ausnahme ist die Meldung an die Stundenplanung,
+die Name, Zeitraum und Standort enthält, um brauchbar zu sein.
+
+**Die Stundenplanung arbeitet aus der Liste im System, nicht aus dem Postfach.** Die Mail
+ist ein Wecker. Eine übersehene Mail darf nie bedeuten, dass eine Vertretung fehlt.
 
 ---
 
-## 8. Sonderfälle
+## 7. Zugang
 
-### 8.1 Abwesenheit der Schulleitung
-SL-V hat dieselben Rechte. Zusätzlich: Ein Antrag, der länger als die konfigurierte Frist
-(Vorschlag: 3 Werktage) unentschieden bleibt, erzeugt eine Erinnerung an **alle** Personen
-mit Entscheidungsrecht. Es gibt **keine** automatische Genehmigung durch Zeitablauf.
+**Für das Kollegium gibt es keine Anmeldung.** Der Link steht im Schulportal — das ist eine
+Bequemlichkeit, kein Zugangsschutz: Die Anwendung bleibt über ihre Adresse erreichbar.
 
-### 8.2 Anträge der Schulleitung selbst
-Ein Antrag darf nicht von der antragstellenden Person selbst entschieden werden. Stellt die
-SL einen Antrag, ist SL-V zuständig (und umgekehrt). Das System blendet die Entscheidungs-
-buttons am eigenen Antrag aus.
+Stattdessen:
+* Antragstellung nur mit einer Adresse der Domäne **`schule.hessen.de`**
+* Der Antrag wird erst gültig, wenn der **Bestätigungslink** in der Mail angeklickt wurde.
+  Vorher sieht ihn niemand; unbestätigte Anträge werden nach 24 Stunden gelöscht
+* Vorgangslinks sind lange Zufallszeichenfolgen und öffnen nur den **einen** Vorgang
 
-### 8.3 Begleitpersonen bei Unterrichtsgängen und Fahrten (Antragsart C/D)
-Begleitpersonen werden im Antrag benannt und erhalten beim Einreichen eine Anfrage
-(*zustimmen / ablehnen*). Erst wenn alle geantwortet haben, geht der Antrag in die
-Entscheidung — oder die antragstellende Person reicht bewusst ohne vollständige Zustimmung
-ein, dann ist der Stand für die SL sichtbar. Genehmigte Begleitung erzeugt für jede
-Begleitperson **denselben Vertretungsbedarf** wie für die antragstellende Person.
+**Die vier Konten mit besonderen Rechten melden sich mit Passwort an** — vier getrennte
+Konten, damit nachvollziehbar bleibt, wer entschieden hat, und damit die Standorttrennung
+der Stundenplanungen wirkt. Die Benutzerverwaltung besteht aus vier Zeilen in der
+Konfiguration. Jede Person vergibt ihr Passwort selbst.
 
-### 8.4 Antrag betrifft beide Standorte
-Ein Vorgang, eine Entscheidung, zwei Empfängerkreise (siehe Abschnitt 4). In der reduzierten
-Sicht sieht jedes Standort **nur die eigenen** betroffenen Lerngruppen und Stunden — nicht
-die des anderen Standorts.
-
-### 8.5 Rückwirkende Anträge
-Etwa nach einem Notfall. Das System erlaubt Zeiträume in der Vergangenheit, kennzeichnet sie
-als *nachträglich* und verlangt eine Begründung. Die Vertretungsplanung wird informiert,
-aber mit dem Hinweis, dass die Abwesenheit bereits stattgefunden hat.
-
-### 8.6 Serientermine
-Wiederkehrende Termine (z. B. wöchentliche Fortbildung über ein Halbjahr) werden als
-**ein Antrag mit mehreren Terminen** gestellt und **einmal** entschieden. Stornierung
-einzelner Termine ist möglich, ohne den Gesamtantrag aufzuheben.
+**Was ohne Anmeldung entfällt:** keine Übersicht „Meine Anträge" — wer seinen Vorgang
+ansehen oder stornieren will, braucht den Link aus der Mail. Die Bestätigung weist die
+Adresse nach, nicht die Person.
 
 ---
 
-## 9. Kennzahlen — und ihre Grenze
+## 8. Kennzahlen
 
-Zulässig und sinnvoll sind **vorgangsbezogene, aggregierte** Auswertungen:
-Anzahl Anträge pro Antragsart und Zeitraum, durchschnittliche Bearbeitungsdauer,
-Anteil fristgerechter Anträge, Anzahl Unterrichtsgänge pro Standort.
+Zulässig sind **aggregierte** Auswertungen ohne Personenbezug: Anzahl der Anträge je
+Antragsart und Zeitraum, Bearbeitungsdauer, Anzahl der Unterrichtsgänge je Standort.
 
-**Nicht zulässig** sind personenbezogene Auswertungen über die Bearbeitung des Einzelfalls
-hinaus — insbesondere keine Statistik „Abwesenheitstage je Lehrkraft". Das ist keine
-Geschmacksfrage, sondern der Kern der Personalratsbeteiligung nach § 74 HPVG
-(siehe [03-datenschutz-sicherheit.md](03-datenschutz-sicherheit.md)). Auswertungen dürfen
-technisch nur in aggregierter Form existieren.
+**Nicht zulässig** sind personenbezogene Auswertungen über den Einzelfall hinaus,
+insbesondere Abwesenheitsstatistiken je Lehrkraft. Das ist keine Geschmacksfrage, sondern
+Kern der Personalratsbeteiligung — und technisch auszuschließen, nicht nur zu unterlassen.

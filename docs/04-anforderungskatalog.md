@@ -1,111 +1,109 @@
-# 04 — Anforderungskatalog
+# 04 — Anforderungskatalog (aktueller Stand)
 
-Dieser Katalog ist die **Entscheidungsgrundlage für die Technologiewahl**. Jede
-Umsetzungsvariante — Eigenentwicklung, Standardsoftware, Baukasten auf vorhandener
-Schulplattform — wird später an genau dieser Liste gemessen.
+Prüfliste für die Umsetzung. **MUSS** — ohne das ist das System unbrauchbar oder
+unzulässig. **SOLL** — deutlicher Mehrwert, in Stufe 1 verzichtbar. **KANN** — später.
 
-Priorisierung: **MUSS** (ohne das ist das System nutzlos oder unzulässig) ·
-**SOLL** (deutlicher Mehrwert, verzichtbar in Stufe 1) · **KANN** (später).
+Gestrichene Anforderungen sind mit Begründung aufgeführt, damit nicht später jemand
+meint, sie seien vergessen worden.
 
 ---
 
-## F — Funktionale Anforderungen
+## F — Fachlich
 
 | ID | Anforderung | Prio |
 |---|---|---|
-| F-01 | Anmeldung mit dem dienstlichen Konto (SSO) | MUSS |
-| F-02 | Antragsformular je Antragsart mit Pflichtfeldprüfung | MUSS |
-| F-03 | Auswahl der betroffenen Standorte (einer oder beide) durch die antragstellende Person | MUSS |
-| F-04 | Entscheidung durch die Schulleitung: genehmigen / ablehnen / Rückfrage, **jeweils mit Kommentar** | MUSS |
-| F-05 | Kommentarverlauf am Vorgang, nicht editierbar nach dem Absenden | MUSS |
-| F-06 | Automatische Benachrichtigung gemäß Benachrichtigungsmatrix, standortabhängig | MUSS |
-| F-07 | Statusübersicht für die antragstellende Person („Wo steht mein Antrag?") | MUSS |
-| F-08 | Arbeitsvorrat für die Schulleitung, sortiert nach Beginn des beantragten Zeitraums | MUSS |
-| F-09 | **Reduzierte Sicht für Vertretungsplanung und Sekretariat (Feldebene)** | MUSS |
-| F-10 | Vertretung der Schulleitung mit identischen Rechten | MUSS |
-| F-11 | Zurückziehen vor der Entscheidung | MUSS |
-| F-12 | **Stornieren nach der Genehmigung inkl. Benachrichtigung aller zuvor Informierten** | MUSS |
-| F-13 | Fristprüfung mit Hinweis und Begründungspflicht bei Unterschreitung (keine Blockade) | SOLL |
-| F-14 | Begleitpersonen benennen und deren Zustimmung einholen (Art. C/D) | SOLL |
-| F-15 | Erinnerung an die Schulleitung bei überfälligen Anträgen | SOLL |
-| F-16 | Änderungsantrag zu einem genehmigten Vorgang | SOLL |
-| F-17 | Anlagen hochladen (Einladung, Elterninfo, Fahrtenkonzept) | SOLL |
-| F-18 | Serientermine in einem Antrag | SOLL |
-| F-19 | Export der genehmigten Abwesenheiten für die Vertretungsplanung (Datei) | SOLL |
-| F-20 | Konflikthinweis bei Überschneidungen (Lerngruppe/Person/Zeitraum) | SOLL |
-| F-21 | Aggregierte Kennzahlen ohne Personenbezug | SOLL |
-| F-22 | Tageszusammenfassung statt Einzelmails für STP/SEK | KANN |
-| F-23 | Automatische Übergabe an das Vertretungsplanwerkzeug (Schnittstelle) | KANN |
-| F-24 | Kalenderexport (ICS) für Schulveranstaltungen | KANN |
-| F-25 | Neue Antragsart ohne Programmierung konfigurierbar | KANN |
-| F-26 | Vorprüfung/Empfehlung durch Abteilungsleitung vor der Entscheidung | KANN |
-| F-27 | Druck-/PDF-Ansicht eines Vorgangs für die Ablage | KANN |
+| F-01 | Formular je Antragsart, gemeinsames Gerüst, zwei Konfigurationen | MUSS |
+| F-02 | Antragstellung **ohne Anmeldung**, nur mit Adresse `@schule.hessen.de` | MUSS |
+| F-03 | **Bestätigungslink** — Antrag wird erst nach dem Klick gültig, vorher für niemanden sichtbar | MUSS |
+| F-04 | Unbestätigte Anträge nach 24 Stunden automatisch löschen | MUSS |
+| F-05 | Standortauswahl Runkel · Villmar · Beide, Pflicht, in beiden Zeitraum-Zweigen | MUSS |
+| F-06 | Entscheidung: genehmigen · ablehnen · Rückfrage; Kommentar Pflicht bei Ablehnung und Rückfrage | MUSS |
+| F-07 | Rückfrage als Dialog am Vorgang; Antrag dabei bearbeitbar, Änderungen im Verlauf sichtbar | MUSS |
+| F-08 | Kommentare nach dem Absenden nicht editierbar | MUSS |
+| F-09 | Arbeitsvorrat der Schulleitung, sortiert nach **Beginn des Zeitraums** | MUSS |
+| F-10 | Benachrichtigungen gemäß Matrix; Stundenplanung standortabhängig | MUSS |
+| F-11 | Reduzierte Sicht: Stundenplanung ohne Rückfrage-Dialog, erst ab Genehmigung, nur eigener Standort | MUSS |
+| F-12 | **Stornieren** durch Antragsteller oder Schulleitung, mit Benachrichtigung aller zuvor Informierten | MUSS |
+| F-13 | Zurückziehen vor der Entscheidung | MUSS |
+| F-14 | Am eigenen Antrag keine Entscheidungsschaltflächen | MUSS |
+| F-15 | Anlagen; bei „Fortbildung" Anhang **oder** „Ort und Thema" | MUSS |
+| F-16 | Lerngruppen als Freitext mit selbstlernenden Vorschlägen | SOLL |
+| F-17 | Erinnerung an die Schulleitung bei bald beginnenden offenen Anträgen | SOLL |
+| F-18 | „Antrag ändern" = stornieren und neu stellen, mit vorbelegten Werten | SOLL |
+| F-19 | Filter *abgeschlossene anzeigen* in den Listen | SOLL |
+| F-20 | Aggregierte Kennzahlen ohne Personenbezug | KANN |
+| F-21 | Export der genehmigten Abwesenheiten als Datei | KANN |
+| F-22 | Automatische Übergabe an Untis | KANN (Stufe 3) |
+| F-23 | Anmeldung über Schulportal oder IServ | KANN |
+
+### Gestrichen
+
+| Anforderung | Warum |
+|---|---|
+| Fristenprüfung mit Begründungspflicht | Es gibt keine verbindlichen Antragsfristen. Das System bewertet den Zeitpunkt nicht |
+| Eigener Status für Änderungsanträge | Ersetzt durch stornieren und neu stellen — ein Status und ein Sonderfall weniger |
+| Menüpunkt „Archiv" | Suggeriert Dauerhaftigkeit und widerspricht der Löschfrist; ein Filter genügt |
+| Rolle Sekretariat, Ansicht „Heute abwesend" | Die Abwesenheiten stehen ohnehin im Stundenplan |
+| Rollenpostfächer | Ein von mehreren gelesenes Postfach taugt nicht als Anmeldung |
+| Zustimmung der Begleitpersonen | Nennung genügt; sie werden mitgemeldet |
+| Automatischer Konflikthinweis je Lerngruppe | Nicht möglich, da Lerngruppen Freitext sind |
+| Serientermine | Nicht angefordert |
+
+---
 
 ## D — Datenschutz und Sicherheit
 
 | ID | Anforderung | Prio |
 |---|---|---|
-| D-01 | Verarbeitung ausschließlich in der EU, AV-Vertrag vorhanden | MUSS |
-| D-02 | Serverseitige Berechtigungsprüfung **auf Feldebene** | MUSS |
-| D-03 | Keine personenbezogenen Inhalte in Benachrichtigungs-E-Mails | MUSS |
-| D-04 | Transportverschlüsselung durchgängig; Verschlüsselung der Datenträger und Backups | MUSS |
-| D-05 | Automatischer Löschlauf nach konfigurierten Fristen | MUSS |
-| D-06 | Protokollierung sicherheitsrelevanter Vorgänge, getrennt und zweckgebunden | MUSS |
-| D-07 | **Keine personenbezogene Auswertung von Abwesenheiten — technisch ausgeschlossen** | MUSS |
-| D-08 | Keine Erhebung von Gesundheitsdaten; Formulardesign lenkt aktiv davon weg | MUSS |
-| D-09 | Zwei-Faktor-Authentifizierung mindestens für SL, SL-V, ADM | MUSS |
-| D-10 | Keine Fremdressourcen (Tracking, CDN, Analyse) | MUSS |
-| D-11 | Administration ohne fachlichen Zugriff auf Antragsinhalte | SOLL |
-| D-12 | Datenschutzhinweis nach Art. 13 DSGVO im Formular | MUSS |
-| D-13 | Unterstützung der Betroffenenrechte (Auskunft, Berichtigung, Löschung) | MUSS |
-| D-14 | Getestete Wiederherstellung aus dem Backup | MUSS |
+| D-01 | Verarbeitung in **Deutschland**, Auftragsverarbeitungsvertrag vor Vertragsschluss | MUSS |
+| D-02 | Berechtigungsprüfung **serverseitig** bei jedem Zugriff | MUSS |
+| D-03 | Keine inhaltlichen Angaben in E-Mails außer in der Meldung an die Stundenplanung | MUSS |
+| D-04 | **Automatischer Löschlauf**: Anträge nach 12 Monaten, Entwürfe nach 90 Tagen, Protokolle nach 6 Monaten | MUSS |
+| D-05 | Ausschließlich HTTPS; verschlüsselte Sicherungen | MUSS |
+| D-06 | Passwörter als **Argon2id- oder bcrypt**-Hash; niemals im Repository | MUSS |
+| D-07 | **Vier getrennte Konten**, keine gemeinsamen Zugänge | MUSS |
+| D-08 | Passwortvergabe durch die Person selbst; Administration kennt kein fremdes Passwort | MUSS |
+| D-09 | Begrenzung der Fehlversuche bei der Anmeldung und der Absendeversuche am Formular | MUSS |
+| D-10 | Domänenprüfung auf **Gleichheit** des Teils nach dem letzten `@` | MUSS |
+| D-11 | Vorgangslinks als lange Zufallszeichenfolge; öffnen nur den einen Vorgang | MUSS |
+| D-12 | Anlagen: kein SVG/HTML, Auslieferung als Download, Ablage außerhalb des Web-Verzeichnisses, berechtigungsgeprüft | MUSS |
+| D-13 | Keine Erhebung von Gesundheitsdaten; Hinweise im Formular gegen Atteste und Diagnosen | MUSS |
+| D-14 | Datenschutzhinweis nach Art. 13 DSGVO im Formular | MUSS |
+| D-15 | Keine personenbezogenen Auswertungen — technisch ausgeschlossen | MUSS |
+| D-16 | Protokolldaten getrennt, zweckgebunden, kein Zugriff der Schulleitung | MUSS |
+| D-17 | Keine Fremdressourcen (Tracking, Analyse, fremde Schriftarten oder Skripte) | MUSS |
+| D-18 | Getestete Wiederherstellung aus der Sicherung | MUSS |
+| D-19 | Zwei-Faktor-Authentifizierung für die vier Konten | SOLL (zurückgestellt) |
+
+---
 
 ## Q — Qualität und Betrieb
 
 | ID | Anforderung | Prio |
 |---|---|---|
-| Q-01 | Bedienbar auf dem Smartphone — Anträge entstehen selten am Schreibtisch | MUSS |
-| Q-02 | Ein Antrag in unter 3 Minuten ausfüllbar; Entscheidung in unter 30 Sekunden | MUSS |
-| Q-03 | Barrierearme Bedienung (Tastatur, Kontrast, Screenreader-Grundlagen) | SOLL |
-| Q-04 | Betrieb und Pflege durch **mindestens zwei** Personen leistbar | MUSS |
-| Q-05 | Dokumentation für Betrieb und Fachadministration | MUSS |
-| Q-06 | Datenexport in offenem Format — kein Anbieter-Einschluss | SOLL |
-| Q-07 | Definierter Papier-Rückfallweg bei Ausfall | SOLL |
-| Q-08 | Automatisierte Tests mindestens für Berechtigungslogik und Statusübergänge | SOLL |
+| Q-01 | Bedienbar auf dem Smartphone | MUSS |
+| Q-02 | Antrag in unter 3 Minuten, Entscheidung in unter 30 Sekunden | MUSS |
+| Q-03 | **Betrieb durch eine zweite Person übernehmbar** — Standardtechnik, dokumentiert | MUSS |
+| Q-04 | Zeitgesteuerte Aufgaben möglich (Voraussetzung für D-04) | MUSS |
+| Q-05 | Mailversand mit eigener Domain, SPF und DKIM; Zustellung an `@schule.hessen.de` geprüft | MUSS |
+| Q-06 | Betriebsdokumentation: Einrichtung, Sicherung, Wiederherstellung, Konfiguration | MUSS |
+| Q-07 | Barrierearme Bedienung | SOLL |
+| Q-08 | Datenexport in offenem Format | SOLL |
+| Q-09 | Papier-Rückfallweg bei Ausfall | SOLL |
+| Q-10 | Automatisierte Tests für Berechtigungen, Statusübergänge und Domänenprüfung | SOLL |
 
 ---
 
-## Die fünf Kriterien, an denen sich die Technologiewahl entscheidet
+## Die fünf Punkte, an denen es scheitern kann
 
-Wenn wir in die nächste Phase gehen, zählen erfahrungsgemäß nicht die Funktionen — die kann
-fast jede Lösung. Es zählen diese fünf:
-
-1. **Feldgenaue Berechtigungen (D-02, F-09).** Viele einfache Formular- und
-   Workflow-Werkzeuge kennen nur „Vorgang sichtbar / nicht sichtbar". Damit lässt sich die
-   reduzierte Sicht der Vertretungsplanung nicht sauber abbilden — und das ist kein Detail,
-   sondern der Kern des Datenschutzkonzepts.
-2. **Hosting-Ort und AV-Vertrag (D-01).** Scheidet die Hälfte der naheliegenden Werkzeuge
-   sofort aus. Sollte deshalb **zuerst** geprüft werden, nicht zuletzt.
-3. **Wartbarkeit durch mehr als eine Person (Q-04).** Ein System, das nur eine Person
-   betreiben kann, ist ein Risiko für die Schule — unabhängig von seiner Qualität.
-4. **Löschautomatik (D-05).** Werkzeuge, die kein automatisches Löschen nach Fristen
-   beherrschen, erzeugen dauerhaften manuellen Aufwand, der erfahrungsgemäß unterbleibt.
-5. **Akzeptanz im Kollegium (Q-01, Q-02).** Ein System, das umständlicher ist als eine
-   Mail an die Schulleitung, wird umgangen. Dann hat die Schule beide Verfahren parallel —
-   das schlechteste aller Ergebnisse.
-
----
-
-## Stufenplan (Vorschlag)
-
-| Stufe | Inhalt | Nutzen |
-|---|---|---|
-| **Stufe 1** | Antragsarten A und C, vollständiger Workflow, alle MUSS-Anforderungen, Benachrichtigungen, reduzierte Sichten | Der Großteil des Alltagsnutzens; echte Erprobung mit realen Anträgen |
-| **Stufe 2** | Antragsarten B und D, Anlagen, Begleitpersonen-Zustimmung, Änderungsanträge, Export für die Vertretungsplanung | Abdeckung der aufwändigen Fälle |
-| **Stufe 3** | Schnittstelle Vertretungsplan, Kalender, Kennzahlen, konfigurierbare Antragsarten | Automatisierung und Entlastung |
-
-**Empfehlung:** Stufe 1 zunächst über ein Schulhalbjahr mit einer kleinen Gruppe erproben
-(Schulleitung, Vertretungsplanung beider Standorte, eine Fachschaft), parallel zum bisherigen
-Verfahren. Erst danach schulweit einführen. Das reduziert das Risiko, die Beteiligung von
-Personalrat und Datenschutz belastbar zu machen, auf ein überschaubares Maß — und liefert
-echte Argumente statt Annahmen.
+1. **Q-03 — Wartbarkeit.** Das System hängt an einer Person. Langweilige, dokumentierte
+   Technik schlägt jede elegante Lösung.
+2. **D-04 mit Q-04 — Löschautomatik.** Ohne zeitgesteuerte Aufgaben läuft sie nicht, und
+   sie ist die tragende Datenschutzmaßnahme. Beim Hoster vorab prüfen.
+3. **Q-05 — Mailzustellung.** Kommt der Bestätigungslink nicht an, entsteht kein Antrag.
+   Vorab testen, nicht hoffen.
+4. **D-06 — keine Zugangsdaten im Repository.** Das Projekt liegt auf GitHub; was einmal
+   eingecheckt wurde, bleibt in der Versionsgeschichte.
+5. **Q-02 — Akzeptanz.** Ein System, das umständlicher ist als eine Mail an die
+   Schulleitung, wird umgangen. Dann hat die Schule beide Verfahren parallel — das
+   schlechteste aller Ergebnisse.

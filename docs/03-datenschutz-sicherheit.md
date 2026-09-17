@@ -1,11 +1,19 @@
-# 03 — Datenschutz und Informationssicherheit
+# 03 — Datenschutz und Informationssicherheit: Grundlagen
 
-> **Hinweis:** Dieses Dokument ist eine fachliche Arbeitsgrundlage, keine Rechtsberatung.
-> Die genannten Rechtsgrundlagen und Paragrafen sind **vor der Umsetzung mit der
-> behördlichen Datenschutzbeauftragten bzw. dem Datenschutzbeauftragten und dem Personalrat
-> abzugleichen**. Die Aussagen beziehen sich auf eine öffentliche Schule in Hessen;
-> maßgeblich sind DSGVO, HDSIG, HSchG samt Schul-Datenschutzverordnung sowie die
-> IT-Vorgaben des Landes. Ziffern einzelner Vorschriften sind zu verifizieren.
+> **Hinweis zum Stand.** Dieses Dokument enthält die allgemeinen Grundlagen
+> (Schutzbedarf, Rechtsrahmen, technische Maßnahmen). Die **konkreten Festlegungen**
+> — Löschfristen, Zugriffskreis, Datenschutzhinweis, Eckpunkte der Dienstvereinbarung —
+> stehen in [08-datenschutz-umsetzung.md](08-datenschutz-umsetzung.md) und gehen diesem
+> Dokument vor.
+>
+> **Drei Aussagen hier sind überholt:**
+> 1. Die Stundenplanung sieht den Antragsgrund **nicht** → sie sieht den vollständigen
+>    Antrag (Entscheidung E-6.4).
+> 2. Sekretariate als Empfänger → **entfallen** (E-5.5).
+> 3. Rollenpostfächer → **entfallen**, persönliche Dienstadressen (E-8.4).
+>
+> **Kein Rechtsrat.** Paragrafenangaben sind mit der bzw. dem Datenschutzbeauftragten zu
+> verifizieren.
 
 ---
 
