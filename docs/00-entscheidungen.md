@@ -295,3 +295,105 @@ die Entscheidung:
 
 Der Unterschied ist wesentlich: Es gibt keine Frist für das *Stellen* eines Antrags —
 wohl aber ein Interesse daran, dass ein gestellter Antrag rechtzeitig *entschieden* wird.
+
+### E-4.2 Kommentarpflicht bei Ablehnung — und bei Rückfrage
+**Ablehnen ist ohne Begründung nicht möglich.** Der Knopf bleibt gesperrt, solange das
+Kommentarfeld leer ist.
+
+Ausgedehnt auf die **Rückfrage**: Eine Rückfrage ohne Frage ist sinnlos, also ebenfalls
+Pflichttext. **Genehmigen bleibt kommentarfrei möglich** — das ist der Normalfall und soll
+in einem Klick erledigt sein.
+
+| Aktion | Kommentar |
+|---|---|
+| Genehmigen | optional |
+| Ablehnen | **Pflicht** |
+| Rückfrage | **Pflicht** |
+
+*Folge für die Sichtbarkeit:* Eine Ablehnungsbegründung ist eine bewertende Aussage über
+eine Beschäftigte oder einen Beschäftigten. Sie geht ausschließlich an die antragstellende
+Person und bleibt bei der Schulleitung. **Vertretungsplanung und Sekretariat erfahren von
+einem abgelehnten Antrag nichts** — auch nicht, dass es ihn gegeben hat. Informiert wird
+erst ab der Genehmigung.
+
+### E-4.3 Stornieren dürfen beide — antragstellende Person und Schulleitung
+Wer zuerst erfährt, dass ein genehmigter Termin platzt, meldet es. Eine Absage ist eine
+Tatsache, keine Bitte: Die Schulleitung kann einer Stornierung nicht widersprechen,
+sie wird informiert.
+
+Die Stornierung löst dieselbe Benachrichtigungskette aus wie die Genehmigung, an alle
+zuvor Informierten. **Das ist die wichtigste Einzelfunktion des ganzen Systems** — eine
+Abwesenheit, die doch nicht stattfindet, muss die Vertretungsplanung ebenso zuverlässig
+erreichen wie die ursprüngliche Zusage.
+
+Drei Festlegungen dazu:
+
+* **Stornieren ist kein Löschen.** Der Vorgang bleibt mit Status *storniert* erhalten,
+  einschließlich der Angabe, wer storniert hat. Ohne diese Spur bliebe unerklärlich,
+  warum eine gemeldete Abwesenheit wieder verschwand.
+* **Keine Begründungspflicht.** Ein geplatzter Termin muss nicht gerechtfertigt werden;
+  ein optionales Feld genügt.
+* **Möglich bis zum Ende des beantragten Zeitraums.** Danach nicht mehr — eine nachträgliche
+  Stornierung hilft niemandem und würde die Übersicht verfälschen.
+
+### E-4.4 Rückfrage als Dialog am Vorgang
+Die Schulleitung schreibt ihre Frage, die antragstellende Person antwortet darunter.
+**Alles bleibt am Vorgang sichtbar**, in einem fortlaufenden Verlauf — keine E-Mail-Kette,
+kein Zurücksetzen des Antrags.
+
+*Der entscheidende Vorteil:* Übernimmt die stellvertretende Schulleitung (E-1.2), ist der
+gesamte Gesprächsstand ohne Nachfragen lesbar. Bei einer Zurückweisung zum Überarbeiten
+wäre die Vorgeschichte verloren.
+
+**Der Antrag bleibt während der Rückfrage bearbeitbar.** Viele Rückfragen laufen auf
+„bitte die Stunden ergänzen" hinaus — dann soll man das Feld ändern können, statt es im
+Kommentar zu beschreiben. Jede Änderung erscheint als Eintrag im selben Verlauf
+(„Stunden geändert: 1–3 → 1–4"), sodass die Schulleitung sofort sieht, was passiert ist.
+
+Kommentare sind nach dem Absenden **nicht editierbar** — ein nachträglich geänderter
+Verlauf wäre wertlos. Der Verlauf ist sichtbar für die antragstellende Person und die
+Entscheidungsebene, für niemanden sonst.
+
+### E-4.5 Änderung eines genehmigten Antrags: stornieren und neu stellen
+Der Entwurf sah einen eigenen Status *Geändert* mit erneuter Entscheidung vor
+(Anforderung F-16). **Der entfällt.**
+
+Stattdessen: „Antrag ändern" storniert den bestehenden Vorgang und öffnet einen neuen,
+mit den Werten des alten vorbelegt. Ein Klick für die antragstellende Person, und der
+neue Antrag durchläuft den gewöhnlichen Weg.
+
+*Warum das besser ist:* Ein Status weniger, ein Sonderfall weniger in den
+Benachrichtigungen — und die Vertretungsplanung bekommt zwei klare Meldungen
+(„fällt weg", „kommt neu") statt einer Änderungsmeldung, die sie mit dem alten Stand
+abgleichen müsste. Der Zusammenhang bleibt über einen Verweis auf den Vorgängervorgang
+erhalten.
+
+### Statusmodell nach Schritt 4
+
+```mermaid
+stateDiagram-v2
+    [*] --> Entwurf
+    Entwurf --> Eingereicht: Absenden
+    Entwurf --> [*]: Verwerfen
+
+    Eingereicht --> Rueckfrage: Rückfrage (Kommentar Pflicht)
+    Rueckfrage --> Eingereicht: Antwort / Änderung durch Antragsteller
+
+    Eingereicht --> Genehmigt: Genehmigen (Kommentar optional)
+    Eingereicht --> Abgelehnt: Ablehnen (Kommentar Pflicht)
+
+    Eingereicht --> Zurueckgezogen: Antragsteller zieht zurück
+    Rueckfrage --> Zurueckgezogen: Antragsteller zieht zurück
+
+    Genehmigt --> Storniert: Antragsteller oder Schulleitung
+    Storniert --> [*]
+    Abgelehnt --> [*]
+    Zurueckgezogen --> [*]
+    Genehmigt --> [*]: Zeitraum abgelaufen
+```
+
+Sieben Zustände, keine Nebenwege, keine automatischen Übergänge außer dem Ablauf des
+Zeitraums. **Es gibt keine Genehmigung durch Zeitablauf** — eine Genehmigung ist eine
+Entscheidung, nicht das Ausbleiben einer Entscheidung.
+
+### Schritt 4 — keine offenen Punkte
