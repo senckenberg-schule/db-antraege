@@ -175,34 +175,55 @@ ohne eine Frage zu beantworten, die jemand tatsächlich hat.
 Daraus folgt für **alle** Antragsarten: Die Standortauswahl aus E-3.1 ist eine
 **Pflichtangabe und wird nirgends abgeleitet.**
 
-### E-3.4 Reihenfolge im Formular: erst Standort, dann Lerngruppen
+### E-3.4 Lerngruppen als Freitextfeld — *Entscheidung des Auftraggebers*
 
-Statt den Standort aus der Klasse zu erschließen, dreht das Formular die Abhängigkeit um:
+Die Lerngruppen werden **frei eingetragen**, nicht aus einer Liste gewählt.
+
+**Begründung (maßgeblich):**
+1. Mal ist eine einzelne Klasse betroffen, mal mehrere — Freitext bildet beides ohne
+   Umschweife ab.
+2. **Eine gepflegte Klassenliste müsste jedes Schuljahr angepasst werden.** Das ist
+   wiederkehrender Aufwand, der bei einem von einer Person betriebenen System
+   erfahrungsgemäß irgendwann unterbleibt — und eine veraltete Liste ist schlechter als
+   gar keine, weil man ihr vertraut.
+
+**Warum das tragfähig ist:** Der eigentliche Grund für eine Liste war die Verwechslung
+gleichnamiger Klassen beider Standorte. Dieses Problem löst bereits das **Pflichtfeld
+Standort** aus E-3.1. `9b` im Freitext zusammen mit `Standort A` im Auswahlfeld ist
+ebenso eindeutig wie ein Listeneintrag.
 
 ```
-1. Betroffener Standort *   ○ Standort A   ○ Standort B   ○ Beide Standorte
-2. Betroffene Lerngruppen * → Auswahlliste, gefiltert auf den gewählten Standort
-                              (bei „Beide": alle, jeweils mit Standort beschriftet)
+Betroffener Standort *   ○ Standort A   ○ Standort B   ○ Beide Standorte
+Betroffene Lerngruppen * [ 9b, 10a                                      ]
+                           Vorschläge erscheinen beim Tippen
 ```
 
-*Warum das die bessere Lösung ist:* Die Auswahlliste zeigt nie zwei identisch benannte
-Klassen nebeneinander, zwischen denen man sich vertippen kann. Eine Verwechslung wird
-damit nicht erkannt und gemeldet, sondern **von vornherein unmöglich gemacht** — die
-zuverlässigere Art, einen Fehler zu vermeiden.
+### E-3.5 Selbstlernende Vorschläge statt gepflegter Liste
 
-*Nebeneffekt:* Ein Unterrichtsgang mit Gruppen beider Standorte ist sauber abbildbar, weil
-jede ausgewählte Gruppe ihren Standort mitführt.
+Das Feld ist Freitext, schlägt aber beim Tippen Werte vor, **die bereits in früheren
+Anträgen vorkamen** (im laufenden Schuljahr, am gewählten Standort).
 
-### E-3.5 Lerngruppen brauchen einen zusammengesetzten Schlüssel
+*Der Punkt daran:* Die Vorschlagsliste entsteht von selbst aus dem, was das Kollegium
+einträgt, und veraltet von selbst mit dem Schuljahreswechsel. **Niemand pflegt sie.**
+Nach wenigen Wochen wirkt sie wie eine gepflegte Klassenliste, ohne je eine geworden zu
+sein. Wer etwas Neues eintippt, wird nicht gehindert — Vorschlag, keine Vorschrift.
 
-Konsequenz für das Datenmodell, die früh feststehen muss, weil sie später teuer zu
-korrigieren wäre:
+Zusätzlich beim Speichern: stille Normalisierung (Leerzeichen zusammenfassen, Trennzeichen
+vereinheitlichen). **Keine Prüfung, keine Ablehnung, keine Fehlermeldung** — das Feld darf
+niemanden aufhalten.
 
-* Eine Lerngruppe wird **nie allein über ihre Bezeichnung** identifiziert, sondern über
-  `(Standort, Bezeichnung, Schuljahr)`.
-* Die Stammdatenliste aus E-3.4 führt beide Standorte getrennt.
-* In jeder Anzeige — Antrag, Übersicht der Vertretungsplanung, Archiv, E-Mail-Betreff —
-  wird eine Lerngruppe **immer mit Standort** ausgegeben. Nie nur „9b".
+### E-3.6 Was wir dafür aufgeben
+
+Ehrlich benannt, damit es später keine Überraschung ist:
+
+| Entfällt | Bedeutung |
+|---|---|
+| Automatischer Konflikthinweis („für 9b liegt am selben Tag bereits ein Unterrichtsgang vor") | War als SOLL geplant, nicht als MUSS. Freitext lässt sich nicht zuverlässig vergleichen. |
+| Auswertung nach Lerngruppen | Etwa „wie viele Unterrichtsgänge hatte die 9b". Aggregierte Kennzahlen je Antragsart und Standort bleiben möglich. |
+| Einheitliche Schreibweise | `9b`, `9 b`, `9B` stehen nebeneinander. Die Normalisierung mildert das, beseitigt es nicht. |
+
+Die Anzeigeregel bleibt bestehen: Lerngruppen werden **immer zusammen mit dem Standort**
+des Antrags ausgegeben — in Übersichten, im Archiv und in Benachrichtigungen. Nie nur „9b".
 
 ### Wirkung der Standortangabe — Zusammenfassung
 
