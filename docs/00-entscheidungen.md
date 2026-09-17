@@ -554,17 +554,20 @@ leicht — statt „die eine zentrale Stundenplanung kennt beide Pläne" gilt nu
 Stundenplanung kennt den Plan ihres eigenen Hauses". Beide Seiten sehen denselben Antrag
 und entnehmen ihm, was ihr Haus betrifft. Ein zweites Stundenfeld bliebe überflüssig.
 
-### Offener Punkt zur Entscheidung
+### E-5.8 Standortübergreifende Anträge sind für beide Stundenplanungen vollständig sichtbar
 
-* **O-5.1** Soll die Stundenplanung Runkel bei einem standortübergreifenden Antrag den
-  **vollständigen** Vorgang sehen (einschließlich der Villmarer Lerngruppen) oder nur den
-  eigenen Anteil?
+Betrifft ein Antrag beide Standorte, sehen **beide** Stundenplanungen den **vollständigen**
+Vorgang — einschließlich der Lerngruppen des jeweils anderen Hauses.
 
-  *Empfehlung: den vollständigen Vorgang.* Beide üben dieselbe Funktion aus und benötigen
-  ohnehin dieselben Angaben; eine Filterung brächte keinen erkennbaren Schutzgewinn — die
-  Abwesenheit ist in beiden Häusern dieselbe Tatsache — erzeugte aber zusätzliche Logik und
-  die Gefahr, dass jemand einen Vorgang nur zur Hälfte versteht. Der Antragsgrund bleibt
-  für beide unsichtbar, wie für jede Stundenplanung.
+*Begründung:* Beide üben dieselbe Funktion aus und benötigen dieselben Angaben. Eine
+Filterung brächte keinen Schutzgewinn — die Abwesenheit ist in beiden Häusern dieselbe
+Tatsache — erzeugte aber zusätzliche Logik und die Gefahr, dass jemand einen Vorgang nur
+zur Hälfte versteht.
+
+Unberührt bleibt: **Der Antragsgrund ist für die Stundenplanung nie sichtbar**, weder für
+die eigene noch für die andere.
+
+### Schritt 5 — keine offenen Punkte
 
 ### Rollen nach Schritt 5
 
