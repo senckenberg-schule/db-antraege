@@ -758,3 +758,68 @@ Wortlaut, da die **Zeit** der Fortbildung bereits über den beantragten Zeitraum
 und doppelte Eingaben auseinanderlaufen können. Falls die Uhrzeit der Fortbildung
 regelmäßig von der Abwesenheitszeit abweicht und für die Entscheidung gebraucht wird,
 ist das zu ändern — dann besser als eigenes Feld statt im Freitext.
+
+### E-6.8 Stundenplanung: lesen ja, schreiben nein
+Die Stundenplanung **kommentiert nicht** am Vorgang und **sieht den Rückfrage-Dialog
+nicht**. Sichtbar sind die Antragsinhalte und die Entscheidung (E-6.4), nicht das Gespräch
+zwischen Schulleitung und antragstellender Person.
+
+Absprachen zur Vertretung laufen weiter außerhalb des Systems. O-6.1 ist damit erledigt.
+
+### E-6.9 Antragsart 2 — Unterrichtsgang / Veranstaltung
+
+**Umfang vorerst bewusst klein:** Ziel, Zeit, Lerngruppe. Aufsichtsregelung, Kosten,
+Beförderung und Elterninformation werden **nicht** erhoben.
+
+**Begleitende Lehrkräfte** werden benannt und **mitgemeldet** — ihre Abwesenheit erreicht
+die Stundenplanung genauso wie die der antragstellenden Person. Mehrere sind möglich,
+insbesondere wenn mehrere Lerngruppen betroffen sind. **Eine Zustimmung wird nicht
+eingeholt**; die Nennung genügt.
+
+### Aufbau: dasselbe Gerüst wie Antragsart 1
+
+Beide Formulare teilen sich Aufbau und Wortlaut. Es unterscheiden sich nur drei Stellen:
+
+| Abschnitt | Antragsart 1 | Antragsart 2 |
+|---|---|---|
+| Antragsteller/in | aus der Anmeldung | aus der Anmeldung |
+| „Der Unterricht ist zu vertreten …" | identisch | identisch |
+| Standort | identisch | identisch |
+| **Begründung** | fünf Auswahlmöglichkeiten | **entfällt** |
+| **Ziel / Anlass** | — | **neu**, Pflichtfeld |
+| **Betroffene Lerngruppen** | — | **neu**, Pflichtfeld |
+| **Begleitende Lehrkräfte** | — | **neu**, optional |
+| Unterlagen für die Vertretung | identisch | identisch |
+| Anmerkungen, Anhang, Datenschutzhinweis | identisch | identisch |
+
+*Das ist mehr als eine Beobachtung — es ist eine Vorgabe für die Umsetzung:* **ein
+Formulargerüst, zwei Konfigurationen.** Nicht zwei getrennt gepflegte Formulare, die
+mit der Zeit auseinanderlaufen.
+
+### Was „vorerst" bedeutet — die Parkliste
+
+Bewusst zurückgestellt, damit es später nicht vergessen wird:
+
+| Zurückgestellt | Wird gebraucht für |
+|---|---|
+| Aufsichtsregelung, Begleitpersonenschlüssel | Rechtliche Absicherung bei Aufsichtsfragen |
+| Kosten für Schülerinnen und Schüler, Finanzierung | Mehrtägige Fahrten |
+| Beförderung (zu Fuß, ÖPNV, Bus) | Busbestellung, Kostenplanung |
+| Elterninformation erfolgt (ja/nein) | Nachweis gegenüber Eltern |
+| Übernachtungen, Unterkunft, Notfallkontakt, Beschlusslage | Mehrtägige Fahrten |
+
+**Folge, die klar benannt sein sollte:** In dieser Form deckt Antragsart 2 **eintägige
+Unterrichtsgänge** ab. Für **mehrtägige Fahrten** reicht sie nicht — die brauchen mindestens
+Kosten, Beschlusslage und Notfallkontakt. Das ist in Ordnung, solange es eine bewusste
+Entscheidung ist: Mehrtägige Fahrten laufen vorerst weiter im bisherigen Verfahren.
+
+### Offener Punkt
+
+* **O-6.2** Begleitende Lehrkräfte werden als **Freitext** erfasst (wie die Lerngruppen,
+  E-3.4) — das System kann sie damit keinem Benutzerkonto zuordnen.
+
+  *Folge:* Eine begleitende Lehrkraft sieht den Vorgang **nicht** in ihrer eigenen
+  Übersicht und bekommt keine Benachrichtigung. Die Stundenplanung liest den Namen und
+  plant entsprechend; das genügt für den gemeldeten Zweck. Sobald die Anmeldung steht,
+  wäre eine Verknüpfung mit den Personenkonten möglich — dann sähe jede Begleitperson
+  „ihren" Termin auch selbst. Zur Entscheidung in Schritt 8.

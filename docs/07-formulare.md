@@ -135,4 +135,42 @@ ist später nicht mehr zu reparieren. Jede Prüfung wird serverseitig wiederholt
 
 ## Antragsart 2 — Unterrichtsgang / Veranstaltung
 
-*Wird im nächsten Arbeitsschritt entworfen. Ein Formular dafür existiert im Bestand nicht.*
+Im Bestand existiert dafür kein Formular. Es entsteht als **zweite Konfiguration desselben
+Gerüsts** (E-6.9), nicht als eigenständiges Formular.
+
+### Abschnitt „Antragsteller/in"
+Wie Antragsart 1 — aus der Anmeldung, nicht abgefragt.
+
+### Abschnitt „Der Unterricht ist zu vertreten …"
+
+| Feld | Typ | Pflicht |
+|---|---|---|
+| Einzelner Tag / Zeitraum | Umschalter | ✓ |
+| **Betroffener Standort** | Auswahl: Runkel · Villmar · Beide | ✓ |
+| Datum bzw. Von/Bis | Datum | ✓ |
+| Ganztags | Ankreuzfeld | — |
+| In folgenden Stunden | Freitext (`z. B. 1–3`) | — |
+| Betroffene Pausenaufsichten davor/danach | Freitext | — |
+
+### Abschnitt „Unterrichtsgang" *(ersetzt „Begründung")*
+
+| Feld | Typ | Pflicht | Hinweis |
+|---|---|---|---|
+| **Ziel und Anlass** | Freitext | ✓ | `z. B. Stadtmuseum Limburg – Ausstellung zur Stadtgeschichte` |
+| **Betroffene Lerngruppen** | Freitext mit Vorschlägen (E-3.4/E-3.5) | ✓ | Vorschläge aus früheren Anträgen des laufenden Schuljahres |
+| **Begleitende Lehrkräfte** | Freitext, mehrere möglich | — | Werden mitgemeldet; keine Zustimmung erforderlich (E-6.9) |
+
+### Abschnitt „Unterlagen für die Vertretung"
+Unverändert wie Antragsart 1 — die drei Wege des Bestands.
+
+Auch bei einem Unterrichtsgang entsteht Vertretungsbedarf: Die begleitenden Lehrkräfte
+fehlen in **ihren übrigen** Lerngruppen.
+
+### Anmerkungen · Anhang · Datenschutzhinweis
+Identisch zu Antragsart 1. Die Entweder-oder-Bedingung aus E-6.5 gilt hier nicht — sie
+hängt an der Begründung „Fortbildung", die es in Antragsart 2 nicht gibt.
+
+### Nicht enthalten
+Aufsichtsregelung, Kosten, Beförderung, Elterninformation, Übernachtung, Beschlusslage —
+siehe Parkliste in E-6.9. **Mehrtägige Fahrten sind mit diesem Formular nicht abgedeckt**
+und laufen vorerst im bisherigen Verfahren.
