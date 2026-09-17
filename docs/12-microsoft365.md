@@ -451,3 +451,51 @@ braucht — und der schwierigste Teil des ganzen Vorhabens ist damit erledigt.
 
 Dieser Test kostet nichts, verändert nichts und ist in einer Freistunde erledigt.
 **Er sollte vor jeder weiteren Technikentscheidung stehen.**
+
+
+### 8.9 Richtigstellung: IONOS ist nicht beteiligt
+
+Der IONOS-Vertrag der Schule hält **nur die Schulhomepage**. Die Annahme aus 7.6, die
+Mandantendomäne von Microsoft 365 werde über IONOS verwaltet und deren SPF-Eintrag zeige
+deshalb nicht auf Microsoft, ist damit **nicht belegt**.
+
+**Der Kern der Diagnose bleibt gültig:** Zwei unabhängige Mailsysteme — Landesdienst und
+Gmail — haben dieselben Mails abgewiesen. Das weist auf den Absender, nicht auf die
+Empfänger. Offen ist nur, **welche Absenderdomäne** betroffen war und wo ihre
+DNS-Einträge liegen.
+
+**Das ist mit einer einzigen Angabe zu klären:** Wie lautete die Absenderadresse der
+damaligen Mails? Sie steht in der Unzustellbarkeitsnachricht oder, falls eine Mail im
+Spam-Ordner angekommen ist, in ihren Kopfzeilen.
+
+* Endet sie auf **`…onmicrosoft.com`** → das ist die Ursache. Solche Absender werden von
+  strengen Filtern grundsätzlich abgewiesen. Behebung: eine eigene Domäne im Mandanten
+  einrichten und für sie SPF und DKIM setzen.
+* Lautet sie auf eine **eigene Domäne** → für diese Domäne sind SPF und DKIM zu prüfen,
+  wo auch immer ihre DNS-Einträge liegen.
+
+---
+
+## 9. Stand der Entscheidung
+
+Nach allem Bisherigen bleiben **drei mögliche Endzustände**. Alle drei hängen an derselben
+Frage.
+
+| | Voraussetzung | Benachrichtigung | Kosten |
+|---|---|---|---|
+| **A — Microsoft 365** | Lehrkräfte haben nutzbare Konten | **Teams**, kein E-Mail-Versand nötig | keine |
+| **B — Eigene Anwendung** | Zustellbarkeit an `@schule.hessen.de` in Ordnung gebracht | E-Mail | Hosting, ca. 70–380 €/Jahr |
+| **C — Eigene Anwendung, ohne Benachrichtigung** | keine | keine — alle öffnen selbst eine Liste | Hosting |
+
+**Die entscheidende Frage ist unverändert die aus 8.8:** Haben die Lehrkräfte — und vor
+allem die vier Personen mit besonderen Rechten — nutzbare Microsoft-365-Konten?
+
+* **Ja** → Weg A. Er ist kostenlos, braucht keinen Server, keine Zustellbarkeit und löst
+  die Identitätsfrage richtig statt behelfsmäßig.
+* **Nein** → Weg B oder C. Dann ist zu klären, ob die Zustellbarkeit herzustellen ist;
+  gelingt das nicht, bleibt C.
+
+**Weg C ist tragfähig, aber schwächer:** Das Verfahren funktioniert, nur erfährt niemand
+von einem neuen Antrag, ohne nachzusehen. Bei einzelnen Anträgen pro Tag ist das
+zumutbar — es entspricht dem Papierstapel auf dem Schreibtisch, nur ohne Verrutschen.
+Es setzt aber die Gewohnheit voraus, täglich hineinzusehen.

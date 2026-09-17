@@ -1,9 +1,21 @@
-# 11 — Hosting: konkrete Möglichkeiten
+# 11 — Hosting
 
-> Preise sind **Größenordnungen** und vor einer Entscheidung beim Anbieter zu prüfen.
-> Die Auswahl beschränkt sich auf Anbieter mit **Serverstandort Deutschland** und
-> verfügbarem **Auftragsverarbeitungsvertrag** — beides ist für Beschäftigtendaten
-> nicht verhandelbar.
+> **Stand: IONOS entfällt.** Der IONOS-Vertrag der Schule hält **ausschließlich die
+> Schulhomepage** und hat mit diesem Vorhaben nichts zu tun. Die Abschnitte 8 bis 10
+> (Prüfung der vorhandenen Verträge, Tarifvergleich, Empfehlung „Webhosting Plus")
+> sind damit **gegenstandslos** und nur noch als Rechercheergebnis aufbewahrt.
+>
+> **Ebenso entfällt die Annahme**, die Mandantendomäne von Microsoft 365 sei über IONOS
+> verwaltet. Die Ursachenanalyse zum Mailversand in
+> [12-microsoft365.md](12-microsoft365.md) bleibt in der Sache richtig — welche Domäne
+> betroffen ist, muss aber neu festgestellt werden.
+>
+> **Gültig bleibt:** die Unterscheidung gemanagt/selbst verwaltet (Abschnitt 1), die
+> Anfrage bei Schulträger und Medienzentrum (Abschnitt 2), die Anbieterliste (Abschnitt 3)
+> und die Bewertung der Plattformdienste (Abschnitt 9).
+>
+> **Vorrangig** ist ohnehin der Weg über Microsoft 365 — er käme ohne Hosting und ohne
+> Kosten aus. Siehe [12-microsoft365.md](12-microsoft365.md).
 
 ---
 
