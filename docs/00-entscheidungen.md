@@ -899,6 +899,22 @@ Einzelheiten in [10-technik.md](10-technik.md), Abschnitt 8.
 **Empfohlen:** Anmeldelink an die Dienstadresse als „Passwort vergessen" — die Mechanik
 wird für E-8.2 ohnehin gebaut und nimmt dem Betrieb die Rücksetzaufgabe ab.
 
+### E-8.4 Adressen und Konten
+* **Anträge nur von Adressen der Domäne `schule.hessen.de`.** Prüfung auf **Gleichheit**
+  des Teils nach dem letzten `@` — nicht „endet auf", sonst käme auch
+  `fremdeschule.hessen.de` durch.
+* **Die vier Konten sind vier gewöhnliche Dienstadressen** mit einem Rollenvermerk in der
+  Konfiguration. Keine zusätzlichen Postfächer, kein Registrierungsverfahren.
+* **Passwortvergabe durch die Person selbst** über einen Link an die Dienstadresse.
+  Die Administration kennt kein fremdes Passwort — sonst wäre die Angabe, wer entschieden
+  hat (E-1.2), wertlos.
+* **Keine Rollenpostfächer mehr** (Korrektur früherer Annahmen): Ein von mehreren gelesenes
+  Postfach taugt nicht als Anmeldung. Persönliche Adressen für Anmeldung und
+  Benachrichtigung.
+* Die E-Mail-Adresse verbindet anmeldungsfreie Antragstellung und angemeldete Entscheidung
+  — dadurch erkennt das System eigene Anträge und blendet dort die
+  Entscheidungsschaltflächen aus.
+
 ### Offen
 * **O-8.1** Zwei-Faktor-Authentifizierung für die vier Konten — vorerst zurückgestellt,
   bei der Datenschutzbeauftragten ansprechen

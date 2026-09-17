@@ -470,3 +470,91 @@ in Umsetzung und Bedienung. **Vorschlag: zunächst ohne**, dafür mit konsequent
 der Fehlversuche und einer echten Passphrase — und die Frage beim Gespräch mit der
 Datenschutzbeauftragten (Dokument 09) ausdrücklich stellen, statt sie stillschweigend zu
 übergehen.
+
+---
+
+## 9. Adressen und Konten
+
+### 9.1 Zugelassene Adressen für Anträge
+Eine Antragstellung ist nur mit einer **dienstlichen Adresse der Domäne
+`schule.hessen.de`** möglich. Andere Adressen weist das Formular ab.
+
+Das ist die wirksamste einzelne Maßnahme an einem offen erreichbaren Formular: Wer keine
+dienstliche Adresse hat — Schülerinnen und Schüler, Externe, automatisierte Aufrufe —
+kommt gar nicht erst durch.
+
+> **Technischer Fallstrick bei der Prüfung.** Die Prüfung darf **nicht** lauten
+> „Adresse endet auf `schule.hessen.de`". Diese Bedingung erfüllt auch
+> `angreifer@fremdeschule.hessen.de` — die Zeichenfolge endet ja darauf.
+>
+> Richtig ist: Den Teil **nach dem letzten `@`** herausnehmen und auf **Gleichheit**
+> prüfen (`== "schule.hessen.de"`), Groß- und Kleinschreibung ignoriert. Bestehen weitere
+> Unterdomänen, zusätzlich `endet auf ".schule.hessen.de"` zulassen — mit dem Punkt.
+
+### 9.2 Die vier Konten sind vier gewöhnliche Dienstadressen
+Schulleitung, Stellvertretung und die beiden Stundenplanungen sind selbst Lehrkräfte mit
+einer Adresse `@schule.hessen.de`. **Es braucht keine zusätzlichen Postfächer und kein
+getrenntes Kontosystem** — nur den Vermerk, dass diese vier Adressen zusätzliche Rechte
+haben.
+
+Die gesamte Benutzerverwaltung ist eine Liste in der Konfiguration:
+
+```
+# Konten mit besonderen Rechten
+a.mustermann@schule.hessen.de   → schulleitung
+b.beispiel@schule.hessen.de     → stellvertretung
+c.musterfrau@schule.hessen.de   → stundenplanung, Runkel
+d.beispiel@schule.hessen.de     → stundenplanung, Villmar
+```
+
+Vier Zeilen. Kein Registrierungsverfahren, keine Kontoverwaltung in der Oberfläche.
+Wechselt eine Person die Funktion, wird eine Zeile geändert.
+
+*Wer pflegt diese Liste?* Die Person, die das System betreut — durch Bearbeiten der
+Konfigurationsdatei. Für vier Einträge, die sich selten ändern, braucht es dafür keine
+eigene Verwaltungsoberfläche.
+
+### 9.3 Die E-Mail-Adresse verbindet beide Hälften des Systems
+
+Hier fügt sich zusammen, was zunächst wie zwei getrennte Verfahren aussieht: Anträge
+werden **ohne** Anmeldung gestellt, Entscheidungen **mit**. Verbunden werden beide über
+die Adresse.
+
+Daraus ergeben sich ohne zusätzlichen Aufwand:
+
+* Die Schulleitung sieht ihre **eigenen** Anträge als eigene gekennzeichnet.
+* Am eigenen Antrag werden die Entscheidungsschaltflächen **ausgeblendet** — niemand
+  entscheidet über den eigenen Antrag (Sonderfall aus dem Fachkonzept). Stellt die
+  Schulleitung einen Antrag, entscheidet die Stellvertretung.
+* Die Stundenplanung erkennt einen Antrag, den sie selbst gestellt hat.
+
+### 9.4 Erstes Passwort: die Person vergibt es selbst
+
+**Vorschlag:** Die Konten werden ohne Passwort angelegt. Beim ersten Aufruf fordert die
+Person über *„Zugang einrichten"* einen Link an ihre Dienstadresse an und vergibt dort ihr
+eigenes Passwort.
+
+*Warum nicht Passwörter verteilen:* Wer Passwörter vergibt, kennt sie. Damit könnte die
+betreuende Person sich als Schulleitung anmelden und Anträge entscheiden — und die Angabe,
+**wer** entschieden hat (E-1.2), verlöre ihre Aussagekraft. Vergibt jede Person ihr
+Passwort selbst, kennt es niemand sonst, auch die Administration nicht.
+
+Derselbe Weg dient später als *„Passwort vergessen"*. Die Mechanik wird für die
+Antragsbestätigung ohnehin gebaut (7.3) — es ist kein zusätzlicher Aufwand, sondern
+dieselbe Funktion ein drittes Mal verwendet.
+
+### 9.5 Korrektur: keine Rollenpostfächer
+
+> Frühere Fassungen des Konzepts sahen **Rollenpostfächer** vor
+> (`vertretungsplan@…`), damit Urlaub und Personalwechsel den Ablauf nicht unterbrechen.
+> **Das ist mit E-8.3 nicht mehr vereinbar.**
+
+Ein Postfach, das mehrere Personen lesen, taugt nicht als Anmeldung: Wer sich damit
+anmeldet, ist nicht feststellbar — und genau das muss feststellbar sein.
+
+**Festlegung:** Persönliche Dienstadressen für Anmeldung *und* Benachrichtigung.
+
+*Was das kostet:* Bei einem Funktionswechsel ist eine Zeile in der Konfiguration zu ändern.
+Ist die Stundenplanung im Urlaub, sieht niemand sonst ihre Benachrichtigungen — die
+Vorgänge bleiben aber im System und gehen nicht verloren. Bei vier Personen und seltenen
+Wechseln ist das vertretbar; die Nachvollziehbarkeit wiegt schwerer.
