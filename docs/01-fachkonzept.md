@@ -40,7 +40,7 @@ Diese Abgrenzung ist wichtig für Akzeptanz, Personalratsbeteiligung und Datensc
 | **Sekretariat** | SEK | Erhält genehmigte Vorgänge **seines Standorts**, soweit organisatorisch relevant (Fahrtkosten, Elterninfo, Schlüssel, Busbestellung). Kein Entscheidungsrecht. |
 | **Administration** | ADM | Benutzer- und Rollenverwaltung, Stammdaten, Antragsarten, Fristen. **Kein** fachlicher Zugriff auf Antragsinhalte im Normalbetrieb. |
 
-**Grundsatz:** Rollen werden **pro Standort** vergeben (z. B. „STP Standort A"). Eine Person
+**Grundsatz:** Rollen werden **pro Standort** vergeben (z. B. „STP Runkel"). Eine Person
 kann mehrere Rollen und mehrere Standorte haben (typisch: SL für beide Standorte,
 Sekretariat nur für einen).
 
@@ -96,14 +96,14 @@ Standorten**, nie nach dem Stammstandort.
 ### Auswahl im Formular
 
 ```
-Betroffene Standorte:  ☐ Standort A    ☐ Standort B
+Betroffene Standorte:  ☐ Runkel    ☐ Villmar
 (mindestens einer, beide möglich)
 ```
 
 * Vorbelegung mit dem Stammstandort — als Vorschlag, änderbar.
 * Bei **beiden** Standorten: Der Antrag wird **einmal** gestellt und **einmal** entschieden,
-  aber die Folgeinformation geht an **beide** Standort-Teams (STP A *und* STP B,
-  SEK A *und* SEK B).
+  aber die Folgeinformation geht an **beide** Standorts (STP Runkel *und* STP Villmar,
+  SEK Runkel *und* SEK Villmar).
 * Bei Antragsart C/D wird die Standortangabe aus den betroffenen Lerngruppen plausibilisiert:
   Wenn eine Lerngruppe eines Standorts eingetragen ist, der nicht angehakt wurde, weist das
   System darauf hin (Hinweis, keine Blockade).
@@ -239,7 +239,7 @@ Legende: **✉** = E-Mail-Benachrichtigung · **○** = nur im System sichtbar �
    Tageszusammenfassung wählen — mit Ausnahme von Stornierungen und Vorgängen, die innerhalb
    von 48 Stunden beginnen; die gehen immer sofort raus.
 4. **Rollen-, nicht Personenadressierung.** Zugestellt wird an ein Rollenpostfach
-   (z. B. `vertretungsplan-a@…`), damit Urlaub und Personalwechsel den Prozess nicht unterbrechen.
+   (z. B. `sekretariat.runkel@…`), damit Urlaub und Personalwechsel den Prozess nicht unterbrechen.
 
 ---
 
@@ -264,7 +264,7 @@ Begleitperson **denselben Vertretungsbedarf** wie für die antragstellende Perso
 
 ### 8.4 Antrag betrifft beide Standorte
 Ein Vorgang, eine Entscheidung, zwei Empfängerkreise (siehe Abschnitt 4). In der reduzierten
-Sicht sieht jedes Standort-Team **nur die eigenen** betroffenen Lerngruppen und Stunden — nicht
+Sicht sieht jedes Standort **nur die eigenen** betroffenen Lerngruppen und Stunden — nicht
 die des anderen Standorts.
 
 ### 8.5 Rückwirkende Anträge

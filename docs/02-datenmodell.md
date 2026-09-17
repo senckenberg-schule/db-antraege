@@ -49,7 +49,7 @@ für den Workflow gebraucht.
 | Rollenpostfächer (STP, SEK) | Zustellung der Benachrichtigungen |
 
 ### 1.3 Rolle
-Zuordnung *Person × Rolle × Standort*. Eine Person kann `STP` für Standort A und
+Zuordnung *Person × Rolle × Standort*. Eine Person kann `STP` für Runkel und
 gleichzeitig `AS` überall sein. SL wird in der Regel ohne Standortbindung vergeben.
 
 ### 1.4 Antragsart
@@ -180,7 +180,7 @@ DB-2026-0147 · Dienstbefreiung · GENEHMIGT
 Person:     Müller, A. (Kürzel MÜL)
 Standort:   A
 Zeitraum:   Di, 12.05.2026, 3.–6. Stunde
-Betroffen:  9b (Mathematik, Raum A-204) · 10a (Mathematik, Raum A-112)
+Betroffen:  9b (Mathematik, Raum 204) · 10a (Mathematik, Raum 112)
 Regelung:   Aufgaben hinterlegt (Ablage im Lehrerzimmer)
 ```
 

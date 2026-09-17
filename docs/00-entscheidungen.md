@@ -147,7 +147,7 @@ gesetzter Checkbox bleibt offen, *welcher* Standort gemeint ist.
 Zeitraum):
 
 ```
-Betroffener Standort *     ○ Standort A     ○ Standort B     ○ Beide Standorte
+Betroffener Standort *     ○ Runkel     ○ Villmar     ○ Beide Standorte
 ```
 
 Sobald eine Anmeldung existiert, wird der Stammstandort vorbelegt — als Vorschlag,
@@ -170,7 +170,7 @@ ohne eine Frage zu beantworten, die jemand tatsächlich hat.
 > An beiden Standorten existieren **gleichlautende Lerngruppenbezeichnungen**.
 
 **„9b" identifiziert keine Lerngruppe.** Eindeutig ist erst das Paar
-**Standort + Bezeichnung** — also `9b (Standort A)` gegenüber `9b (Standort B)`.
+**Standort + Bezeichnung** — also `9b (Runkel)` gegenüber `9b (Villmar)`.
 
 Daraus folgt für **alle** Antragsarten: Die Standortauswahl aus E-3.1 ist eine
 **Pflichtangabe und wird nirgends abgeleitet.**
@@ -189,11 +189,11 @@ Die Lerngruppen werden **frei eingetragen**, nicht aus einer Liste gewählt.
 
 **Warum das tragfähig ist:** Der eigentliche Grund für eine Liste war die Verwechslung
 gleichnamiger Lerngruppen beider Standorte. Dieses Problem löst bereits das **Pflichtfeld
-Standort** aus E-3.1. `9b` im Freitext zusammen mit `Standort A` im Auswahlfeld ist
+Standort** aus E-3.1. `9b` im Freitext zusammen mit `Runkel` im Auswahlfeld ist
 ebenso eindeutig wie ein Listeneintrag.
 
 ```
-Betroffener Standort *   ○ Standort A   ○ Standort B   ○ Beide Standorte
+Betroffener Standort *   ○ Runkel   ○ Villmar   ○ Beide Standorte
 Betroffene Lerngruppen * [ 9b, 10a                                      ]
                            Vorschläge erscheinen beim Tippen
 ```
@@ -248,6 +248,23 @@ Die Standortauswahl hat damit genau **einen** verteilungsrelevanten Zweck. Das i
 aber es ist der Grund, warum die Angabe eindeutig sein muss und nicht als „beide ja/nein"
 genügt.
 
-### Offen aus Schritt 3
-* **O-3.1** Wie heißen die beiden Standorte im Sprachgebrauch des Kollegiums?
-  (Platzhalter „Standort A / B" bis zur Klärung)
+### E-3.8 Die Standorte heißen Runkel und Villmar
+
+Im Formular, in allen Übersichten und in Benachrichtigungen werden die Standorte
+**mit ihrem Ortsnamen** bezeichnet — nie als „Standort A/B", „Haupt-/Nebenstelle" oder
+über ein Kürzel:
+
+```
+Betroffener Standort *   ○ Runkel   ○ Villmar   ○ Beide Standorte
+```
+
+*Warum das mehr ist als Kosmetik:* Ortsnamen sind selbsterklärend und werden im Kollegium
+ohnehin verwendet. Eine künstliche Bezeichnung müsste jede neue Kollegin erst lernen, und
+bei einer Auswahl, die über den Empfänger einer Benachrichtigung entscheidet, ist jede
+Bedenksekunde eine Fehlerquelle.
+
+Reihenfolge alphabetisch (Runkel vor Villmar), ohne Vorbelegung, solange es keine
+Anmeldung mit Stammstandort gibt. Für die Sekretariate gilt entsprechend
+„Sekretariat Runkel" und „Sekretariat Villmar".
+
+### Schritt 3 — keine offenen Punkte

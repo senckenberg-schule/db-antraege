@@ -150,7 +150,7 @@ Löschfrist. Diese Regel gehört in die Dienstvereinbarung, nicht nur in die Dok
 
 ### 5.7 Mandantentrennung der Standorte
 Die Standorttrennung ist eine **Berechtigungsfrage**, keine Frage getrennter Systeme:
-Ein Sekretariat des Standorts A darf Vorgänge, die ausschließlich Standort B betreffen,
+Ein Sekretariat des Runkel darf Vorgänge, die ausschließlich Villmar betreffen,
 nicht sehen. Das ist in der Berechtigungsprüfung abzubilden und zu testen.
 
 ---
