@@ -268,3 +268,30 @@ Anmeldung mit Stammstandort gibt. Für die Sekretariate gilt entsprechend
 „Sekretariat Runkel" und „Sekretariat Villmar".
 
 ### Schritt 3 — keine offenen Punkte
+
+---
+
+## Schritt 4 — Workflow und Status · *in Arbeit*
+
+### E-4.1 Keine Fristenprüfung
+An der Schule gelten **keine verbindlichen Antragsfristen**, das läuft informell.
+
+**Folge:** Die im Entwurf vorgesehene Fristprüfung entfällt vollständig —
+Anforderung **F-13 wird gestrichen**. Kein Regelvorlauf je Antragsart, kein Pflichtfeld
+„Begründung der verspäteten Antragstellung", keine Warnung beim Absenden.
+
+**Gestaltungsgrundsatz, der daraus folgt:** Das System **mahnt die antragstellende Person
+nicht**. Keine roten Hinweise, kein „Sie hätten früher fragen müssen", keine Bewertung des
+Zeitpunkts. Ein kurzfristiger Antrag ist ein normaler Antrag. Ob er zu spät kam,
+entscheidet die Schulleitung im Einzelfall — nicht eine Regel im Formular.
+
+**Was davon unberührt bleibt**, weil es nicht die antragstellende Person betrifft, sondern
+die Entscheidung:
+
+| Bleibt | Begründung |
+|---|---|
+| Arbeitsvorrat der Schulleitung **sortiert nach Beginn des Zeitraums**, nicht nach Eingang (F-08) | Was zuerst stattfindet, muss zuerst entschieden werden — unabhängig davon, wann es beantragt wurde |
+| Erinnerung an die Schulleitung, wenn ein noch offener Antrag bald beginnt | Richtet sich an die Entscheidungsebene, nicht an die antragstellende Person. Verhindert, dass ein Antrag unentschieden verfällt |
+
+Der Unterschied ist wesentlich: Es gibt keine Frist für das *Stellen* eines Antrags —
+wohl aber ein Interesse daran, dass ein gestellter Antrag rechtzeitig *entschieden* wird.
