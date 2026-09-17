@@ -378,3 +378,95 @@ Ehrlich benannt:
 *Anmerkung:* Käme später doch eine Anmeldung über Schulportal oder IServ hinzu, entfielen
 diese drei Einschränkungen — und die Mechanik aus 7.3 bliebe unverändert nutzbar. Die
 Entscheidung verbaut nichts.
+
+---
+
+## 8. Passwort für die vier Konten
+
+**Entscheidung:** Statt des Anmeldelinks erhalten die vier Konten mit besonderen Rechten
+eine **Passwortanmeldung**.
+
+Das ist für vier Konten angemessen und gut beherrschbar. „Nicht auslesbar" ist dabei ein
+gelöstes Problem — sofern man die üblichen Regeln einhält.
+
+### 8.1 Jede Person ein eigenes Konto — kein gemeinsames
+
+**Das ist die wichtigste Einzelregel dieses Abschnitts.** Es gibt vier Konten, nicht ein
+Konto „Schulleitung" und ein Konto „Stundenplanung".
+
+*Grund:* Nach E-1.2 zeigt jeder Antrag, **wer** entschieden hat — das war die Grundlage
+dafür, auf einen umschaltbaren Vertretungsmodus zu verzichten. Teilen sich Schulleitung
+und Stellvertretung eine Anmeldung, kann das System diese Frage nicht mehr beantworten.
+Dasselbe gilt für die beiden Stundenplanungen, die außerdem **unterschiedliche Standorte**
+sehen dürfen — mit einem gemeinsamen Zugang wäre die Standorttrennung aus E-5.7 hinfällig.
+
+Ein gemeinsames Passwort wird zudem nie geändert, wenn jemand ausscheidet.
+
+### 8.2 Wie „nicht auslesbar" technisch funktioniert
+
+Das Passwort wird **niemals gespeichert** — weder im Klartext noch verschlüsselt.
+Gespeichert wird ein **Hash**: ein Rechenergebnis, aus dem sich das Passwort nicht
+zurückrechnen lässt. Bei der Anmeldung wird dieselbe Rechnung erneut ausgeführt und das
+Ergebnis verglichen.
+
+| Vorgabe | Warum |
+|---|---|
+| **Argon2id oder bcrypt** verwenden | Bewusst langsam gerechnet, damit massenhaftes Durchprobieren unwirtschaftlich wird |
+| **Kein** MD5, SHA-1, SHA-256 für Passwörter | Zu schnell — moderne Hardware probiert Milliarden pro Sekunde durch |
+| Nichts selbst erfinden | Passwort-Hashing ist eine gelöste Aufgabe; jede Eigenkonstruktion ist schwächer |
+| Der Hash kommt in die Datenbank, **nicht in den Quellcode** | Siehe 8.3 |
+
+### 8.3 Niemals ins Repository
+
+**Kein Passwort und kein Hash gehört in den Quellcode.** Dieses Projekt liegt auf GitHub —
+was einmal eingecheckt wurde, bleibt in der Versionsgeschichte, auch nach dem Löschen.
+
+Zugangsdaten gehören in eine **Konfigurationsdatei außerhalb des Repositories** oder in
+Umgebungsvariablen. Eine `.gitignore` sollte das von Anfang an absichern.
+
+*Warum ich das eigens erwähne:* Beim Programmieren mit KI-Unterstützung entstehen
+Beispielwerte im Code („`PASSWORT = "test123"`"), die später vergessen und mitveröffentlicht
+werden. Das ist einer der häufigsten Wege, auf denen Zugangsdaten nach außen gelangen.
+
+### 8.4 Notwendige Begleitmaßnahmen
+
+| Maßnahme | Grund |
+|---|---|
+| **Begrenzung der Fehlversuche** (z. B. Sperre nach fünf Versuchen für einige Minuten) | Vier bekannte Adressen an einer offen erreichbaren Anmeldeseite laden zum Durchprobieren ein. Ohne Begrenzung ist ein Passwort nur eine Frage der Zeit |
+| **Ausschließlich HTTPS** | Sonst steht das Passwort im Netzwerkverkehr |
+| Sitzungscookie als `httpOnly`, `secure`, `sameSite` | Verhindert das Auslesen der Sitzung über fremden Skriptcode |
+| Abmeldeknopf und automatischer Ablauf | Gemeinschaftsrechner im Lehrerzimmer |
+| Keine Auskunft, *welche* Angabe falsch war | „Adresse oder Passwort falsch" statt „Passwort falsch" — sonst verrät die Anmeldung, welche Adressen existieren |
+
+### 8.5 Empfehlung zur Wahl des Passworts
+
+Bei vier Personen braucht es keine Komplexitätsregeln, sondern **Länge**: eine
+**Passphrase aus vier zufälligen Wörtern** ist leichter zu merken und erheblich schwerer zu
+erraten als `Schule2026!`.
+
+Zu vermeiden: Schulname, Ortsnamen, Jahreszahlen, und dasselbe Passwort wie im Schulportal.
+
+### 8.6 Empfehlung: Anmeldelink als Weg zurück ins System
+
+Die Passwortanmeldung hat eine Schwachstelle im Betrieb: **Wer sein Passwort vergisst,
+wendet sich an die Person, die das System nebenher betreut** — also an eine einzelne
+Person, die vielleicht gerade unterrichtet.
+
+Da die Mechanik des Anmeldelinks für die Antragsbestätigung (7.3) ohnehin gebaut wird,
+kostet es fast nichts, sie als **„Passwort vergessen"** zu verwenden: Link an die
+hinterlegte Dienstadresse, einmalig gültig, 15 Minuten, führt zur Vergabe eines neuen
+Passworts.
+
+Damit entfällt die Rücksetzaufgabe vollständig — für ein von einer Person betriebenes
+System ein spürbarer Unterschied.
+
+### 8.7 Zwei-Faktor-Authentifizierung
+
+Diese vier Konten sehen **alle Anträge des gesamten Kollegiums** mit allen Begründungen.
+Ein übernommenes Konto wäre der schwerste denkbare Fall.
+
+Zwei-Faktor-Authentifizierung wäre daher fachlich richtig. Sie ist aber spürbarer Aufwand
+in Umsetzung und Bedienung. **Vorschlag: zunächst ohne**, dafür mit konsequenter Begrenzung
+der Fehlversuche und einer echten Passphrase — und die Frage beim Gespräch mit der
+Datenschutzbeauftragten (Dokument 09) ausdrücklich stellen, statt sie stillschweigend zu
+übergehen.

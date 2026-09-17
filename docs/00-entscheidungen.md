@@ -863,3 +863,46 @@ wäre die erste.
 Anschreiben für beide liegen in [09-vorlagen-beteiligung.md](09-vorlagen-beteiligung.md).
 
 ### Schritt 7 — keine offenen Punkte
+
+---
+
+## Schritt 8 — Technik · *in Arbeit*
+
+### E-8.1 Keine Anmeldung für das Kollegium
+Anträge werden ohne Anmeldung gestellt. Der Link wird intern im Schulportal hinterlegt —
+**als Bequemlichkeit, nicht als Zugangsschutz**: Die Anwendung bleibt über ihre Adresse
+offen erreichbar.
+
+### E-8.2 Bestätigungslink statt Widerspruchslink
+Ein Antrag wird erst gültig, wenn der Link in der Bestätigungsmail angeklickt wurde.
+Vorher sieht ihn niemand; unbestätigte Anträge werden nach 24 Stunden gelöscht.
+
+*Grund:* Wer einen Antrag fälscht, trägt nicht die Adresse des Opfers ein. Ein
+Widerspruchslink erreicht die betroffene Person daher gerade in dem Fall nicht, für den er
+gedacht ist. Der Bestätigungslink verhindert die Fälschung, statt sie zu melden — und deckt
+nebenbei Tippfehler in der Adresse auf.
+
+Ergänzend: **nur Adressen der Schuldomäne**, Begrenzung der Absendeversuche, Vorgangslinks
+als lange Zufallszeichenfolge.
+
+### E-8.3 Passwortanmeldung für die vier Konten
+Schulleitung, Stellvertretung und die beiden Stundenplanungen melden sich mit Passwort an.
+
+**Vier getrennte Konten, keine gemeinsamen Zugänge** — sonst lässt sich nicht mehr
+feststellen, wer entschieden hat (E-1.2), und die Standorttrennung der Stundenplanungen
+(E-5.7) wäre hinfällig.
+
+Bedingungen: Argon2id oder bcrypt, Zugangsdaten niemals im Repository, Begrenzung der
+Fehlversuche, ausschließlich HTTPS, Passphrase statt Komplexitätsregeln.
+Einzelheiten in [10-technik.md](10-technik.md), Abschnitt 8.
+
+**Empfohlen:** Anmeldelink an die Dienstadresse als „Passwort vergessen" — die Mechanik
+wird für E-8.2 ohnehin gebaut und nimmt dem Betrieb die Rücksetzaufgabe ab.
+
+### Offen
+* **O-8.1** Zwei-Faktor-Authentifizierung für die vier Konten — vorerst zurückgestellt,
+  bei der Datenschutzbeauftragten ansprechen
+* **F-8.1** Anmeldung über Schulportal/IServ bleibt als spätere Möglichkeit bestehen,
+  wird aber nicht vorausgesetzt
+* **F-8.2** Hosting
+* **F-8.4** Abgleich der Begründungskategorien mit den Absenzgründen in Untis
