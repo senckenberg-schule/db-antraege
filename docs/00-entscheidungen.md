@@ -823,3 +823,43 @@ Entscheidung ist: Mehrtägige Fahrten laufen vorerst weiter im bisherigen Verfah
   plant entsprechend; das genügt für den gemeldeten Zweck. Sobald die Anmeldung steht,
   wäre eine Verknüpfung mit den Personenkonten möglich — dann sähe jede Begleitperson
   „ihren" Termin auch selbst. Zur Entscheidung in Schritt 8.
+
+---
+
+## Schritt 7 — Datenschutz und Beteiligung · *entschieden*
+
+### E-7.1 Löschfrist: 12 Monate
+Anträge beider Antragsarten werden **12 Monate nach Ende des beantragten Zeitraums**
+automatisch gelöscht, einschließlich Anhängen, Kommentarverlauf und Entscheidung.
+Entwürfe ohne Einreichung nach 90 Tagen, Protokolldaten nach 6 Monaten.
+
+Nach der Erweiterung des Zugriffskreises (E-6.4) ist dies die **tragende
+Datenschutzmaßnahme** des Systems.
+
+### E-7.2 Kein Archiv als eigener Bereich
+Der Menüpunkt **„Archiv"** aus dem Prototyp entfällt.
+
+*Begründung:* Er wird nicht gebraucht. Was er leisten sollte, leisten die vorhandenen
+Listen mit einem Filter:
+
+| Rolle | Braucht Zugriff auf Abgeschlossenes | Gelöst durch |
+|---|---|---|
+| Antragstellende Person | „Was habe ich beantragt, was wurde entschieden?" | Filter *abgeschlossene anzeigen* in „Meine Anträge" |
+| Schulleitung | Frühere Entscheidung nachsehen | Filter im Arbeitsvorrat |
+| Stundenplanung | Vergangene Vorgänge kaum relevant | Filter in der Vorgangsliste |
+
+*Der wesentliche Punkt ist aber ein anderer:* Ein eigener Bereich namens „Archiv"
+**suggeriert Dauerhaftigkeit** — und steht damit im Widerspruch zu einer Löschfrist von
+12 Monaten. Ein Filter in einer Liste weckt diese Erwartung nicht. Nebenbei: ein
+Menüpunkt weniger und eine Oberfläche weniger zu bauen.
+
+Sichtbar ist in allen Fällen nur, was noch nicht gelöscht ist.
+
+### E-7.3 Beteiligung beginnt jetzt
+Personalrat und Datenschutzbeauftragte/r sind vorhanden, aber **noch nicht informiert**.
+Eine Dienstvereinbarung zu digitalen Werkzeugen besteht **nicht** — die vorgeschlagene
+wäre die erste.
+
+Anschreiben für beide liegen in [09-vorlagen-beteiligung.md](09-vorlagen-beteiligung.md).
+
+### Schritt 7 — keine offenen Punkte

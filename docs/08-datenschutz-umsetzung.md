@@ -40,16 +40,12 @@ tragende Maßnahme dieses Konzepts, nicht eine Formalie am Rand.
 nicht eingehalten — erst recht nicht in einem System, das nebenher betrieben wird.
 Protokolliert wird die Tatsache der Löschung, nicht der gelöschte Inhalt.
 
-### Zu klären: das „Archiv"
+### Das „Archiv" entfällt — *entschieden (E-7.2)*
 
-Der Prototyp hat einen Menüpunkt **Archiv**. Ein Archiv und eine Löschfrist von 12 Monaten
-vertragen sich nur, wenn klar ist, was das Archiv sein soll:
-
-* **Zulässig:** eine Ansicht der abgeschlossenen Vorgänge **innerhalb** der Löschfrist —
-  also „meine Anträge des letzten Jahres".
-* **Nicht zulässig:** eine dauerhafte Sammlung, die der Löschfrist entzogen ist.
-
-→ **Frage F-7.1**: Wozu soll das Archiv dienen, und wie weit soll es zurückreichen?
+Der Menüpunkt **Archiv** aus dem Prototyp wird nicht umgesetzt. Ein eigener Bereich dieses
+Namens suggeriert Dauerhaftigkeit und widerspricht damit der Löschfrist. Was gebraucht
+wird, leistet ein Filter *abgeschlossene anzeigen* in den vorhandenen Listen — und der
+weckt diese Erwartung nicht.
 
 ---
 
@@ -186,10 +182,13 @@ das ist die Situation, in der Beteiligung am wenigsten Reibung erzeugt.
 
 ## 8. Offene Punkte
 
-* **F-7.1** Wozu dient das „Archiv" aus dem Prototyp, und wie weit soll es zurückreichen?
-* **F-7.2** Ist die Löschfrist von 12 Monaten passend, oder gibt es Gründe für länger
-  (etwa Fortbildungsnachweise) oder kürzer?
-* **F-7.3** Gibt es an der Schule einen Personalrat, und wurde er informiert?
-* **F-7.4** Wer ist zuständige/r Datenschutzbeauftragte/r, und gab es schon Kontakt?
-* **F-7.5** Besteht bereits eine Dienstvereinbarung zu digitalen Werkzeugen, an die
-  angeknüpft werden kann?
+Alle geklärt:
+
+* Archiv entfällt (E-7.2)
+* Löschfrist 12 Monate bestätigt (E-7.1)
+* Personalrat vorhanden, noch nicht informiert → Anschreiben in
+  [09-vorlagen-beteiligung.md](09-vorlagen-beteiligung.md)
+* Datenschutzbeauftragte/r vorhanden, noch kein Kontakt → ebenda
+* Keine bestehende Dienstvereinbarung — die vorgeschlagene wäre die erste. Das bedeutet
+  etwas mehr Aufwand beim ersten Mal, aber auch: Der Rahmen kann passend zugeschnitten
+  werden, statt sich an eine vorhandene Vereinbarung anlehnen zu müssen.
