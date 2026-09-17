@@ -98,3 +98,91 @@ Ohne diese drei Angaben lässt sich keine Empfehlung aussprechen:
 * **F-8.3** Welches Vertretungsplanprogramm ist im Einsatz (Untis/WebUntis, DAVINCI,
   anderes)? Für Stufe 1 nicht nötig, aber es zeigt, in welcher Umgebung das System später
   steht.
+
+---
+
+## 5. Auswertung der Auskünfte
+
+### 5.1 Anmeldung: Schulportal Hessen — vielversprechend, aber zu prüfen
+
+Das Schulportal Hessen ist die naheliegende Wahl: Es ist an der Schule eingeführt, alle
+Lehrkräfte haben dort ein Konto, und es ist als Landesangebot datenschutzrechtlich bereits
+bewertet. Damit wären Kriterium 3 und ein guter Teil von Kriterium 2 auf einen Schlag
+erfüllt.
+
+**Was ungeprüft ist:** ob das Schulportal eine Anmeldung **für externe Anwendungen**
+anbietet. Ein Portal zu haben heißt nicht automatisch, dass sich andere Programme dagegen
+anmelden können — dafür braucht es eine dafür vorgesehene Schnittstelle
+(OpenID Connect / OAuth 2 oder vergleichbar).
+
+**Konkret zu klären** — beim Schulportal-Support oder der zuständigen Stelle des Landes:
+
+1. Können sich externe Anwendungen gegen das Schulportal anmelden lassen, und über welches
+   Verfahren?
+2. Falls ja: Wer beantragt den Zugang, und ist das für eine schuleigene Anwendung
+   überhaupt vorgesehen?
+3. Welche Angaben liefert die Anmeldung mit — Name, dienstliche E-Mail, Rolle,
+   Standortzugehörigkeit?
+
+**Die dritte Frage ist die wichtigere:** Liefert die Anmeldung auch den **Stammstandort**
+und eine **Rollenangabe**, ersparen wir uns eine eigene Benutzerverwaltung fast vollständig.
+Tut sie es nicht, brauchen wir eine kleine eigene Liste, wer Schulleitung und wer
+Stundenplanung ist — kein großer Aufwand, aber eine Pflegeaufgabe mehr.
+
+**Falls es nicht geht:** Weg 2 aus Abschnitt 2 — Anmeldelink an die dienstliche Adresse.
+Das Verfahren ist so einfach, dass es kein Rückschritt ist.
+
+### 5.2 Hosting: Nextcloud ist kein Ort für diese Anwendung
+
+> **Wichtige Klarstellung.** Eine „Wolke" auf Nextcloud-Basis — auch die IServ-Wolke — ist
+> ein **Dateispeicher**. Sie kann Dokumente ablegen, teilen und versionieren. Sie kann
+> **keine eigenständige Webanwendung mit Datenbank ausführen**.
+
+Dieses System braucht laufenden Programmcode, eine Datenbank, Sitzungsverwaltung,
+Mailversand und einen zeitgesteuerten Löschlauf. Nichts davon leistet ein Dateispeicher.
+Ein Antragssystem „in der Wolke abzulegen" wäre bestenfalls eine Sammlung von Formularen
+in Dateiform — also genau der Zustand, den wir ablösen wollen.
+
+**Zu klären ist deshalb, was an der Schule tatsächlich vorhanden ist:**
+
+| Möglichkeit | Bedeutung |
+|---|---|
+| **IServ als vollständige Schulplattform** | Dann gibt es dort auch eine Anmeldung (IServ unterstützt gängige Verfahren) — eine **ernsthafte Alternative zum Schulportal**, ggf. sogar Betriebsmöglichkeiten. Lohnt die Prüfung |
+| **Nur eine Dateiablage auf Nextcloud-Basis** | Für dieses Vorhaben nicht nutzbar, weder zur Anmeldung noch zum Betrieb |
+
+### 5.3 Empfehlung zum Hosting, solange die Frage offen ist
+
+In dieser Reihenfolge prüfen:
+
+| Rang | Möglichkeit | Vorteil | Nachteil |
+|---|---|---|---|
+| **1** | Angebot des **Schulträgers** oder des **Landes** | Vertragliches und Betrieb geregelt, Datenschutzprüfung meist vorhanden, kein Wartungsaufwand für die Schule | Muss erfragt werden; Wartezeit |
+| **2** | **Gemieteter Server in Deutschland** mit Auftragsverarbeitungsvertrag | Günstig, volle Kontrolle, schnell verfügbar | **Sie sind dann der Betreiber**: Updates, Sicherung, Wiederherstellung, Sicherheitsmeldungen — dauerhaft, nicht einmalig |
+| **3** | Server an der Schule | Daten bleiben im Haus | Ausfallsicherheit, Sicherung und Erreichbarkeit von außen sind ohne IT-Betreuung schwer zu gewährleisten |
+
+**Zu Rang 2 eine Warnung, die zum Kernkriterium gehört:** Einen Server zu mieten ist
+leicht; ihn über Jahre gepflegt zu halten, ist die eigentliche Aufgabe. Wenn es dazu kommt,
+sollte von Anfang an eine zweite Person eingewiesen sein und die Einrichtung dokumentiert
+werden — sonst entsteht genau die Abhängigkeit, die in E-2.4 als Risiko benannt ist.
+
+### 5.4 Untis: eine kleine Festlegung mit täglichem Nutzen
+
+Im Einsatz ist **Untis**. Für Stufe 1 bleibt die Übergabe manuell (E-2.2) — die
+Stundenplanung liest den Vorgang und trägt ihn im Programm ein.
+
+**Daraus folgt eine Abstimmung, die wenig kostet und täglich hilft:** Die fünf
+Begründungskategorien des Formulars — *Fortbildung · Dienstliche Gründe · Arztbesuch ·
+Persönliche Gründe · Sonstiges* — sollten mit den **Absenzgründen in Untis** abgeglichen
+werden.
+
+Stimmen sie überein, kann die Stundenplanung die Angabe **unverändert übernehmen**, statt
+sie bei jedem Vorgang zu übersetzen. Das war schließlich die Begründung dafür, dass die
+Stundenplanung den Grund überhaupt sieht (E-6.4) — dann sollte er auch in der Form
+vorliegen, in der er gebraucht wird.
+
+→ **F-8.4** Welche Absenzgründe sind in Untis hinterlegt? Weichen sie ab, passen wir die
+Auswahlliste des Formulars an — nicht umgekehrt.
+
+Eine spätere automatische Übergabe an Untis bleibt möglich und ist Stufe 3. Sie sollte den
+Beginn nicht aufhalten: Sie ist erfahrungsgemäß der aufwändigste Teil und darf den Nutzen
+der übrigen Funktionen nicht verzögern.
