@@ -936,3 +936,24 @@ wird für E-8.2 ohnehin gebaut und nimmt dem Betrieb die Rücksetzaufgabe ab.
   einem deutschen Anbieter. **Kein Root-Server ohne zweite Person**, kein Server an der
   Schule. Vertrag auf die Schule, nicht privat.
 * **F-8.4** Abgleich der Begründungskategorien mit den Absenzgründen in Untis
+
+
+---
+
+## Schritt 8 — Wendung: Microsoft 365 vorhanden
+
+An der Schule besteht ein **Microsoft-365-Abonnement**. Damit steht eine Umsetzung **ohne
+eigenen Programmcode** zur Verfügung: Power Apps oder Forms als Formular, SharePoint-Liste
+als Datenhaltung, Power Automate für Genehmigungen, Benachrichtigungen und Löschlauf.
+
+**Das überholt die Technikentscheidungen E-8.1 bis E-8.4**, sofern der Weg gangbar ist —
+sie waren durchweg Behelfe für die fehlende Anmeldung, und die besteht in Microsoft 365
+bereits. Auch die Hostingfrage (F-8.2) entfällt dann.
+
+**Vorbehalt:** Die Datenschutzfrage ist ausdrücklich zu stellen — eine allgemeine Freigabe
+von Microsoft 365 für Kommunikation bedeutet keine Freigabe für Personalvorgänge mit
+Abwesenheitsgründen.
+
+**Das Fachkonzept bleibt in beiden Fällen unverändert gültig.**
+
+Einzelheiten, Verluste und Prüfliste: [12-microsoft365.md](12-microsoft365.md).
