@@ -978,3 +978,28 @@ Aus der Erfahrung eines früheren Power-Automate-Flows: Dessen E-Mails kamen bei
 Post ausschließlich unter `@schule.hessen.de`?** Davon hängt die technische Richtung ab.
 
 Einzelheiten: [12-microsoft365.md](12-microsoft365.md), Abschnitt 7.
+
+### E-8.5 E-Mail darf nicht tragend sein — und E-8.2 fällt
+
+Nachtrag: Der frühere Flow verwendete bereits „E-Mail senden (V2)" über *Office 365
+Outlook*, scheiterte also nicht am Versandweg. Wahrscheinlichere Ursache sind **fehlende
+SPF- und DKIM-Einträge** für die Mandantendomäne — die DNS-Einträge von
+`senckenberg-schule.de` liegen bei IONOS und sind nicht für Microsoft eingerichtet. Das
+erklärt auch, dass andere Empfänger ebenfalls blockten. **Erst die
+Unzustellbarkeitsnachricht besorgen**, bevor weiter geraten wird.
+
+**Festlegung:** Das System muss vollständig benutzbar sein, **auch wenn keine einzige
+E-Mail ankommt.** Alle Beteiligten arbeiten aus einer Übersicht, die sie selbst öffnen;
+die antragstellende Person erhält ihre Bestätigung auf dem Bildschirm. E-Mail ist Hinweis,
+nie Voraussetzung.
+
+**Damit fällt E-8.2 (Bestätigungslink).** Er setzte zuverlässige Zustellung voraus — kommt
+die Mail nicht an, entsteht kein Antrag. Das ist kein verpasster Hinweis, sondern der
+Totalausfall des Verfahrens.
+
+**Daraus folgt die technische Richtung:**
+unzuverlässige E-Mail → Bestätigungslink untauglich → der anmeldungsfreie Entwurf trägt
+nicht → **es braucht eine echte Anmeldung** → Microsoft 365, Schulportal oder IServ.
+
+Die schlechte Zustellbarkeit spricht damit **für** Microsoft 365, nicht dagegen: Der
+anmeldungsfreie Entwurf war es, der E-Mail unverzichtbar machte.

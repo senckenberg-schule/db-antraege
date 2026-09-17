@@ -233,3 +233,109 @@ strengen Filtern ebenfalls auffällig.
 **Die Zustellbarkeit an `@schule.hessen.de` ist damit kein Microsoft-Problem, sondern die
 zentrale technische Voraussetzung des ganzen Vorhabens** — bei jedem Weg. Sie gehört
 getestet, bevor irgendetwas gebaut wird.
+
+### 7.6 Nachtrag: es war bereits „V2" — Neubewertung
+
+Der frühere Flow verwendete bereits **„E-Mail senden (V2)"** über den Connector
+*Office 365 Outlook*, und die Zustellung scheiterte dennoch. Die Erklärung aus 7.1
+greift damit nicht.
+
+#### Wahrscheinlichere Ursache: der Absenderdomäne fehlt die Berechtigung
+
+Beim Versand aus Exchange Online lautet der Absender auf die Domäne des Mandanten —
+etwa `@senckenberg-schule.de`. Damit eine fremde Stelle diese Mail annimmt, muss die
+**DNS-Konfiguration dieser Domäne** den Versand über Microsoft ausdrücklich erlauben.
+
+Und genau da liegt bei dieser Schule ein Bruch: **Die DNS-Einträge von
+`senckenberg-schule.de` liegen bei IONOS** und sind für MyWebsite und den IONOS-Mailversand
+eingerichtet — nicht für Microsoft 365.
+
+| Prüfpunkt | Was fehlen könnte | Folge |
+|---|---|---|
+| **SPF** (TXT-Eintrag der Domäne) | `include:spf.protection.outlook.com` fehlt, weil der Eintrag auf IONOS zeigt | Jede aus Microsoft versendete Mail **fällt bei der SPF-Prüfung durch**. Strenge Empfänger weisen sie ab |
+| **DKIM** | Für **eigene Domänen ist DKIM in Exchange Online nicht automatisch aktiv** — es muss im Microsoft-Verwaltungsportal eingeschaltet und mit zwei DNS-Einträgen hinterlegt werden | Fehlende Signatur; in Verbindung mit SPF-Fehler nahezu sichere Abweisung |
+| **DMARC** | Eintrag fehlt oder steht auf `reject` | Bei fehlendem SPF und DKIM wird konsequent abgewiesen |
+| **Absenderdomäne** | Versand erfolgte womöglich als `…@<mandant>.onmicrosoft.com` | Solche Absender werden von strengen Filtern häufig grundsätzlich blockiert |
+
+**Das erklärt beide Beobachtungen**: dass es bei `@schule.hessen.de` scheiterte *und* dass
+auch andere Adressen die Mails blockierten. Ein SPF-Fehlschlag ist kein Problem des
+Empfängers — er wirkt überall dort, wo geprüft wird.
+
+#### Was zu beschaffen ist, bevor weiter geraten wird
+
+**Die Unzustellbarkeitsnachricht.** Sie nennt den Grund im Klartext — etwa
+`550 5.7.23 SPF validation failed`, `DMARC policy`, oder eine Einordnung als unerwünschte
+Werbung. Ohne diesen Text bleibt alles Vermutung.
+
+Zu finden im **Postfach, aus dem der Flow versendet hat** (die Verlaufsanzeige in Power
+Automate zeigt nur, dass die Aktion erfolgreich *abgeschickt* wurde — die Abweisung kommt
+danach und landet im Postfach).
+
+Falls die Mails nicht abgewiesen, sondern nur **in den Spam-Ordner einsortiert** wurden,
+ist die Ursache dieselbe, die Behandlung aber einfacher.
+
+#### Diese Prüfung lohnt unabhängig vom Umsetzungsweg
+
+Die genannten DNS-Einträge betreffen die Domäne, nicht Microsoft. **Sind sie nicht in
+Ordnung, hat auch ein eigener Webserver dasselbe Problem** — er versendet dann ebenfalls
+als `@senckenberg-schule.de`.
+
+Wer sie in Ordnung bringt, verbessert damit beide Wege gleichzeitig. Es ist Arbeit an der
+Domäne, nicht an der Anwendung.
+
+---
+
+## 8. Die Konsequenz für den Entwurf: E-Mail darf nicht tragend sein
+
+Unabhängig davon, ob sich die Zustellung reparieren lässt, folgt aus dieser Erfahrung eine
+Festlegung:
+
+> **Das System muss auch dann vollständig benutzbar sein, wenn keine einzige E-Mail
+> ankommt.**
+
+Für die Stundenplanung war das schon entschieden (E-5.1: „die Liste ist der Arbeitsplatz,
+die Mail nur ein Wecker"). Dieser Grundsatz wird nun auf **alle** Beteiligten ausgedehnt:
+
+| Rolle | Arbeitet aus | E-Mail |
+|---|---|---|
+| Schulleitung, Stellvertretung | einer Übersicht offener Anträge, die sie selbst öffnen | Hinweis, kein Erfordernis |
+| Stundenplanung | der Liste genehmigter Vorgänge | Hinweis, kein Erfordernis |
+| Antragstellende Person | Bestätigung **auf dem Bildschirm**, mit Vorgangsnummer | Hinweis, kein Erfordernis |
+
+### 8.1 Und damit fällt der Bestätigungslink — er muss fallen
+
+Entscheidung **E-8.2** (Antrag wird erst durch Klick auf einen Link in der Mail gültig)
+setzte **zuverlässige Zustellung voraus**. Kommt die Mail nicht an, entsteht **kein
+Antrag** — der Fehler ist dann nicht ein verpasster Hinweis, sondern der Totalausfall des
+Verfahrens.
+
+**Daraus folgt eine Kette, die die technische Richtung bestimmt:**
+
+```
+E-Mail unzuverlässig
+   → Bestätigungslink untauglich
+   → der anmeldungsfreie Entwurf trägt nicht
+   → es braucht eine echte Anmeldung
+   → Microsoft 365, Schulportal oder IServ
+   → mit Microsoft 365: Benachrichtigung über Teams statt E-Mail
+```
+
+**Die unzuverlässige Zustellung spricht damit nicht gegen Microsoft 365 — sie spricht
+dafür.** Denn der anmeldungsfreie Entwurf war es, der E-Mail unverzichtbar machte. Eine
+echte Anmeldung macht sie zum Beiwerk.
+
+### 8.2 Die Frage wird dadurch schärfer
+
+Nicht mehr „nutzt das Kollegium Teams?", sondern:
+
+> **Gibt es innerhalb von Microsoft 365 einen Kanal, den die Beteiligten tatsächlich
+> ansehen?** Teams, oder ein Postfach im Mandanten, das gelesen wird.
+
+Für den Kernablauf genügen dabei **vier Personen**, nicht das ganze Kollegium: Schulleitung,
+Stellvertretung und die beiden Stundenplanungen. Sie erhalten die Hinweise. Die
+antragstellende Person braucht keinen Hinweis — sie füllt das Formular aus und bekommt die
+Bestätigung sofort angezeigt.
+
+**Diese vier zu fragen, ob sie Teams benutzen, ist überschaubar.** Und wenn sie es nicht
+tun: Vier Personen für ein Werkzeug zu gewinnen, das die Schule schon bezahlt, ist
+leichter, als die Zustellbarkeit eines Landesmailservers zu beeinflussen.
