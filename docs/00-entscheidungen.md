@@ -114,3 +114,80 @@ typischerweise: Pflichtfeld statt leer lassbarer Zeile, Auswahlliste statt Freit
 ### Offen aus Schritt 2
 * **O-2.1** Bestehende Formulare liegen noch nicht vor → Feldabgleich ausstehend (Schritt 6)
 * **O-2.2** Weitere Antragsarten aus dem angekündigten Dokument prüfen
+
+---
+
+## Schritt 2 — *abgeschlossen*
+
+### E-2.4 Ausgangslage des vorhandenen Prototyps
+* **Nur die Oberfläche existiert**, kein Backend hinter `/api/antrag`; Schulleiter-Ansicht
+  und Archiv sind Platzhalter.
+* Erstellt vom Auftraggeber selbst mit KI-Unterstützung; Pflege ebenfalls dort.
+* Läuft bisher **nur lokal**, nicht erreichbar, **keine echten Daten**.
+
+**Folge — der günstigste denkbare Zeitpunkt:** Anmeldung, Berechtigungen, Löschkonzept und
+Datenschutzhinweis können eingebaut werden, *bevor* der erste echte Antrag existiert.
+Keine Migration, keine Altdaten, kein Umbau im laufenden Betrieb.
+
+**Folge für die Technologiewahl (Q-04):** Das System hängt an einer Person. Daraus folgt
+kein Abbruch, aber ein Kriterium: **Standardtechnologie und gute Dokumentation vor
+eleganter Lösung** — damit im Vertretungsfall jemand anderes übernehmen kann. Wird in
+Schritt 8 als Entscheidungskriterium geführt.
+
+---
+
+## Schritt 3 — Standortlogik · *entschieden*
+
+Ausgangsproblem: Im Prototyp erscheint „An beiden Standorten" nur im Zeitraum-Zweig und
+kennt nur „beide" — bei einem Einzeltag ist der Standort gar nicht angebbar, und bei nicht
+gesetzter Checkbox bleibt offen, *welcher* Standort gemeint ist.
+
+### E-3.1 Form der Angabe
+**Pflichtauswahl mit drei Möglichkeiten, sichtbar in beiden Zweigen** (Einzeltag *und*
+Zeitraum):
+
+```
+Betroffener Standort *     ○ Standort A     ○ Standort B     ○ Beide Standorte
+```
+
+Sobald eine Anmeldung existiert, wird der Stammstandort vorbelegt — als Vorschlag,
+immer änderbar.
+
+### E-3.2 „Beide" ist bei Einzeltagen ein Regelfall, kein Sonderfall
+Lehrkräfte unterrichten **regelmäßig an einem Tag an beiden Standorten**. Die Auswahl
+„Beide" muss daher auch beim Einzeltag zur Verfügung stehen.
+
+**Keine Aufteilung der Stunden je Standort.** Die Standortangabe beantwortet nur die Frage
+*„in welchem Haus fehlt diese Person?"* — sie steuert damit das Sekretariat. Welche Stunde
+an welchem Haus liegt, ergibt sich aus dem Stundenplan und ist der Vertretungsplanung
+ohnehin bekannt. Ein zweites Stundenfeld je Standort würde das Formular verkomplizieren,
+ohne eine Frage zu beantworten, die jemand tatsächlich hat.
+
+### E-3.3 Bei Unterrichtsgängen wird der Standort abgeleitet, nicht abgefragt
+**Jede Klasse gehört fest zu einem Standort.** Daraus folgt für Antragsart 2:
+Die betroffenen Standorte ergeben sich **automatisch aus den gewählten Lerngruppen**.
+
+Anzeige zur Kontrolle („Betroffener Standort: Standort A — abgeleitet aus 9b, 10a"),
+manuell überschreibbar für Ausnahmefälle. Das spart eine Eingabe und schließt einen
+Widerspruch zwischen Klassenangabe und Standortangabe von vornherein aus.
+
+### E-3.4 Daraus folgt: Stammdatenliste „Klassen"
+Benötigt wird eine gepflegte Liste der Lerngruppen mit Standortzuordnung — einmal je
+Schuljahr zu aktualisieren. Klein, aber Voraussetzung für E-3.3 und für die strukturierte
+Erfassung betroffener Klassen (statt Freitext).
+
+### Wirkung der Standortangabe — Zusammenfassung
+
+| Empfänger | Wirkt der Standort? |
+|---|---|
+| Schulleitung | nein — entscheidet standortübergreifend (E-1.1) |
+| Vertretungsplanung | nein als Verteilkriterium — eine Zuständigkeit für beide Häuser (E-1.3); der Standort ist dort **Inhalt** |
+| **Sekretariat** | **ja** — bestimmt, welches der beiden Sekretariate informiert wird (E-1.4) |
+
+Die Standortauswahl hat damit genau **einen** verteilungsrelevanten Zweck. Das ist wenig —
+aber es ist der Grund, warum die Angabe eindeutig sein muss und nicht als „beide ja/nein"
+genügt.
+
+### Offen aus Schritt 3
+* **O-3.1** Wie heißen die beiden Standorte im Sprachgebrauch des Kollegiums?
+  (Platzhalter „Standort A / B" bis zur Klärung)
