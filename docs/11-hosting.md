@@ -161,3 +161,89 @@ Ob die Schule das aus eigenen Mitteln trägt oder der Schulträger, ist mit der 
 zu klären — **nicht privat vorstrecken**. Ein Verfahren der Schule sollte auch auf einem
 Vertrag der Schule laufen, nicht auf einem persönlichen. Das betrifft die Verantwortlichkeit
 nach Art. 28 DSGVO ebenso wie die Frage, was geschieht, wenn Sie die Schule verlassen.
+
+---
+
+## 8. Vorhandene Domain bei IONOS — was daraus folgt
+
+An der Schule besteht bereits ein **Vertrag mit IONOS** und eine Domain. Das ist die
+naheliegendste Lösung: kein neuer Anbieter, kein zweiter Vertrag, keine zweite
+Rechnungsstelle.
+
+**Zu beachten:** Eine Domain ist nur der Name. Ob Speicherplatz, PHP und Datenbank
+dazugehören, hängt vom gebuchten Paket ab. Ein reines Domain-Paket enthält das nicht;
+ein Webhosting-Paket in der Regel schon.
+
+### 8.1 Als Erstes im Kundenkonto nachsehen
+
+| Frage | Wo |
+|---|---|
+| Ist nur eine **Domain** gebucht oder auch **Webhosting**? | Vertragsübersicht |
+| Falls Webhosting: welcher Tarif, und welche Laufzeitumgebungen sind enthalten? | Tarifdetails |
+| Ist eine **Datenbank** enthalten (MariaDB/MySQL), und wie viele? | Tarifdetails |
+| Sind **zeitgesteuerte Aufgaben** („Cron-Jobs") enthalten? | Tarifdetails — **kritisch, siehe unten** |
+| Ist der **Serverstandort Deutschland**? | Kontoeinstellungen / Tarif |
+| Sind **E-Mail-Postfächer** und SMTP-Versand enthalten? | Tarifdetails |
+| Ist **SSL/TLS** enthalten (Let's Encrypt genügt)? | Tarifdetails |
+| **Auf wen läuft der Vertrag** — auf die Schule oder privat? | Vertragsdaten |
+
+### 8.2 Die drei Punkte, an denen es hängen kann
+
+**1. Zeitgesteuerte Aufgaben.** Ohne sie läuft der automatische Löschlauf nicht — und der
+ist nach E-7.1 die tragende Datenschutzmaßnahme. In den kleineren Webhosting-Tarifen sind
+sie erfahrungsgemäß eingeschränkt oder gar nicht enthalten. **Das ist der Punkt, der
+zuerst zu prüfen ist**, weil er die Tarifwahl bestimmt.
+
+*Falls nicht enthalten:* Entweder ein Tarif höher, oder der Löschlauf wird beim ersten
+Aufruf des Tages angestoßen — das ist ein zulässiger Behelf, aber schlechter, weil er von
+Benutzung abhängt. Ein größerer Tarif ist die sauberere Lösung.
+
+**2. Laufzeitumgebung.** Auf gemanagten IONOS-Paketen läuft **PHP** zuverlässig.
+Node.js und Python sind dort nicht durchgängig verfügbar.
+
+Das ist kein Nachteil, sondern bestätigt, was ohnehin für dieses Vorhaben spricht
+(Abschnitt 4): PHP läuft überall, ist umfassend dokumentiert, und die Wahrscheinlichkeit,
+dass später eine zweite Person damit zurechtkommt, ist hoch. **Wenn IONOS gesetzt ist, ist
+PHP faktisch mitentschieden** — und das ist in Ordnung.
+
+**3. Serverstandort.** IONOS ist ein deutsches Unternehmen, betreibt aber Rechenzentren an
+mehreren Orten. Der Standort **Deutschland** ist ausdrücklich zu wählen und zu
+dokumentieren — „deutscher Anbieter" genügt datenschutzrechtlich nicht, es zählt der Ort
+der Verarbeitung.
+
+### 8.3 Auftragsverarbeitungsvertrag
+
+IONOS stellt einen Auftragsverarbeitungsvertrag nach Art. 28 DSGVO bereit. Er ist
+**abzuschließen und aufzubewahren**, bevor der erste echte Antrag eingeht — er gehört
+zu den Unterlagen für die Datenschutzbeauftragte (Dokument 08, Abschnitt 5).
+
+### 8.4 Eine Unteradresse genügt
+
+Es braucht keine neue Domain. Eine Unteradresse der vorhandenen reicht und ist kostenlos:
+
+```
+antrag.<schuldomain>.de      oder      dienstbefreiung.<schuldomain>.de
+```
+
+*Vorteil über die Kostenfrage hinaus:* Der Absender der Bestätigungs- und Anmeldemails
+gehört damit zur bekannten Schuldomäne. Das hilft der Zustellung an `@schule.hessen.de`
+und wirkt für das Kollegium vertrauenswürdig — eine fremde Adresse in einer Mail mit
+Anmeldelink weckt zu Recht Misstrauen.
+
+### 8.5 Empfehlung
+
+1. **Vertragsübersicht ansehen** (8.1). Ist Webhosting mit Datenbank und zeitgesteuerten
+   Aufgaben enthalten, ist die Hostingfrage erledigt.
+2. **Ist nur die Domain gebucht:** ein Webhosting-Paket ergänzen, das Datenbank *und*
+   zeitgesteuerte Aufgaben enthält. Die Größenordnung liegt im Bereich weniger Euro im
+   Monat — die Anfrage beim Schulträger (Abschnitt 2) bleibt dennoch sinnvoll, schon um
+   sie belegen zu können.
+3. **Auftragsverarbeitungsvertrag anfordern**, Serverstandort Deutschland prüfen und
+   festhalten.
+4. **Vertrag auf die Schule**, nicht privat.
+
+Damit entfällt die Anbieterwahl aus Abschnitt 3 — nicht weil IONOS die beste Wahl wäre,
+sondern weil ein bestehender Vertrag mit vertretbaren Eigenschaften mehr wert ist als ein
+geringfügig besserer neuer. Ein zweiter Anbieter bedeutet einen zweiten Vertrag, eine
+zweite Rechnung, ein zweites Kennwort und eine zweite Stelle, bei der im Störungsfall
+jemand anrufen muss.
