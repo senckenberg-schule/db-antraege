@@ -51,6 +51,10 @@ Unverändert übernommen, im Wortlaut des Bestands:
 Optional, PDF/JPG/PNG/DOC/DOCX, max. 10 MB — unverändert, aber **nur berechtigungsgeprüft
 abrufbar** (nicht über eine erratbare Adresse).
 
+### Abschnitt „Anmerkungen"
+Freies Feld, optional (E-6.2). Sichtbar nur für die antragstellende Person und die
+Entscheidungsebene.
+
 ### Datenschutzhinweis
 **Neu.** Kurzer Hinweis nach Art. 13 DSGVO unter dem Formular: wer verarbeitet, wozu,
 wie lange, wer sieht was. Ein Satz plus Link, nicht zwei Absätze Kleingedrucktes.
@@ -103,9 +107,9 @@ Schulleitung entscheidet über den Antrag und muss dafür wissen, worum es geht.
 wirksame Schutz liegt deshalb nicht im Weglassen, sondern in zwei anderen Festlegungen,
 die ohnehin gelten:
 
-* **Sichtbarkeit:** Der Grund ist ausschließlich für die antragstellende Person und die
-  Schulleitung sichtbar. Die Stundenplanung sieht ihn nie — weder in der Liste noch in
-  der E-Mail.
+* **Sichtbarkeit:** Die Stundenplanung sieht die **Kategorie** („Persönliche Gründe"),
+  weil das Stundenplanprogramm einen Absenzgrund verlangt — aber **nicht den Freitext
+  dahinter** (E-6.3). Der bleibt auf antragstellende Person und Schulleitung begrenzt.
 * **Löschfrist:** Der Vorgang wird nach Ablauf gelöscht (Dokument 03), nicht dauerhaft
   archiviert.
 
@@ -119,17 +123,11 @@ ist später nicht mehr zu reparieren. Jede Prüfung wird serverseitig wiederholt
 
 ---
 
-## Zur Entscheidung
+## Entschieden
 
-* **F-6.1** Mehrtägige Anträge gelten als **ganztägig** — es gibt kein Stundenfeld im
-  Zeitraum-Zweig. Sonderfälle („Montag ab der 3. Stunde bis Mittwoch") wären zwei Anträge
-  oder eine Anmerkung.
-  *Empfehlung: so belassen.* Der Fall ist selten, und ein Stundenfeld über mehrere Tage
-  ist missverständlich — es wäre unklar, ob es für jeden Tag oder nur für den ersten gilt.
-
-* **F-6.2** Soll es ein freies Feld **„Anmerkungen"** am Ende geben?
-  *Empfehlung: ja, optional.* Es fängt genau die Sonderfälle auf, für die sonst ein
-  weiteres Formularfeld nötig wäre, und bleibt sichtbar auf die Entscheidungsebene begrenzt.
+* **E-6.1** Mehrtägige Anträge gelten als ganztägig — kein Stundenfeld im Zeitraum-Zweig.
+* **E-6.2** Optionales Anmerkungsfeld am Ende des Formulars.
+* **E-6.3** Die Stundenplanung sieht die Begründungs*kategorie*, nicht den Freitext.
 
 ---
 

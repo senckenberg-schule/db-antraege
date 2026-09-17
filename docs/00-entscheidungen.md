@@ -578,3 +578,63 @@ die eigene noch für die andere.
 | Stellvertretende Schulleitung | 1 | keine |
 | **Stundenplanung** | **2** | **je Standort** |
 | Administration | 1–2 | — |
+
+---
+
+## Schritt 6 — Formularfelder · *in Arbeit*
+
+### E-6.1 Mehrtägige Anträge sind ganztägig
+Kein Stundenfeld im Zeitraum-Zweig. Sonderfälle („Montag ab der 3. Stunde bis Mittwoch")
+werden als zwei Anträge oder über das Anmerkungsfeld gelöst. Ein Stundenfeld über mehrere
+Tage wäre missverständlich — unklar bliebe, ob es für jeden Tag oder nur für den ersten gilt.
+
+### E-6.2 Optionales Anmerkungsfeld
+Am Ende des Formulars ein freies Feld **„Anmerkungen"**, optional. Es fängt die
+Sonderfälle auf, für die sonst weitere Formularfelder nötig wären.
+
+### E-6.3 Die Stundenplanung sieht die Begründungs*kategorie* — *Korrektur*
+
+> **Korrektur einer tragenden Annahme.** Bisher galt durchgängig: Die Stundenplanung sieht
+> den Antragsgrund nie (E-1.3, E-5.8, Sichtbarkeitsmatrix in Dokument 02). Das war falsch.
+
+**Sachlicher Grund:** Im Stundenplanprogramm muss beim Eintragen einer Abwesenheit ein
+**Absenzgrund** angegeben werden. Ohne diese Angabe lässt sich die Abwesenheit dort nicht
+erfassen. Der Bedarf ist also nicht Neugier, sondern eine Pflichteingabe im nachgelagerten
+System.
+
+**Festlegung — Kategorie ja, Freitext nein:**
+
+| Angabe | Stundenplanung |
+|---|---|
+| Begründungs**kategorie**: Fortbildung · Dienstliche Gründe · Arztbesuch · Persönliche Gründe · Sonstiges | **sichtbar** |
+| Detailfeld „Ort und Thema" (bei Fortbildung) | nicht sichtbar |
+| Detailfeld „Bitte Grund angeben" (bei Persönliche Gründe / Sonstiges) | **nicht sichtbar** |
+| Anmerkungen | nicht sichtbar |
+| Kommentarverlauf, Entscheidungsbegründung | nicht sichtbar |
+
+*Warum diese Grenze:* Das Stundenplanprogramm braucht einen Absenzgrund aus einer festen
+Liste — also genau eine Kategorie. „Persönliche Gründe" genügt dafür vollständig.
+Der Freitext dahinter („Beerdigung", „Umzug meiner Mutter") wird im Stundenplanprogramm
+nirgends eingetragen und ist für die Vertretungsplanung ohne Funktion.
+
+Die Kategorie ist damit eine **fachlich notwendige Angabe**, der Freitext bleibt auf die
+Entscheidungsebene begrenzt.
+
+**Folge:** Die Löschfrist wird zum wichtigsten verbleibenden Schutz für den Freitext, und
+der Hinweis am Feld („Ein Stichwort genügt …") gewinnt an Bedeutung — er ist jetzt die
+Stelle, an der entschieden wird, wie viel überhaupt entsteht.
+
+**Überholt damit:** die Zeile „kein Anlass" in der reduzierten Sicht der Stundenplanung
+(Dokument 02) sowie die entsprechenden Aussagen in E-5.8 und Dokument 03.
+
+### Reduzierte Sicht der Stundenplanung — neuer Stand
+
+```
+DB-2026-0147 · Dienst-/Unterrichtsbefreiung · GENEHMIGT
+Person:      Müller, A.
+Standort:    Runkel
+Zeitraum:    Di, 12.05.2026, 3.–6. Stunde
+Aufsichten:  große Pause davor
+Grund:       Persönliche Gründe          ← neu sichtbar, nur die Kategorie
+Unterlagen:  werden im Schulportal hinterlegt
+```
