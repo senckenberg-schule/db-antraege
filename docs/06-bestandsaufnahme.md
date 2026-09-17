@@ -139,9 +139,9 @@ keine Diagnose. Genau so soll es sein. Die Lücke ist nur „Persönliche Gründ
 → Lösungsvorschlag in Schritt 6: Unterkategorien statt Freitext (z. B. familiärer Anlass ·
 Behördentermin · Umzug · Prüfung), Freitext nur noch optional und mit sichtbarem Hinweis.
 
-### 4.4 Stunden und Klassen nur als Freitext
+### 4.4 Stunden und Lerngruppen nur als Freitext
 
-`In folgenden Stunden` ist ein Textfeld („z. B. 1–3"), betroffene Klassen werden gar nicht
+`In folgenden Stunden` ist ein Textfeld („z. B. 1–3"), betroffene Lerngruppen werden gar nicht
 erfasst. Für die Dienstbefreiung trägt das noch. Für den Unterrichtsgang — der laut E-2.2
 in Stufe 1 gehört — reicht es nicht: Dort müssen Lerngruppen, Begleitpersonen und
 Vertretungsbedarf strukturiert vorliegen, sonst muss die Vertretungsplanung sie wieder

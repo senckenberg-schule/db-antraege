@@ -32,7 +32,7 @@ Priorisierung: **MUSS** (ohne das ist das System nutzlos oder unzulässig) ·
 | F-17 | Anlagen hochladen (Einladung, Elterninfo, Fahrtenkonzept) | SOLL |
 | F-18 | Serientermine in einem Antrag | SOLL |
 | F-19 | Export der genehmigten Abwesenheiten für die Vertretungsplanung (Datei) | SOLL |
-| F-20 | Konflikthinweis bei Überschneidungen (Klasse/Person/Zeitraum) | SOLL |
+| F-20 | Konflikthinweis bei Überschneidungen (Lerngruppe/Person/Zeitraum) | SOLL |
 | F-21 | Aggregierte Kennzahlen ohne Personenbezug | SOLL |
 | F-22 | Tageszusammenfassung statt Einzelmails für STP/SEK | KANN |
 | F-23 | Automatische Übergabe an das Vertretungsplanwerkzeug (Schnittstelle) | KANN |

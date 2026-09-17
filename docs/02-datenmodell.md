@@ -74,7 +74,7 @@ Ein Antrag hat 1..n Termine (Serientermine). Je Termin: Datum, Beginn, Ende oder
 (geplant / storniert).
 
 ### 1.7 Vertretungsbedarf
-Pro Termin und betroffener Person/Lerngruppe: Klasse, Fach, Stunde, Raum,
+Pro Termin und betroffener Person/Lerngruppe: Lerngruppe, Fach, Stunde, Raum,
 Regelungsvorschlag (`Aufgaben hinterlegt` / `Tausch mit …` / `Vertretung erforderlich` /
 `entfällt ersatzlos`). **Das ist das Datenpaket, das die Vertretungsplanung tatsächlich braucht.**
 
@@ -134,7 +134,7 @@ voraussichtliche Kosten, Kostenträger, Anlage (Einladung/Programm).
 
 ### C — Unterrichtsgang / Exkursion
 
-Kern + Ziel/Anlass, Bildungsplanbezug, **betroffene Lerngruppen** (Klasse(n) mit Standort),
+Kern + Ziel/Anlass, Bildungsplanbezug, **betroffene Lerngruppen** (mit Standort),
 Anzahl Schülerinnen und Schüler, **Begleitpersonen**, Treffpunkt/Rückkehr,
 Beförderung (zu Fuß / ÖPNV / Bus / privat), Kosten für SuS, Aufsichtsregelung,
 Elterninformation erfolgt (ja/nein).
@@ -162,7 +162,7 @@ Legende: **●** sichtbar · **◐** sichtbar in reduzierter Form · **○** nic
 | Betroffene Standorte | ● | ● | ● | ● | ○ |
 | **Anlass der Dienstbefreiung (Art A)** | ● | ● | **○** | **○** | ○ |
 | Ergänzung / Freitext zum Anlass | ● | ● | ○ | ○ | ○ |
-| Betroffene Stunden / Klassen / Räume | ● | ● | ● | ◐ nur wenn organisatorisch nötig | ○ |
+| Betroffene Stunden / Lerngruppen / Räume | ● | ● | ● | ◐ nur wenn organisatorisch nötig | ○ |
 | Vertretungsregelung | ● | ● | ● | ○ | ○ |
 | Begleitpersonen | ● | ● | ● | ● | ○ |
 | Kosten, Reisekosten, Finanzierung | ● | ● | ○ | ● | ○ |

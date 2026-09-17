@@ -70,7 +70,7 @@ Bei A und B ist **eine Person** abwesend. Bei C und D sind **Lerngruppen, Beglei
 Räume** betroffen. Ein Unterrichtsgang erzeugt also typischerweise:
 
 * Abwesenheit der antragstellenden Lehrkraft **und aller Begleitpersonen**,
-* Ausfall bzw. Verlegung des Unterrichts **für eine oder mehrere Klassen**,
+* Ausfall bzw. Verlegung des Unterrichts **für eine oder mehrere Lerngruppen**,
 * freiwerdende Räume, ggf. Bus-/Raumbedarf, ggf. Mittagessen-Abmeldung.
 
 Das Formular muss diese Angaben erheben, weil sonst die Vertretungsplanung sie
@@ -104,8 +104,8 @@ Betroffene Standorte:  ☐ Standort A    ☐ Standort B
 * Bei **beiden** Standorten: Der Antrag wird **einmal** gestellt und **einmal** entschieden,
   aber die Folgeinformation geht an **beide** Standort-Teams (STP A *und* STP B,
   SEK A *und* SEK B).
-* Bei Antragsart C/D wird die Standortangabe aus den betroffenen Klassen plausibilisiert:
-  Wenn eine Klasse eines Standorts eingetragen ist, der nicht angehakt wurde, weist das
+* Bei Antragsart C/D wird die Standortangabe aus den betroffenen Lerngruppen plausibilisiert:
+  Wenn eine Lerngruppe eines Standorts eingetragen ist, der nicht angehakt wurde, weist das
   System darauf hin (Hinweis, keine Blockade).
 
 ### Entscheidungszuständigkeit
@@ -180,7 +180,7 @@ Benachrichtigung — nicht als stilles Löschen.
    ein Pflichtfeld „Begründung der verspäteten Antragstellung". Der Antrag wird **nicht
    blockiert** — kurzfristige Anlässe sind der Normalfall, nicht die Ausnahme.
 4. **Konflikthinweis (SOLL):** Liegt für denselben Zeitraum bereits ein genehmigter Antrag
-   für dieselbe Klasse oder eine überschneidende Veranstaltung vor, wird darauf hingewiesen.
+   für dieselbe Lerngruppe oder eine überschneidende Veranstaltung vor, wird darauf hingewiesen.
 5. Absenden → Status *Eingereicht*, Eingangsbestätigung an AS.
 
 ### 6.2 Entscheiden (SL)
@@ -264,7 +264,7 @@ Begleitperson **denselben Vertretungsbedarf** wie für die antragstellende Perso
 
 ### 8.4 Antrag betrifft beide Standorte
 Ein Vorgang, eine Entscheidung, zwei Empfängerkreise (siehe Abschnitt 4). In der reduzierten
-Sicht sieht jedes Standort-Team **nur die eigenen** betroffenen Klassen und Stunden — nicht
+Sicht sieht jedes Standort-Team **nur die eigenen** betroffenen Lerngruppen und Stunden — nicht
 die des anderen Standorts.
 
 ### 8.5 Rückwirkende Anträge

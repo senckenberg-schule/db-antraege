@@ -36,7 +36,7 @@ Zwei Konsequenzen ziehen sich durch das gesamte Konzept:
 | Abwesenheitsdaten mit Personenbezug | Wer ist wann nicht da | **hoch** | Bewegungs- und Verhaltensprofil über die Zeit |
 | **Anlass der Dienstbefreiung** | Arzttermin, familiärer Anlass | **hoch** | Rückschluss auf Gesundheit und persönliche Verhältnisse; bei Freitext droht Abgleiten in Art. 9 DSGVO |
 | Entscheidungen und Kommentare | Ablehnungsbegründung | **hoch** | Bewertende Aussagen über Beschäftigte |
-| Schülerbezogene Daten (Art C/D) | Klassenlisten, Teilnehmerzahlen | **hoch** | Daten Minderjähriger |
+| Schülerbezogene Daten (Art C/D) | Lerngruppen, Teilnehmerzahlen | **hoch** | Daten Minderjähriger |
 | Protokolldaten | Zugriffe, Statusänderungen | **hoch** | Missbrauchspotenzial zur Verhaltenskontrolle |
 
 **Ergebnis: Gesamtschutzbedarf HOCH.** Besondere Kategorien nach Art. 9 DSGVO werden durch
@@ -120,7 +120,7 @@ außerhalb der Kontrolle des Systems liegen. Deshalb gilt ohne Ausnahme:
 
 * **Benachrichtigungen enthalten keine personenbezogenen Inhalte.** Nur Vorgangsnummer,
   Antragsart, Ereignis und Link.
-* **Kein Antragsgrund, kein Kommentartext, keine Klassenliste in der E-Mail** —
+* **Kein Antragsgrund, kein Kommentartext, keine Lerngruppenangabe in der E-Mail** —
   auch nicht „zur Bequemlichkeit".
 * Versand ausschließlich an **dienstliche** Adressen und Rollenpostfächer.
 * Mailversand über einen Dienstleister mit AV-Vertrag und EU-Verarbeitung.

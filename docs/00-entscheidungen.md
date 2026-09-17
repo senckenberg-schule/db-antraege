@@ -29,7 +29,7 @@ die Absprache wer entscheidet ist eine organisatorische, keine technische.
 **Eine Person für beide Standorte.**
 
 *Wesentliche Vereinfachung:* Damit ist der Standort für die Stundenplanung kein
-Verteilkriterium, sondern nur **Inhalt** der Meldung (welche Klassen an welchem Haus).
+Verteilkriterium, sondern nur **Inhalt** der Meldung (welche Lerngruppen an welchem Haus).
 Die Standortweiche wirkt nur noch beim Sekretariat (E-1.4).
 
 *Risiko, das dadurch entsteht:* Auch hier hängt eine Funktion an einer einzelnen Person.
@@ -43,7 +43,7 @@ Kenntnisnahme** — wissen, wer wann nicht im Haus ist (Telefon, Besucher, Ausku
 Keine Kostenabwicklung, keine Veranstaltungsorganisation über dieses System.
 
 *Folge — sehr geringer Datenbedarf:* Das Sekretariat erhält nur
-**Name · Zeitraum · Standort · Antragsart**. Kein Anlass, keine Klassen, keine Stunden,
+**Name · Zeitraum · Standort · Antragsart**. Kein Anlass, keine Lerngruppen, keine Stunden,
 keine Kommentare, keine Kosten. Das ist die schlankeste Sicht im ganzen System.
 
 *Dies ist die einzige Stelle, an der die Standortauswahl den Empfängerkreis steuert.*
@@ -94,7 +94,7 @@ Antragsarten verwiesen („siehe Anhang"). Das Dokument liegt noch nicht vor.
 **Dienstbefreiung (A) + Unterrichtsgang (C).**
 
 *Begründung:* A und C sind die beiden Gegenpole des Datenmodells — eine Person ohne
-Lerngruppenbezug gegenüber ganzen Klassen mit Begleitpersonen und Vertretungsbedarf.
+Lerngruppenbezug gegenüber ganzen Lerngruppen mit Begleitpersonen und Vertretungsbedarf.
 Trägt das Konzept beide, sind B und D im Wesentlichen Varianten davon (B ≈ A mit Kosten,
 D ≈ C mit Übernachtung).
 
@@ -167,7 +167,7 @@ ohne eine Frage zu beantworten, die jemand tatsächlich hat.
 
 > **Korrektur.** Eine frühere Fassung dieses Punktes sah vor, den Standort bei Antragsart 2
 > automatisch aus den gewählten Lerngruppen abzuleiten. Das ist **nicht möglich:**
-> An beiden Standorten existieren **gleichlautende Klassenbezeichnungen**.
+> An beiden Standorten existieren **gleichlautende Lerngruppenbezeichnungen**.
 
 **„9b" identifiziert keine Lerngruppe.** Eindeutig ist erst das Paar
 **Standort + Bezeichnung** — also `9b (Standort A)` gegenüber `9b (Standort B)`.
@@ -180,15 +180,15 @@ Daraus folgt für **alle** Antragsarten: Die Standortauswahl aus E-3.1 ist eine
 Die Lerngruppen werden **frei eingetragen**, nicht aus einer Liste gewählt.
 
 **Begründung (maßgeblich):**
-1. Mal ist eine einzelne Klasse betroffen, mal mehrere — Freitext bildet beides ohne
+1. Mal ist eine einzelne Lerngruppe betroffen, mal mehrere — Freitext bildet beides ohne
    Umschweife ab.
-2. **Eine gepflegte Klassenliste müsste jedes Schuljahr angepasst werden.** Das ist
+2. **Eine gepflegte Lerngruppenliste müsste jedes Schuljahr angepasst werden.** Das ist
    wiederkehrender Aufwand, der bei einem von einer Person betriebenen System
    erfahrungsgemäß irgendwann unterbleibt — und eine veraltete Liste ist schlechter als
    gar keine, weil man ihr vertraut.
 
 **Warum das tragfähig ist:** Der eigentliche Grund für eine Liste war die Verwechslung
-gleichnamiger Klassen beider Standorte. Dieses Problem löst bereits das **Pflichtfeld
+gleichnamiger Lerngruppen beider Standorte. Dieses Problem löst bereits das **Pflichtfeld
 Standort** aus E-3.1. `9b` im Freitext zusammen mit `Standort A` im Auswahlfeld ist
 ebenso eindeutig wie ein Listeneintrag.
 
@@ -205,7 +205,7 @@ Anträgen vorkamen** (im laufenden Schuljahr, am gewählten Standort).
 
 *Der Punkt daran:* Die Vorschlagsliste entsteht von selbst aus dem, was das Kollegium
 einträgt, und veraltet von selbst mit dem Schuljahreswechsel. **Niemand pflegt sie.**
-Nach wenigen Wochen wirkt sie wie eine gepflegte Klassenliste, ohne je eine geworden zu
+Nach wenigen Wochen wirkt sie wie eine gepflegte Lerngruppenliste, ohne je eine geworden zu
 sein. Wer etwas Neues eintippt, wird nicht gehindert — Vorschlag, keine Vorschrift.
 
 Zusätzlich beim Speichern: stille Normalisierung (Leerzeichen zusammenfassen, Trennzeichen
@@ -225,12 +225,23 @@ Ehrlich benannt, damit es später keine Überraschung ist:
 Die Anzeigeregel bleibt bestehen: Lerngruppen werden **immer zusammen mit dem Standort**
 des Antrags ausgegeben — in Übersichten, im Archiv und in Benachrichtigungen. Nie nur „9b".
 
+### E-3.7 Sprachregelung: „Lerngruppe", nicht „Klasse"
+
+Durchgängig in Formular, Oberfläche, Benachrichtigungen und allen Dokumenten heißt es
+**Lerngruppe**.
+
+*Grund:* „Klasse" trifft nur einen Teil der Fälle. Betroffen sind ebenso Kurse,
+jahrgangsübergreifende Gruppen, Fachgruppen und Teilgruppen — die Bezeichnung muss alles
+davon selbstverständlich einschließen, statt es als Sonderfall erscheinen zu lassen.
+
+Feste Begriffe („Klassenfahrt", „Klassenkonferenz") bleiben davon unberührt.
+
 ### Wirkung der Standortangabe — Zusammenfassung
 
 | Empfänger | Wirkt der Standort? |
 |---|---|
 | Schulleitung | nein — entscheidet standortübergreifend (E-1.1) |
-| Vertretungsplanung | nein als Verteilkriterium — eine Zuständigkeit für beide Häuser (E-1.3); der Standort ist dort **Inhalt** und zur Unterscheidung gleichnamiger Klassen unverzichtbar |
+| Vertretungsplanung | nein als Verteilkriterium — eine Zuständigkeit für beide Häuser (E-1.3); der Standort ist dort **Inhalt** und zur Unterscheidung gleichnamiger Lerngruppen unverzichtbar |
 | **Sekretariat** | **ja** — bestimmt, welches der beiden Sekretariate informiert wird (E-1.4) |
 
 Die Standortauswahl hat damit genau **einen** verteilungsrelevanten Zweck. Das ist wenig —
