@@ -901,8 +901,9 @@ wird für E-8.2 ohnehin gebaut und nimmt dem Betrieb die Rücksetzaufgabe ab.
 
 ### E-8.4 Adressen und Konten
 * **Anträge nur von Adressen der Domäne `schule.hessen.de`.** Prüfung auf **Gleichheit**
-  des Teils nach dem letzten `@` — nicht „endet auf", sonst käme auch
-  `fremdeschule.hessen.de` durch.
+  des Teils nach dem letzten `@` — nicht „enthält" und nicht „endet auf". Eine
+  Enthält-Prüfung ließe `angreifer@schule.hessen.de.beliebige-domain.de` durch, und diese
+  Unterdomäne kann sich jeder einrichten, der irgendeine Domain besitzt.
 * **Die vier Konten sind vier gewöhnliche Dienstadressen** mit einem Rollenvermerk in der
   Konfiguration. Keine zusätzlichen Postfächer, kein Registrierungsverfahren.
 * **Passwortvergabe durch die Person selbst** über einen Link an die Dienstadresse.

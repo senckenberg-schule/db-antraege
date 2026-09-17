@@ -483,13 +483,31 @@ Das ist die wirksamste einzelne Maßnahme an einem offen erreichbaren Formular: 
 dienstliche Adresse hat — Schülerinnen und Schüler, Externe, automatisierte Aufrufe —
 kommt gar nicht erst durch.
 
-> **Technischer Fallstrick bei der Prüfung.** Die Prüfung darf **nicht** lauten
-> „Adresse endet auf `schule.hessen.de`". Diese Bedingung erfüllt auch
-> `angreifer@fremdeschule.hessen.de` — die Zeichenfolge endet ja darauf.
+> **Technischer Fallstrick: wie die Prüfung formuliert wird.**
 >
-> Richtig ist: Den Teil **nach dem letzten `@`** herausnehmen und auf **Gleichheit**
-> prüfen (`== "schule.hessen.de"`), Groß- und Kleinschreibung ignoriert. Bestehen weitere
-> Unterdomänen, zusätzlich `endet auf ".schule.hessen.de"` zulassen — mit dem Punkt.
+> Die Domäne steht fest — offen ist nur, wie im Code verglichen wird. Zwei naheliegende
+> Formulierungen sind falsch:
+>
+> | Prüfung | Lässt fälschlich durch | Aufwand für Angreifende |
+> |---|---|---|
+> | Adresse **enthält** `@schule.hessen.de` | `angreifer@schule.hessen.de.beliebige-domain.de` | **gering** — wer irgendeine Domain besitzt, richtet diese Unterdomäne in Minuten ein |
+> | Adresse **endet auf** `schule.hessen.de` | `angreifer@fremdeschule.hessen.de` | hoch — setzt eine Unterdomäne von hessen.de voraus |
+>
+> Die erste Variante ist die gefährliche: Sie erfordert keinerlei Zugang zu hessen.de.
+>
+> **Richtig:** den Teil **nach dem letzten `@`** herausnehmen und auf **Gleichheit**
+> prüfen, Groß- und Kleinschreibung ignoriert.
+>
+> ```
+> lehrer@schule.hessen.de
+>   → nach dem letzten @: "schule.hessen.de"  → gleich? ja   → zulassen
+>
+> angreifer@schule.hessen.de.beliebige-domain.de
+>   → nach dem letzten @: "schule.hessen.de.beliebige-domain.de"  → gleich? nein → ablehnen
+> ```
+>
+> Gleichheit statt „enthält" oder „endet auf". Eine Zeile Unterschied, die man dem Code
+> nicht ansieht.
 
 ### 9.2 Die vier Konten sind vier gewöhnliche Dienstadressen
 Schulleitung, Stellvertretung und die beiden Stundenplanungen sind selbst Lehrkräfte mit
