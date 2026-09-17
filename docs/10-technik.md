@@ -186,3 +186,76 @@ Auswahlliste des Formulars an — nicht umgekehrt.
 Eine spätere automatische Übergabe an Untis bleibt möglich und ist Stufe 3. Sie sollte den
 Beginn nicht aufhalten: Sie ist erfahrungsgemäß der aufwändigste Teil und darf den Nutzen
 der übrigen Funktionen nicht verzögern.
+
+---
+
+## 6. Geprüft und verworfen: VIDIS als Anmeldung
+
+**Frage:** Ließe sich eine VIDIS-Anmeldung selbst bauen?
+
+**Antwort: technisch ja, fachlich nein.** VIDIS löst das umgekehrte Problem.
+
+### Was VIDIS ist
+
+VIDIS („Vernetzte Identitäten für Schulen", betrieben vom FWU) ist ein **Vermittler**
+zwischen den Identitätssystemen der Länder — Landesportale, IServ, Schullogin und andere —
+und **Anbietern digitaler Bildungsangebote**. Der Zweck: Ein Anbieter kann eine Anmeldung
+ermöglichen, **ohne personenbezogene Daten der Schülerinnen, Schüler und Lehrkräfte zu
+erhalten**. Die Daten bleiben beim Identitätssystem der Schule bzw. des Landes.
+
+Technisch ist es ein OpenID-Connect-Verfahren. Einen OIDC-Client zu bauen ist
+Standardarbeit — daran scheitert es nicht.
+
+### Der Grund, warum es hier nicht passt
+
+**VIDIS übermittelt bewusst keinen Namen und keine E-Mail-Adresse.** Ein Dienstanbieter
+erhält üblicherweise nur:
+
+| Übermittelt | Nicht übermittelt |
+|---|---|
+| ein sicheres **Pseudonym**, das der Anbieter nicht auflösen kann | Name |
+| die **Rolle** (Lehrkraft oder Schülerin/Schüler) | E-Mail-Adresse |
+| die **Schulzugehörigkeit** | alles Weitere |
+
+Für ein Lernangebot ist das genau richtig: Der Anbieter muss nicht wissen, wer übt.
+
+**Unser System braucht das Gegenteil.** Es muss zwingend wissen, **wer** den Antrag stellt:
+
+* Der Name steht auf dem Antrag und ist die Grundlage der Entscheidung.
+* Die Stundenplanung muss wissen, **wer** fehlt — sonst kann sie nichts planen.
+* Benachrichtigungen brauchen eine E-Mail-Adresse.
+
+Mit einem Pseudonym müssten wir zusätzlich eine eigene Liste führen, die Pseudonyme mit
+Namen und dienstlichen Adressen verbindet — also **genau die Benutzerverwaltung, die die
+Anmeldung ersparen sollte**, nur mit einem Zwischenschritt mehr.
+
+Hinzu kommt: Die Rollenangabe unterscheidet Lehrkraft und Lernende. Sie unterscheidet
+**nicht** Schulleitung von Stundenplanung. Diese vier Zuordnungen müssten wir ohnehin
+selbst pflegen — das gilt allerdings für jede Lösung und wiegt nicht schwer.
+
+### Und die Zulassung
+
+Der Teilnahmeprozess richtet sich an **Anbieter von Bildungsangeboten für den schulischen
+Kontext**. Vorausgesetzt werden unter anderem ein eigener Anmeldebereich, eine
+Webanwendung, die Anbindbarkeit als OpenID-Connect-Client, ein Vertragsverhältnis sowie
+eine **fertig programmierte** Anwendung zu Beginn des Verfahrens.
+
+Ob ein **schulinternes Verwaltungsverfahren einer einzelnen Schule** darunter fällt, ist
+zweifelhaft — es ist kein Bildungsangebot im Sinne des Programms. Nachfragen kostet nichts,
+aber darauf planen sollte man nicht. Selbst wenn die Zulassung gelänge, bliebe der
+inhaltliche Einwand oben bestehen, und der ist der schwerwiegendere.
+
+### Die bessere Richtung
+
+**VIDIS steht *vor* genau den Systemen, die wir brauchen** — Schulportal Hessen, IServ.
+Statt den Vermittler anzusprechen, der Daten absichtlich zurückhält, gehen wir direkt an
+die Quelle: mehr Attribute, ein Zwischenschritt weniger, kein Zulassungsverfahren.
+
+**Es bleibt also bei Abschnitt 5.1:** zuerst klären, ob sich das Schulportal Hessen oder
+IServ unmittelbar als Anmeldung nutzen lässt. Der Anmeldelink an die dienstliche Adresse
+bleibt der tragfähige Rückfallweg.
+
+*Quellen: [Teilnahmeprozess für Anbieter](https://www.vidis.schule/teilnahmeprozess/),
+[Whitepaper zur Anbindung an VIDIS für Service Provider](https://www.vidis.schule/wp-content/uploads/sites/10/2024/08/Erweiterte-Inbetriebnahmephase-Whitepaper-zur-Anbindung-an-VIDIS-fuer-Service-Provider-v60-20240813_112511.pdf),
+[Was ist VIDIS? — Schullogin-Dokumentation](https://docs.schullogin.de/98-Hilfestellungen/0003-VIDIS-Allgemein/Index.html),
+[VIDIS – schulisches ID-Management (Sachsen-Anhalt)](https://ozg.sachsen-anhalt.de/fileadmin/Bibliothek/Schulung/Praesentationen_TF_Konferenz_Bildung/VIDIS_-_schulisches_ID-Management.pdf)*
