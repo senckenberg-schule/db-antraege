@@ -164,86 +164,93 @@ nach Art. 28 DSGVO ebenso wie die Frage, was geschieht, wenn Sie die Schule verl
 
 ---
 
-## 8. Vorhandene Domain bei IONOS — was daraus folgt
+## 8. Der vorhandene IONOS-Vertrag — geprüft
 
-An der Schule besteht bereits ein **Vertrag mit IONOS** und eine Domain. Das ist die
-naheliegendste Lösung: kein neuer Anbieter, kein zweiter Vertrag, keine zweite
-Rechnungsstelle.
+Im IONOS-Konto der Schule bestehen (Stand der Vertragsübersicht):
 
-**Zu beachten:** Eine Domain ist nur der Name. Ob Speicherplatz, PHP und Datenbank
-dazugehören, hängt vom gebuchten Paket ab. Ein reines Domain-Paket enthält das nicht;
-ein Webhosting-Paket in der Regel schon.
+| Leistung | Seit | Bemerkung |
+|---|---|---|
+| **IONOS MyWebsite Basic** | 2017 | enthält die Inklusiv-Domain **`senckenberg-schule.de`** |
+| **IONOS MyWebsite Creator** | 2022 | |
+| IONOS marketingRadar | | für dieses Vorhaben ohne Bedeutung |
 
-### 8.1 Als Erstes im Kundenkonto nachsehen
+### 8.1 MyWebsite ist kein Webhosting
 
-| Frage | Wo |
-|---|---|
-| Ist nur eine **Domain** gebucht oder auch **Webhosting**? | Vertragsübersicht |
-| Falls Webhosting: welcher Tarif, und welche Laufzeitumgebungen sind enthalten? | Tarifdetails |
-| Ist eine **Datenbank** enthalten (MariaDB/MySQL), und wie viele? | Tarifdetails |
-| Sind **zeitgesteuerte Aufgaben** („Cron-Jobs") enthalten? | Tarifdetails — **kritisch, siehe unten** |
-| Ist der **Serverstandort Deutschland**? | Kontoeinstellungen / Tarif |
-| Sind **E-Mail-Postfächer** und SMTP-Versand enthalten? | Tarifdetails |
-| Ist **SSL/TLS** enthalten (Let's Encrypt genügt)? | Tarifdetails |
-| **Auf wen läuft der Vertrag** — auf die Schule oder privat? | Vertragsdaten |
+**Ergebnis: Auf den vorhandenen Verträgen lässt sich die Anwendung nicht betreiben.**
 
-### 8.2 Die drei Punkte, an denen es hängen kann
+MyWebsite ist ein **Homepage-Baukasten**: Seiten werden in einem Editor zusammengestellt
+und von IONOS ausgeliefert. Es gibt
 
-**1. Zeitgesteuerte Aufgaben.** Ohne sie läuft der automatische Löschlauf nicht — und der
-ist nach E-7.1 die tragende Datenschutzmaßnahme. In den kleineren Webhosting-Tarifen sind
-sie erfahrungsgemäß eingeschränkt oder gar nicht enthalten. **Das ist der Punkt, der
-zuerst zu prüfen ist**, weil er die Tarifwahl bestimmt.
+* **kein PHP** und keine andere Laufzeitumgebung für eigenen Programmcode,
+* **keine Datenbank**,
+* **keinen Dateizugriff** (kein SSH, kein FTP für eigene Anwendungen),
+* **keine zeitgesteuerten Aufgaben** — und damit keinen Löschlauf.
 
-*Falls nicht enthalten:* Entweder ein Tarif höher, oder der Löschlauf wird beim ersten
-Aufruf des Tages angestoßen — das ist ein zulässiger Behelf, aber schlechter, weil er von
-Benutzung abhängt. Ein größerer Tarif ist die sauberere Lösung.
+Das ist kein kleinerer Tarif desselben Produkts, sondern ein anderes Produkt. Ein Upgrade
+innerhalb von MyWebsite hilft nicht; es braucht in jedem Fall etwas Zusätzliches.
 
-**2. Laufzeitumgebung.** Auf gemanagten IONOS-Paketen läuft **PHP** zuverlässig.
-Node.js und Python sind dort nicht durchgängig verfügbar.
+*Damit entfällt auch das Argument aus dem vorigen Abschnitt, ein bestehender Vertrag sei
+mehr wert als ein neuer:* Es wird ohnehin ein neues Produkt gebraucht. Die Anbieterwahl ist
+also wieder offen und nach Eignung zu entscheiden.
 
-Das ist kein Nachteil, sondern bestätigt, was ohnehin für dieses Vorhaben spricht
-(Abschnitt 4): PHP läuft überall, ist umfassend dokumentiert, und die Wahrscheinlichkeit,
-dass später eine zweite Person damit zurechtkommt, ist hoch. **Wenn IONOS gesetzt ist, ist
-PHP faktisch mitentschieden** — und das ist in Ordnung.
+### 8.2 Was bleibt: die Domain
 
-**3. Serverstandort.** IONOS ist ein deutsches Unternehmen, betreibt aber Rechenzentren an
-mehreren Orten. Der Standort **Deutschland** ist ausdrücklich zu wählen und zu
-dokumentieren — „deutscher Anbieter" genügt datenschutzrechtlich nicht, es zählt der Ort
-der Verarbeitung.
-
-### 8.3 Auftragsverarbeitungsvertrag
-
-IONOS stellt einen Auftragsverarbeitungsvertrag nach Art. 28 DSGVO bereit. Er ist
-**abzuschließen und aufzubewahren**, bevor der erste echte Antrag eingeht — er gehört
-zu den Unterlagen für die Datenschutzbeauftragte (Dokument 08, Abschnitt 5).
-
-### 8.4 Eine Unteradresse genügt
-
-Es braucht keine neue Domain. Eine Unteradresse der vorhandenen reicht und ist kostenlos:
+`senckenberg-schule.de` ist eine Inklusiv-Domain des MyWebsite-Basic-Vertrags. Sie ist
+nutzbar, **unabhängig davon, wo die Anwendung läuft**:
 
 ```
-antrag.<schuldomain>.de      oder      dienstbefreiung.<schuldomain>.de
+www.senckenberg-schule.de        → bleibt bei MyWebsite (die Schulhomepage)
+antrag.senckenberg-schule.de     → zeigt per DNS-Eintrag auf den Ort der Anwendung
 ```
 
-*Vorteil über die Kostenfrage hinaus:* Der Absender der Bestätigungs- und Anmeldemails
-gehört damit zur bekannten Schuldomäne. Das hilft der Zustellung an `@schule.hessen.de`
-und wirkt für das Kollegium vertrauenswürdig — eine fremde Adresse in einer Mail mit
-Anmeldelink weckt zu Recht Misstrauen.
+Eine Unteradresse lässt sich einrichten und auf einen beliebigen Server verweisen. Die
+Schulhomepage bleibt davon unberührt.
 
-### 8.5 Empfehlung
+**Zu prüfen:** Ob die DNS-Verwaltung im MyWebsite-Basic-Vertrag zugänglich ist und eigene
+Unteradressen mit freiem Ziel zulässt. Bei Baukasten-Produkten ist das gelegentlich
+eingeschränkt. Im IONOS-Konto unter *Domains → DNS-Einstellungen* nachsehen; im Zweifel
+beim Support fragen.
 
-1. **Vertragsübersicht ansehen** (8.1). Ist Webhosting mit Datenbank und zeitgesteuerten
-   Aufgaben enthalten, ist die Hostingfrage erledigt.
-2. **Ist nur die Domain gebucht:** ein Webhosting-Paket ergänzen, das Datenbank *und*
-   zeitgesteuerte Aufgaben enthält. Die Größenordnung liegt im Bereich weniger Euro im
-   Monat — die Anfrage beim Schulträger (Abschnitt 2) bleibt dennoch sinnvoll, schon um
-   sie belegen zu können.
-3. **Auftragsverarbeitungsvertrag anfordern**, Serverstandort Deutschland prüfen und
-   festhalten.
-4. **Vertrag auf die Schule**, nicht privat.
+*Falls die DNS-Verwaltung eingeschränkt ist:* Die Domain lässt sich auch zu einem anderen
+Anbieter umziehen oder dort nur die Verwaltung übernehmen. Das ist aber Aufwand — deshalb
+erst prüfen, ob es nötig ist.
 
-Damit entfällt die Anbieterwahl aus Abschnitt 3 — nicht weil IONOS die beste Wahl wäre,
-sondern weil ein bestehender Vertrag mit vertretbaren Eigenschaften mehr wert ist als ein
-geringfügig besserer neuer. Ein zweiter Anbieter bedeutet einen zweiten Vertrag, eine
-zweite Rechnung, ein zweites Kennwort und eine zweite Stelle, bei der im Störungsfall
-jemand anrufen muss.
+### 8.3 Zwei Wege
+
+| | **A — IONOS Webhosting dazubuchen** | **B — Anderer Hoster, Domain bleibt bei IONOS** |
+|---|---|---|
+| Was | Zusätzliches Produkt neben MyWebsite | z. B. Uberspace; Unteradresse zeigt per DNS dorthin |
+| Vorteil | **Ein Anbieter, eine Rechnung, eine Stelle im Störungsfall** | Mehr Flexibilität, oft bessere Unterstützung für eigene Anwendungen |
+| Zu prüfen | Enthält der Tarif **Datenbank und zeitgesteuerte Aufgaben**? Serverstandort Deutschland? | DNS-Verwaltung bei IONOS möglich? Auftragsverarbeitungsvertrag beim zweiten Anbieter |
+| Kosten | ca. 5–15 €/Monat zusätzlich | ca. 5–10 €/Monat zusätzlich |
+
+**Empfehlung: Weg A prüfen, Weg B als Ausweichlösung.**
+
+Der Vorteil eines Anbieters ist für ein nebenher betriebenes System real: eine
+Zugangsverwaltung, eine Rechnung, eine Telefonnummer. **Er gilt aber nur, wenn der
+IONOS-Webhosting-Tarif zeitgesteuerte Aufgaben enthält.** Ohne die läuft der automatische
+Löschlauf nicht — und der ist nach E-7.1 die tragende Datenschutzmaßnahme. Dieser Punkt
+entscheidet, nicht der Preis.
+
+### 8.4 Ohnehin zu klären
+
+* **Auftragsverarbeitungsvertrag** nach Art. 28 DSGVO — bei IONOS verfügbar, vor dem
+  Echtbetrieb abschließen und ablegen.
+* **Serverstandort Deutschland** ausdrücklich wählen und dokumentieren. „Deutscher
+  Anbieter" genügt nicht; es zählt der Ort der Verarbeitung.
+* **Vertragsinhaber:** Läuft das Konto auf die Schule? Bei einer Domain
+  `senckenberg-schule.de` liegt das nahe, ist aber zu bestätigen. Ein Verfahren der Schule
+  sollte nicht auf einem privaten Vertrag laufen.
+* **Randbemerkung:** Zwei MyWebsite-Verträge (Basic und Creator) nebeneinander können ein
+  Überrest aus einem Produktwechsel sein. Das betrifft dieses Vorhaben nicht, lohnt aber
+  einen Blick — womöglich zahlt die Schule doppelt.
+
+### 8.5 Absender der E-Mails
+
+Unabhängig vom gewählten Weg sollten die Bestätigungs- und Anmeldemails von einer Adresse
+der Schuldomäne kommen, etwa `antrag@senckenberg-schule.de`.
+
+*Grund:* Eine Mail mit Anmeldelink von einer fremden Absenderadresse weckt zu Recht
+Misstrauen — und die Zustellung an `@schule.hessen.de` ist von einer bekannten Domäne mit
+korrekten SPF- und DKIM-Einträgen deutlich wahrscheinlicher. **Vorab testen.**
+

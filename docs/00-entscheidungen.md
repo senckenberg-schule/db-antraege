@@ -921,11 +921,14 @@ wird für E-8.2 ohnehin gebaut und nimmt dem Betrieb die Rücksetzaufgabe ab.
   bei der Datenschutzbeauftragten ansprechen
 * **F-8.1** Anmeldung über Schulportal/IServ bleibt als spätere Möglichkeit bestehen,
   wird aber nicht vorausgesetzt
-* **F-8.2** Hosting — **voraussichtlich IONOS**, da Vertrag und Domain dort bereits
-  bestehen. Zu prüfen: zeitgesteuerte Aufgaben (Voraussetzung für den Löschlauf),
-  Datenbank, Serverstandort Deutschland, Auftragsverarbeitungsvertrag, Vertragsinhaber.
-  Damit ist **PHP faktisch mitentschieden**. Einzelheiten in
-  [11-hosting.md](11-hosting.md), Abschnitt 8. Weitere Vorschläge und Prüfliste ebenda.
+* **F-8.2** Hosting — **die vorhandenen IONOS-Verträge genügen nicht.** MyWebsite ist ein
+  Homepage-Baukasten ohne PHP, Datenbank und zeitgesteuerte Aufgaben; ein Upgrade darin
+  hilft nicht. Nutzbar bleibt die Domain `senckenberg-schule.de` über eine Unteradresse
+  `antrag.senckenberg-schule.de`.
+  Zwei Wege: **A** IONOS-Webhosting dazubuchen (ein Anbieter, eine Rechnung) oder
+  **B** anderer Hoster mit DNS-Verweis. **Entscheidend ist allein, ob zeitgesteuerte
+  Aufgaben enthalten sind** — ohne sie läuft der Löschlauf nicht.
+  Einzelheiten in [11-hosting.md](11-hosting.md), Abschnitt 8.
   Empfehlung: zuerst Schulträger und Medienzentrum anfragen, sonst Managed Hosting bei
   einem deutschen Anbieter. **Kein Root-Server ohne zweite Person**, kein Server an der
   Schule. Vertrag auf die Schule, nicht privat.
