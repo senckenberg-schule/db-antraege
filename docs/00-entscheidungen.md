@@ -71,3 +71,46 @@ und weiteres Personal bleiben zunächst im bisherigen Verfahren.
   der Schule ggf. das Studienseminar zu beteiligen. Braucht der Workflow dafür etwas —
   oder bleibt das ein Vorgang außerhalb des Systems? (→ Schritt 4)
 * **O-1.3** Wer übernimmt die Administration (Benutzerverwaltung, Stammdaten)? (→ Schritt 8)
+
+---
+
+## Schritt 2 — Antragsarten und Startumfang · *in Arbeit*
+
+### E-2.1 Antragsarten im Endausbau
+Bestätigt sind alle vier Arten des Entwurfs:
+
+| Art | Bezeichnung | Kern |
+|---|---|---|
+| **A** | Dienstbefreiung | eine Person, persönlicher Anlass |
+| **B** | Fortbildung / Dienstreise | eine Person, dienstlicher Anlass, Kostenbezug |
+| **C** | Unterrichtsgang / Exkursion | Lerngruppen + Begleitpersonen, eintägig |
+| **D** | Mehrtägige Fahrt / Großveranstaltung | wie C, zusätzlich Übernachtung, Kosten, Beschlusslage |
+
+**Offen:** Die antragstellende Person hat auf ein bestehendes Dokument mit weiteren
+Antragsarten verwiesen („siehe Anhang"). Das Dokument liegt noch nicht vor.
+→ Liste ist bis dahin **nicht abschließend**.
+
+### E-2.2 Startumfang Stufe 1
+**Dienstbefreiung (A) + Unterrichtsgang (C).**
+
+*Begründung:* A und C sind die beiden Gegenpole des Datenmodells — eine Person ohne
+Lerngruppenbezug gegenüber ganzen Klassen mit Begleitpersonen und Vertretungsbedarf.
+Trägt das Konzept beide, sind B und D im Wesentlichen Varianten davon (B ≈ A mit Kosten,
+D ≈ C mit Übernachtung).
+
+*Folge für die Umsetzung:* Die Struktur für **betroffene Lerngruppen, Begleitpersonen und
+Vertretungsbedarf** gehört in Stufe 1, nicht in eine Ausbaustufe. Sie nachträglich
+einzuziehen wäre der teuerste denkbare Umbau.
+
+### E-2.3 Bestehende Formulare sind Vorlage, nicht Beiwerk
+An der Schule existieren **eigene, eingeführte Papierformulare**. Die digitalen Formulare
+werden daran ausgerichtet: gleiche Felder, gleiche Reihenfolge, gleiche Bezeichnungen.
+
+*Begründung:* Vertraute Formulierungen senken die Einführungshürde stärker als jede
+Schulung. Abweichungen erfolgen nur mit konkretem Grund und werden einzeln begründet —
+typischerweise: Pflichtfeld statt leer lassbarer Zeile, Auswahlliste statt Freitext
+(Datenschutz), neue Standortauswahl.
+
+### Offen aus Schritt 2
+* **O-2.1** Bestehende Formulare liegen noch nicht vor → Feldabgleich ausstehend (Schritt 6)
+* **O-2.2** Weitere Antragsarten aus dem angekündigten Dokument prüfen
