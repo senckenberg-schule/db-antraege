@@ -254,3 +254,84 @@ der Schuldomäne kommen, etwa `antrag@senckenberg-schule.de`.
 Misstrauen — und die Zustellung an `@schule.hessen.de` ist von einer bekannten Domäne mit
 korrekten SPF- und DKIM-Einträgen deutlich wahrscheinlicher. **Vorab testen.**
 
+
+---
+
+## 9. Moderne Plattformdienste — geprüft
+
+Gemeint sind Dienste, die Datenbank, Laufzeitumgebung und Auslieferung zusammen anbieten
+und den Serverbetrieb vollständig übernehmen: Supabase, Cloudflare, Vercel, Railway,
+Render und ähnliche. Sie nehmen Arbeit ab — das ist kein Marketingversprechen, sondern
+zutreffend.
+
+**Für dieses Vorhaben greift jedoch ein Filter, der die bekanntesten Namen aussortiert.**
+
+### 9.1 Der entscheidende Unterschied: Serverstandort ≠ Anbietersitz
+
+Bei Beschäftigtendaten einer öffentlichen Schule zählt nicht nur, **wo die Daten liegen**,
+sondern auch, **wer über sie verfügt**.
+
+Ein US-Unternehmen mit Rechenzentrum in Frankfurt unterliegt weiterhin
+US-amerikanischem Recht — einschließlich Zugriffsmöglichkeiten von Behörden auf Daten, die
+das Unternehmen kontrolliert. Das ist nicht automatisch unzulässig; es gibt dafür Wege.
+Aber es erzeugt **Begründungsaufwand** gegenüber der Datenschutzbeauftragten und dem
+Personalrat, den ein kleines Schulvorhaben nicht auf sich nehmen muss, wenn europäische
+Anbieter dasselbe leisten.
+
+| Dienst | Sitz | Daten in der EU | Bewertung für dieses Vorhaben |
+|---|---|---|---|
+| **Supabase** | USA | ja, Region wählbar (u. a. Frankfurt) | Technisch geeignet, Datenschutz begründungsbedürftig. Zudem: kostenlose Tarife pausieren bei Inaktivität — für ein Verfahren mit Bestätigungslinks untragbar |
+| **Cloudflare** (Workers, D1) | USA | nur mit Zusatzleistung eingeschränkt steuerbar | Das verteilte Modell läuft der Anforderung „Verarbeitung in Deutschland" der Bauart nach zuwider |
+| **Vercel, Railway, Render, Fly.io** | USA | teilweise | Wie Supabase, zusätzlich meist nur Laufzeitumgebung ohne Datenbank |
+
+### 9.2 Die europäische Antwort auf die Frage
+
+Es gibt Dienste, die genau das leisten — mit Sitz und Verarbeitung in der EU:
+
+| Anbieter | Sitz | Was er bietet | Größenordnung |
+|---|---|---|---|
+| **Scalingo** | Frankreich | Anwendungsplattform: Veröffentlichung per `git push`, verwaltete PostgreSQL-Datenbank, zeitgesteuerte Aufgaben, PHP/Node/Python. Ausdrücklich auf DSGVO-Konformität ausgerichtet | ca. 15–30 €/Monat |
+| **Clever Cloud** | Frankreich | Vergleichbar, ebenfalls EU-only | ca. 15–30 €/Monat |
+| **IONOS Cloud / StackIT / Open Telekom Cloud** | Deutschland | Eher Infrastruktur als Plattform — mehr Eigenarbeit | unterschiedlich |
+
+**Scalingo und Clever Cloud sind die sachliche Antwort auf Ihre Frage:** derselbe Komfort
+wie bei den bekannten US-Diensten, ohne den datenschutzrechtlichen Begründungsaufwand.
+
+### 9.3 Warum die Empfehlung dennoch beim einfachen Webhosting bleibt
+
+Zwei Gründe, die nichts mit Datenschutz zu tun haben:
+
+**1. Die Anwendung braucht nichts davon.** Plattformdienste lösen Probleme des Wachstums —
+Lastverteilung, mehrere Umgebungen, automatische Bereitstellung, Skalierung. Dieses System
+verarbeitet **einzelne Vorgänge pro Tag** und hat **vier privilegierte Nutzer**. Es gibt
+hier nichts zu skalieren.
+
+**2. Übernehmbarkeit — das wichtigste Kriterium (Q-03).** Das System wird von einer Person
+nebenher betreut und muss im Zweifel an jemand anderen übergehen können.
+
+* Eine PHP-Anwendung auf Webhosting kann nahezu jede technisch interessierte Person
+  übernehmen. Die Kenntnisse sind verbreitet, die Dokumentation ist erschöpfend.
+* Eine Anwendung auf einer Plattform mit eigener Bereitstellungslogik, eigenen
+  Umgebungsvariablen und eigenem Befehlszeilenwerkzeug erfordert, dass die Nachfolge
+  **diesen Anbieter** kennt.
+
+Das ist keine Geringschätzung moderner Werkzeuge — bei einem Team und wachsender Nutzung
+wäre die Antwort eine andere. **Hier ist die Nachfolgefähigkeit wichtiger als der
+Bedienkomfort beim Bauen**, weil das System länger bestehen soll als die Bereitschaft einer
+einzelnen Person, es zu pflegen.
+
+### 9.4 Wann Sie anders entscheiden sollten
+
+Die Empfehlung ist nicht in Stein:
+
+* **Sie arbeiten ohnehin lieber mit einer solchen Plattform** → nehmen Sie
+  **Scalingo** oder **Clever Cloud**. Dokumentieren Sie die Einrichtung so, dass eine
+  andere Person sie nachvollziehen kann, und es ist eine gute Wahl.
+* **Der IONOS-Webhosting-Tarif hat keine zeitgesteuerten Aufgaben** → dann ist eine
+  europäische Plattform die bessere Antwort als ein Behelf.
+* **Es kommt eine zweite Person dauerzu** → dann verschiebt sich das Gewicht, und mehr
+  Möglichkeiten sind vertretbar.
+
+**Was in keinem Fall passt:** ein Dienst, dessen Verarbeitungsort nicht sicher in der EU
+liegt, und ein kostenloser Tarif, der bei Inaktivität pausiert. Ein Bestätigungslink, der
+nicht funktioniert, weil die Anwendung schlief, verhindert den Antrag vollständig.
