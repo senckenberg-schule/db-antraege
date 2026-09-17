@@ -25,7 +25,13 @@ die Absprache wer entscheidet ist eine organisatorische, keine technische.
 
 *Folge für die Übersicht:* Jeder Antrag zeigt sichtbar, **wer** entschieden hat.
 
-### E-1.3 Vertretungs-/Stundenplanung
+### E-1.3 Vertretungs-/Stundenplanung — *korrigiert durch E-5.7*
+
+> **Diese Entscheidung ist überholt.** Es gibt **je Standort eine eigene
+> Stundenplanung**, nicht eine zentrale für beide. Siehe **E-5.7**.
+> Der ursprüngliche Wortlaut bleibt zur Nachvollziehbarkeit stehen.
+
+### E-1.3 (ursprünglich) Vertretungs-/Stundenplanung
 **Eine Person für beide Standorte.**
 
 *Wesentliche Vereinfachung:* Damit ist der Standort für die Stundenplanung kein
@@ -65,7 +71,7 @@ und weiteres Personal bleiben zunächst im bisherigen Verfahren.
 | Antragstellende Person | alle Lehrkräfte + LiV | — | eigene Anträge stellen, ergänzen, zurückziehen, stornieren |
 | Schulleitung | 1 | keine (beide Standorte) | entscheiden, alle Anträge sehen |
 | Stellvertretende Schulleitung | 1 | keine | identisch — für Abwesenheitsfälle |
-| Vertretungsplanung | 1 | keine (beide Standorte) | genehmigte Abwesenheiten in reduzierter Sicht |
+| Vertretungsplanung | **2** | **je Standort** | genehmigte Abwesenheiten des eigenen Standorts in reduzierter Sicht (korrigiert, E-5.7) |
 | ~~Sekretariat~~ | — | — | *entfällt vollständig, siehe E-5.5* |
 | Administration | 1–2 | — | Benutzer/Stammdaten, kein Zugriff auf Antragsinhalte |
 
@@ -486,14 +492,19 @@ Sie ist die weitreichendste Vereinfachung des bisherigen Konzepts:
 | Rolle „Sekretariat" | Von sechs Rollen bleiben vier: Antragsteller, Schulleitung (mit Stellvertretung), Vertretungsplanung, Administration |
 | Zwei Benutzerkonten bzw. Rollenpostfächer | Weniger Zugänge, weniger Rechtevergabe, weniger Angriffsfläche |
 | Ansicht „Heute abwesend" je Standort | Eine Oberfläche weniger zu bauen und zu pflegen |
-| **Standortbezogene Berechtigungsprüfung** | Niemand darf mehr „nur den eigenen Standort" sehen — die Trennung wird nirgends mehr gebraucht. Anforderung zur Mandantentrennung der Standorte entfällt |
+| ~~Standortbezogene Berechtigungsprüfung~~ | **entfällt doch nicht** — sie wird für die beiden Stundenplanungen weiterhin gebraucht (E-5.7) |
 | Zwei Benachrichtigungswege | Die Matrix hat nur noch drei Empfänger |
 
-**Kein Empfänger im System hängt mehr vom Standort ab.** Die Benachrichtigungen gehen an
-den Antragsteller, die Schulleitung und die Vertretungsplanung — alle drei unabhängig
-vom Standort.
+~~**Kein Empfänger im System hängt mehr vom Standort ab.**~~ — *Diese Schlussfolgerung war
+falsch und wird durch **E-5.7** aufgehoben:* Die Vertretungsplanung gibt es zweimal,
+je Standort einmal, und ist damit standortabhängig.
 
-### E-5.6 Damit ändert sich die Begründung für das Standortfeld
+### E-5.6 Begründung für das Standortfeld — *erledigt durch E-5.7*
+
+> Die hier gestellte Frage, ob das Standortfeld bei Antragsart 1 entfallen könnte, ist
+> beantwortet: **nein.** Mit zwei Stundenplanungen steuert es wieder einen Empfänger.
+
+### E-5.6 (ursprünglich) Damit ändert sich die Begründung für das Standortfeld
 
 Das Feld bleibt, aber sein Zweck ist ein anderer als in E-3.1 angenommen. Es steuert
 **keinen Empfänger mehr**, sondern dient nur noch dem Inhalt:
@@ -509,3 +520,58 @@ später. Der Preis ist ein Klick.
 
 *Zur Entscheidung durch den Auftraggeber:* Wer diesen Klick sparen will, kann das Feld bei
 Antragsart 1 weglassen. Bei Antragsart 2 geht es nicht.
+
+### E-5.7 Zwei Stundenplanungen — je Standort eine · *Korrektur zu E-1.3*
+
+**Runkel und Villmar haben jeweils eine eigene Stundenplanung.** Die frühere Annahme einer
+zentralen Zuständigkeit für beide Häuser war falsch.
+
+### Was das zurückdreht
+
+Die Vertretungsplanung ist nach dem Wegfall der Sekretariate (E-5.5) der **einzige
+nachgelagerte Empfänger** — und ausgerechnet der ist standortabhängig. Damit kehren zwei
+Dinge zurück, die eben noch entfallen waren:
+
+| Kehrt zurück | Bedeutung |
+|---|---|
+| **Standort als Verteilkriterium** | Die Auswahl im Antrag entscheidet, welche der beiden Stundenplanungen die Meldung erhält. Bei „Beide Standorte": **beide** |
+| **Standortbezogene Berechtigung** | Die Stundenplanung Runkel sieht die Vorgänge ihres Standorts, Villmar entsprechend. Bei standortübergreifenden Anträgen sehen ihn beide |
+
+### Was das endgültig klärt
+
+**Das Standortfeld ist bei beiden Antragsarten Pflicht.** Die in E-5.6 gestellte Frage,
+ob man es bei der Dienstbefreiung weglassen könnte, ist damit beantwortet — es steuert
+wieder einen Empfänger und ist nicht mehr nur Komfort.
+
+Es hat jetzt zwei Aufgaben zugleich:
+* **Verteilung:** welche Stundenplanung wird informiert
+* **Inhalt:** Unterscheidung gleichnamiger Lerngruppen (E-3.4)
+
+### Was unverändert gilt
+
+**E-3.2 bleibt: keine Aufteilung der Stunden je Standort.** Die Begründung ändert sich nur
+leicht — statt „die eine zentrale Stundenplanung kennt beide Pläne" gilt nun „jede
+Stundenplanung kennt den Plan ihres eigenen Hauses". Beide Seiten sehen denselben Antrag
+und entnehmen ihm, was ihr Haus betrifft. Ein zweites Stundenfeld bliebe überflüssig.
+
+### Offener Punkt zur Entscheidung
+
+* **O-5.1** Soll die Stundenplanung Runkel bei einem standortübergreifenden Antrag den
+  **vollständigen** Vorgang sehen (einschließlich der Villmarer Lerngruppen) oder nur den
+  eigenen Anteil?
+
+  *Empfehlung: den vollständigen Vorgang.* Beide üben dieselbe Funktion aus und benötigen
+  ohnehin dieselben Angaben; eine Filterung brächte keinen erkennbaren Schutzgewinn — die
+  Abwesenheit ist in beiden Häusern dieselbe Tatsache — erzeugte aber zusätzliche Logik und
+  die Gefahr, dass jemand einen Vorgang nur zur Hälfte versteht. Der Antragsgrund bleibt
+  für beide unsichtbar, wie für jede Stundenplanung.
+
+### Rollen nach Schritt 5
+
+| Rolle | Anzahl | Standortbindung |
+|---|---|---|
+| Antragstellende Person | alle Lehrkräfte + LiV | — |
+| Schulleitung | 1 | keine |
+| Stellvertretende Schulleitung | 1 | keine |
+| **Stundenplanung** | **2** | **je Standort** |
+| Administration | 1–2 | — |
