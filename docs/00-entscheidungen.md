@@ -638,3 +638,59 @@ Aufsichten:  große Pause davor
 Grund:       Persönliche Gründe          ← neu sichtbar, nur die Kategorie
 Unterlagen:  werden im Schulportal hinterlegt
 ```
+
+### E-6.4 Die Stundenplanung sieht den vollständigen Antrag — *ersetzt E-6.3*
+
+> **E-6.3 ist aufgehoben.** Die Beschränkung auf die Begründungskategorie entfällt.
+
+**Festlegung des Auftraggebers:** Die Stundenplanung erhält **dieselben Antragsinhalte wie
+die Schulleitung**. Begründung: Das war schon im bisherigen Verfahren so und wird für die
+Kommunikation mit den Kolleginnen und Kollegen benötigt.
+
+| Angabe | Stundenplanung |
+|---|---|
+| Alle Formularangaben einschließlich Freitext-Begründung, „Ort und Thema", Anmerkungen | **sichtbar** |
+| Anhänge | **sichtbar** |
+| Entscheidung und Entscheidungskommentar | **sichtbar** |
+
+Unverändert bleiben nur zwei Grenzen, die nichts mit dem Antragsinhalt zu tun haben:
+
+* **Erst ab Genehmigung.** Abgelehnte und zurückgezogene Anträge erreichen die
+  Stundenplanung nicht — auch nicht die Information, dass es sie gab (E-4.2).
+* **Standortbindung.** Jede Stundenplanung sieht die Vorgänge ihres Standorts; bei
+  standortübergreifenden Anträgen beide vollständig (E-5.7, E-5.8).
+
+### Einordnung
+
+Der Kreis der Mitwissenden wächst damit von zwei auf **vier Personen** — Schulleitung,
+Stellvertretung und zwei Stundenplanungen. Alle vier haben eine dienstliche Funktion im
+Vorgang. Das ist keine breite Offenlegung, und die Entscheidung ist nachvollziehbar
+begründet.
+
+**Was sich dadurch verschiebt:** Die Zugriffsbeschränkung trägt den Datenschutz jetzt nicht
+mehr allein. Das Gewicht liegt auf drei anderen Maßnahmen, die dadurch **verbindlich
+werden und nicht mehr optional sind**:
+
+| Maßnahme | Warum sie jetzt trägt |
+|---|---|
+| **Löschfristen** (Dokument 03) | Die wirksamste verbleibende Begrenzung. Ein gelöschter Vorgang kann von niemandem mehr gelesen werden — auch nicht in drei Jahren von jemandem, der die Rolle später übernimmt |
+| **Hinweis am Freitextfeld** („Ein Stichwort genügt …") | Entscheidet, wie viel Sensibles überhaupt entsteht. Datenvermeidung vor Zugriffsbeschränkung |
+| **Zweckbindung in der Dienstvereinbarung** | Der Kreis ist klein, aber die Personen wechseln. Die Regel muss an der Rolle hängen, nicht am Vertrauen in die aktuelle Person |
+
+**Für die Beteiligung von Personalrat und Datenschutzbeauftragten** ist dies der Punkt, der
+zu begründen sein wird. Die Begründung „das war im bisherigen Verfahren auch so" ist dabei
+belastbar, aber nicht von selbst ausreichend: Ein weitergereichter Zettel und eine über
+Jahre durchsuchbare Datenbank unterscheiden sich in der Wirkung, auch wenn derselbe
+Personenkreis liest. Die Löschfrist ist die Antwort auf genau diesen Unterschied — sie
+stellt den Zustand des Papierverfahrens wieder her, in dem Vorgänge irgendwann
+verschwanden.
+
+### Offener Punkt
+
+* **O-6.1** Gehört auch der **Rückfrage-Dialog** zwischen Schulleitung und antragstellender
+  Person zu den „Details", oder nur die Antragsinhalte und die Entscheidung?
+
+  *Zur Überlegung:* Wenn die Stundenplanung ohnehin kommuniziert, wäre eine eigene
+  **Kommentarmöglichkeit am Vorgang** naheliegend — etwa „Vertretung geregelt" oder
+  „Material bitte bis Montag ins Sekretariat". Das würde Absprachen, die heute per Mail
+  oder Zuruf laufen, an den Vorgang binden, wo sie auffindbar bleiben.
