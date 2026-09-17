@@ -259,3 +259,122 @@ bleibt der tragfähige Rückfallweg.
 [Whitepaper zur Anbindung an VIDIS für Service Provider](https://www.vidis.schule/wp-content/uploads/sites/10/2024/08/Erweiterte-Inbetriebnahmephase-Whitepaper-zur-Anbindung-an-VIDIS-fuer-Service-Provider-v60-20240813_112511.pdf),
 [Was ist VIDIS? — Schullogin-Dokumentation](https://docs.schullogin.de/98-Hilfestellungen/0003-VIDIS-Allgemein/Index.html),
 [VIDIS – schulisches ID-Management (Sachsen-Anhalt)](https://ozg.sachsen-anhalt.de/fileadmin/Bibliothek/Schulung/Praesentationen_TF_Konferenz_Bildung/VIDIS_-_schulisches_ID-Management.pdf)*
+
+---
+
+## 7. Anmeldung: Entwurf „ohne Anmeldung" und was daraus folgt
+
+**Vorstellung des Auftraggebers:** Kein Anmeldeverfahren. Der Link wird intern im
+Schulportal hinterlegt. Die antragstellende Person gibt ihre E-Mail-Adresse an und erhält
+eine Bestätigungsmail; darin ein Link, um zu melden, dass sie den Antrag **nicht** gestellt
+hat.
+
+### 7.1 Ein Link im Schulportal schützt die Anwendung nicht
+
+Das ist der Punkt, an dem der Entwurf nicht aufgeht. Ein Link, der im Schulportal steht,
+führt zu einer Adresse im Internet. Wer diese Adresse kennt oder errät, ruft sie
+**unmittelbar** auf — ohne je das Schulportal gesehen zu haben, von jedem Gerät aus.
+
+**„Hinter dem Portal verlinkt" ist nicht dasselbe wie „hinter dem Portal geschützt."**
+Das Portal reicht keinen Schutz an die verlinkte Anwendung weiter. Es ist eine Bequemlichkeit
+für das Kollegium, keine Zugangssperre. Adressen verbreiten sich zudem: über den Verlauf
+des Browsers, über Lesezeichen, über weitergeleitete Mails.
+
+### 7.2 Zwei Fragen, die auseinandergehalten werden müssen
+
+| | Ohne Anmeldung machbar? |
+|---|---|
+| **Einen Antrag stellen** | Ja — mit der E-Mail-Bestätigung als Nachweis (7.3) |
+| **Anträge lesen und entscheiden** | **Nein** |
+
+Die zweite ist die kritische. Ohne jede Zugangsprüfung wären die Seiten der Schulleitung
+und die Vorgangsansichten **für jeden im Internet erreichbar** — einschließlich der
+Begründungen, der Anhänge und der Entscheidungskommentare des gesamten Kollegiums.
+
+Ein unter falschem Namen gestellter Antrag ist ärgerlich. Ein offen im Netz stehender
+Bestand von Dienstbefreiungsanträgen wäre ein Datenschutzvorfall mit Meldepflicht.
+
+**Für die vier Personen mit besonderen Rechten ist eine Zugangsprüfung daher nicht
+verhandelbar.** Das Gute: Sie erfordert weder Passwörter noch eine Benutzerverwaltung
+(7.4).
+
+### 7.3 Besser: Bestätigungslink statt Widerspruchslink
+
+Die Idee mit der E-Mail ist richtig — sie lässt sich mit demselben Aufwand deutlich
+wirksamer bauen, wenn man sie umdreht:
+
+| | Widerspruchslink („Das war ich nicht") | **Bestätigungslink** („Antrag bestätigen") |
+|---|---|---|
+| Antrag erreicht die Schulleitung | sofort | erst nach dem Klick |
+| Fälschung unter fremdem Namen | wird **nachträglich** entdeckt, wenn jemand die Mail liest und reagiert | **nicht möglich** — es bräuchte Zugriff auf das fremde Postfach |
+| Aufwand für die antragstellende Person | kein Klick | **ein Klick** |
+| Aufwand in der Umsetzung | gleich | gleich |
+
+**Empfehlung: Bestätigungslink.** Er verhindert den Fehler, statt ihn zu reparieren.
+Der Unterschied ist an einer Schule nicht theoretisch — ein Antrag im Namen einer Lehrkraft
+ist ein naheliegender Streich, und der Widerspruchsweg funktioniert nur, wenn die
+betroffene Person die Mail rechtzeitig liest.
+
+Ablauf:
+
+1. Formular ausfüllen, dienstliche E-Mail-Adresse angeben, absenden
+2. Antrag liegt im Zustand *unbestätigt* — **niemand sonst sieht ihn**
+3. Mail mit Bestätigungslink (einmalig gültig, 24 Stunden)
+4. Nach dem Klick: Antrag gilt als gestellt, Schulleitung wird benachrichtigt
+5. Unbestätigte Anträge werden nach 24 Stunden automatisch gelöscht
+
+*Nebeneffekt:* Ein Tippfehler in der Adresse fällt sofort auf — die Bestätigung kommt nicht
+an, der Antrag geht nicht raus. Beim Widerspruchsverfahren liefe der Antrag mit falscher
+Adresse weiter, und die Rückmeldungen erreichten niemanden.
+
+### 7.4 Dieselbe Mechanik ergibt die Anmeldung für die vier Konten
+
+Der Bestätigungslink **ist** bereits ein Anmeldeverfahren — nur an einen einzelnen Vorgang
+gebunden statt an eine Sitzung. Für Schulleitung, Stellvertretung und die beiden
+Stundenplanungen wird derselbe Mechanismus einmal weiterverwendet:
+
+```
+Anmeldung
+Dienstliche E-Mail-Adresse:  [ ____________________ ]     [ Link anfordern ]
+
+→ Link kommt per Mail, einmalig gültig, 15 Minuten
+→ Klick öffnet eine Sitzung (Vorschlag: 12 Stunden)
+```
+
+* **Kein Passwort.** Nichts zu vergessen, nichts zurückzusetzen, nichts zu speichern.
+* **Keine Benutzerverwaltung.** Es genügt eine Liste von **vier** Adressen in der
+  Konfiguration, die festlegt, wer Schulleitung und wer Stundenplanung ist. Kein
+  Registrierungsverfahren, keine Kontoverwaltung.
+* **Kein fremder Dienst**, kein Zulassungsverfahren, keine Abhängigkeit vom Schulportal.
+* **Derselbe Code** wie beim Bestätigungslink — der Aufwand fällt ohnehin an.
+
+Damit ist der Wunsch „ohne Anmeldung" fachlich erfüllt: Für das Kollegium gibt es keine,
+und für die vier Konten entsteht keine Verwaltungsaufgabe.
+
+### 7.5 Ohne Anmeldung ebenfalls nötig
+
+| Maßnahme | Grund |
+|---|---|
+| **Nur dienstliche Adressen zulassen** (Prüfung auf die Schuldomäne) | Verhindert Anträge von außerhalb und begrenzt den Missbrauch eines offen erreichbaren Formulars |
+| **Begrenzung der Absendeversuche** je Adresse und je Aufrufer | Ein offen erreichbares Formular mit Mailversand wird sonst zum Werkzeug für Massenmails |
+| **Vorgangslinks als lange Zufallszeichenfolge** | Der Link ist der Nachweis — er darf nicht erratbar oder hochzählbar sein |
+| Kein Verzeichnis, keine Suche ohne Sitzung | Ein gültiger Link darf nur den **einen** Vorgang öffnen |
+| Anhänge nur über geprüfte Auslieferung | Siehe E-6.7 |
+
+### 7.6 Was ohne Anmeldung entfällt
+
+Ehrlich benannt:
+
+* **Keine Übersicht „Meine Anträge".** Ohne Sitzung kann das System niemanden wiedererkennen.
+  Wer seinen Antrag ansehen will, braucht den Link aus der Mail. Die Mail wird damit zum
+  Aufbewahrungsort — wer sie löscht, kommt an seinen Vorgang nicht mehr heran.
+* **Keine Stornierung ohne Link.** Die Stornierung (E-4.3) läuft über denselben Link.
+  Geht er verloren, muss die Schulleitung stornieren.
+* **Der Name bleibt ein Eingabefeld.** Die Bestätigung weist die **E-Mail-Adresse** nach,
+  nicht die Person. Wer Zugriff auf ein fremdes dienstliches Postfach hat, kann weiterhin
+  in fremdem Namen handeln — das ist deutlich schwerer als ein Tippen ins Namensfeld, aber
+  kein Ausschluss.
+
+*Anmerkung:* Käme später doch eine Anmeldung über Schulportal oder IServ hinzu, entfielen
+diese drei Einschränkungen — und die Mechanik aus 7.3 bliebe unverändert nutzbar. Die
+Entscheidung verbaut nichts.
