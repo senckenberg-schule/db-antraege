@@ -921,5 +921,8 @@ wird für E-8.2 ohnehin gebaut und nimmt dem Betrieb die Rücksetzaufgabe ab.
   bei der Datenschutzbeauftragten ansprechen
 * **F-8.1** Anmeldung über Schulportal/IServ bleibt als spätere Möglichkeit bestehen,
   wird aber nicht vorausgesetzt
-* **F-8.2** Hosting
+* **F-8.2** Hosting — Vorschläge und Prüfliste in [11-hosting.md](11-hosting.md).
+  Empfehlung: zuerst Schulträger und Medienzentrum anfragen, sonst Managed Hosting bei
+  einem deutschen Anbieter. **Kein Root-Server ohne zweite Person**, kein Server an der
+  Schule. Vertrag auf die Schule, nicht privat.
 * **F-8.4** Abgleich der Begründungskategorien mit den Absenzgründen in Untis
