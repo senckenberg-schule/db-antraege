@@ -694,3 +694,67 @@ verschwanden.
   **Kommentarmöglichkeit am Vorgang** naheliegend — etwa „Vertretung geregelt" oder
   „Material bitte bis Montag ins Sekretariat". Das würde Absprachen, die heute per Mail
   oder Zuruf laufen, an den Vorgang binden, wo sie auffindbar bleiben.
+
+### E-6.5 Anhänge: allgemein optional, bei Fortbildung als Entweder-oder
+
+**Grundsatz:** Anhänge sind bei jedem Antrag möglich, aber freiwillig.
+
+**Bedingung bei der Begründung „Fortbildung":** Es muss **mindestens eines** von beidem
+vorliegen —
+
+* eine hochgeladene Datei (Bestätigung, Einladung, Programm) **oder**
+* die Angabe „Ort und Thema" im Textfeld.
+
+Beides zugleich ist zulässig, keines von beidem nicht. Das Formular prüft diese Bedingung,
+die Meldung lautet sinngemäß: *„Bitte Ort und Thema angeben oder die Bestätigung anhängen."*
+
+```
+○ Fortbildung
+    Ort und Thema        [________________________________]
+    oder Bestätigung / Programm anhängen   [ Datei wählen ]
+    ⓘ Bitte mindestens eines von beidem.
+```
+
+*Warum Entweder-oder statt zwei Pflichtfeldern:* Wer die Einladung als PDF vorliegen hat,
+soll sie nicht zusätzlich abtippen müssen — dort steht alles Nötige. Wer sie gerade nicht
+zur Hand hat, wird nicht aufgehalten und schreibt zwei Stichworte. Beide Wege führen zum
+selben Ergebnis: Die Schulleitung kann entscheiden.
+
+### E-6.6 Hinweis gegen Atteste und ärztliche Bescheinigungen
+
+Am Upload-Feld steht sichtbar:
+
+> *Bitte keine ärztlichen Bescheinigungen, Atteste oder Terminbestätigungen von Ärztinnen
+> und Ärzten hochladen — sie werden für den Antrag nicht benötigt.*
+
+*Grund:* Mit „Arztbesuch" als eigener Begründung liegt es nahe, eine Terminbestätigung
+beizufügen. Die nennt aber regelmäßig die Fachrichtung — Onkologie, Psychotherapie,
+Pränataldiagnostik — und macht aus einer harmlosen Terminangabe ein **Gesundheitsdatum
+nach Art. 9 DSGVO**, für das deutlich strengere Regeln gelten.
+
+Die Auswahl „Arztbesuch" allein genügt für die Entscheidung vollständig; ein Nachweis wird
+nicht verlangt. Der Hinweis kostet nichts und verhindert den häufigsten unbeabsichtigten
+Fehler in solchen Systemen.
+
+### E-6.7 Technische Anforderungen an Anhänge
+
+| Anforderung | Grund |
+|---|---|
+| Nur PDF, JPG, PNG, DOC, DOCX; max. 10 MB | Wie im Bestand |
+| **Kein SVG, kein HTML, keine ausführbaren Dateien** | Ein SVG kann Skriptcode enthalten und wird im Browser ausgeführt — der klassische Weg, über einen Upload fremde Sitzungen zu übernehmen |
+| Auslieferung **immer als Download**, nie zur Anzeige im Browser | Verhindert dieselbe Angriffsform auch bei falsch erkanntem Dateityp |
+| Abruf **nur berechtigungsgeprüft**, keine erratbare Adresse | Sonst ist der Anhang öffentlich, auch wenn der Vorgang es nicht ist |
+| Dateiname wird beim Speichern bereinigt | Schützt vor Pfadmanipulation |
+| Ablage **außerhalb** des Web-Verzeichnisses | Selbst bei falscher Konfiguration bleibt die Datei unerreichbar |
+| Löschung gemeinsam mit dem Vorgang | Sonst bleiben Dateien übrig, wenn der Antrag längst gelöscht ist |
+
+Sichtbar sind Anhänge für die antragstellende Person, die Schulleitung und — nach E-6.4 —
+die Stundenplanung des betroffenen Standorts.
+
+### Anmerkung zur Feldbezeichnung
+
+Der Prototyp beschriftet das Detailfeld mit **„Ort und Thema"**. Übernommen wird dieser
+Wortlaut, da die **Zeit** der Fortbildung bereits über den beantragten Zeitraum erfasst ist
+und doppelte Eingaben auseinanderlaufen können. Falls die Uhrzeit der Fortbildung
+regelmäßig von der Abwesenheitszeit abweicht und für die Entscheidung gebraucht wird,
+ist das zu ändern — dann besser als eigenes Feld statt im Freitext.

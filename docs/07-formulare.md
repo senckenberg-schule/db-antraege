@@ -35,7 +35,7 @@ Einführungshürde stärker als jede Schulung.
 
 | Auswahl | Zusatzfeld | Gegenüber Prototyp |
 |---|---|---|
-| **Fortbildung** | Ort und Thema (Pflicht) | unverändert |
+| **Fortbildung** | Ort und Thema **oder** Anhang (mindestens eines, E-6.5) | Entweder-oder statt Pflichtfeld |
 | **Dienstliche Gründe** | — | unverändert |
 | **Arztbesuch** | — | unverändert |
 | **Persönliche Gründe** | Grund (Pflicht, kurz) | Hinweistext + Längenbegrenzung |
@@ -48,8 +48,10 @@ Unverändert übernommen, im Wortlaut des Bestands:
 * … werden im Schulportal hinterlegt
 
 ### Anhang
-Optional, PDF/JPG/PNG/DOC/DOCX, max. 10 MB — unverändert, aber **nur berechtigungsgeprüft
-abrufbar** (nicht über eine erratbare Adresse).
+Optional, PDF/JPG/PNG/DOC/DOCX, max. 10 MB. Bei der Begründung „Fortbildung" gilt die
+Entweder-oder-Bedingung aus E-6.5. Technische Anforderungen und Sichtbarkeit: E-6.7.
+
+Am Feld steht der Hinweis gegen Atteste und ärztliche Terminbestätigungen (E-6.6).
 
 ### Abschnitt „Anmerkungen"
 Freies Feld, optional (E-6.2). Sichtbar nur für die antragstellende Person und die
