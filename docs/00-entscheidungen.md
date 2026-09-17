@@ -397,3 +397,86 @@ Zeitraums. **Es gibt keine Genehmigung durch Zeitablauf** — eine Genehmigung i
 Entscheidung, nicht das Ausbleiben einer Entscheidung.
 
 ### Schritt 4 — keine offenen Punkte
+
+---
+
+## Schritt 5 — Benachrichtigungen · *Vorschlag, zur Bestätigung*
+
+### E-5.1 Vertretungsplanung: Einzelmeldung sofort — und die Liste als Arbeitsgrundlage
+
+**Keine Tageszusammenfassung.** Jede Genehmigung und jede Stornierung erzeugt sofort eine
+kurze Meldung.
+
+*Begründung:* Eine Sammelmail löst ein Mengenproblem. Bei einer Schule dieser Größe
+entstehen pro Tag einzelne, nicht dutzende Vorgänge — das Problem existiert also noch
+nicht, während der Nachteil sofort wirkt: Ein um 16 Uhr genehmigter Antrag für den nächsten
+Morgen darf nicht bis zum nächsten Sammellauf liegen bleiben. Sollte sich die Menge als
+störend erweisen, ist eine Zusammenfassung jederzeit nachrüstbar — die umgekehrte Richtung
+wäre der teurere Weg.
+
+**Wichtiger als die Mail ist aber die Festlegung dahinter:** Die Vertretungsplanung arbeitet
+**nicht aus dem Postfach**, sondern aus der Liste im System. Die E-Mail ist ein Wecker, kein
+Arbeitsmittel. Eine übersehene Mail darf nie bedeuten, dass eine Vertretung fehlt — in der
+Liste steht alles, auch das, was im Postfach untergegangen ist.
+
+### E-5.2 Sekretariate: keine E-Mails, sondern eine Tagesliste
+
+**Die Sekretariate erhalten überhaupt keine Benachrichtigungen.** Stattdessen eine jederzeit
+abrufbare Ansicht *„Heute abwesend — Runkel"* bzw. *„… — Villmar"*.
+
+*Begründung:* Der Bedarf der Sekretariate ist **tagesbezogen, nicht ereignisbezogen**
+(E-1.4: Kenntnisnahme für Telefon und Besucher). Eine Mail, die am 20. April eintrifft und
+eine Abwesenheit am 12. Mai ankündigt, hilft am 12. Mai niemandem — niemand durchsucht sein
+Postfach, wenn das Telefon klingelt. Gebraucht wird die Antwort auf „ist die Kollegin heute
+da?", und die steht in einer Liste, nicht in einem Posteingang.
+
+**Hinzu kommt ein Datenschutzgrund, der die Entscheidung erzwingt.** Naheliegend wäre eine
+Morgenmail mit den Abwesenheiten des Tages. Die enthielte aber eine **namentliche Liste
+abwesender Beschäftigter** — und damit genau das, was Regel D-03 aus dem
+Datenschutzkonzept ausschließt: personenbezogene Inhalte im ungesicherten Transportweg
+E-Mail. Über die Zeit entstünde in den Postfächern beider Sekretariate ein
+Abwesenheitsarchiv des gesamten Kollegiums, das niemand mehr löscht.
+
+Die Liste im System löst beides zugleich: aktueller, nützlicher **und** datenschutzkonform.
+Sie zeigt nur den laufenden Tag und nur den eigenen Standort.
+
+*Nebeneffekt:* Zwei Benachrichtigungswege weniger zu bauen und zu pflegen.
+
+### E-5.3 Eingangsbestätigung: ja
+
+Die antragstellende Person erhält eine kurze Bestätigung per E-Mail, dass der Antrag
+eingegangen ist — mit Vorgangsnummer und Link, ohne inhaltliche Angaben.
+
+*Begründung:* Die Frage „ist das überhaupt angekommen?" ist in der Einführungsphase eines
+neuen Verfahrens die häufigste. Ohne Bestätigung wird sie per Mail an die Schulleitung
+gestellt — also genau der Weg, den das System ersetzen soll. Eine Zeile E-Mail verhindert
+das.
+
+### Benachrichtigungsmatrix — Stand Schritt 5
+
+**✉** = E-Mail · **○** = im System sichtbar · **—** = keine Information
+
+| Ereignis | Antragsteller | Schulleitung | Vertretungsplanung | Sekretariat (betroffener Standort) |
+|---|---|---|---|---|
+| Antrag eingereicht | ✉ Eingangsbestätigung | ✉ | — | — |
+| Rückfrage gestellt | ✉ | ○ | — | — |
+| Rückfrage beantwortet | ○ | ✉ | — | — |
+| **Genehmigt** | ✉ | ○ | ✉ | ○ Tagesliste |
+| Abgelehnt | ✉ | ○ | — | — |
+| Zurückgezogen (vor Entscheidung) | ○ | ✉ | — | — |
+| **Storniert** | ✉ | ✉ | ✉ | ○ Tagesliste |
+| Erinnerung: offener Antrag beginnt bald | — | ✉ | — | — |
+
+Wer storniert, bekommt darüber keine Mail — nur die jeweils andere Seite (E-4.3).
+
+### E-5.4 Inhalt jeder E-Mail
+Unverändert gültig aus dem Datenschutzkonzept: **Vorgangsnummer, Antragsart, Ereignis,
+Link.** Kein Anlass, kein Kommentartext, keine Lerngruppen, keine Namen Dritter.
+
+> Antrag DB-2026-0147 (Dienst-/Unterrichtsbefreiung) wurde genehmigt.
+> Details im System: <Link>
+
+Die einzige Ausnahme ist die Meldung an die Vertretungsplanung, die Name, Zeitraum und
+Standort benötigt, um überhaupt nützlich zu sein. **Auch sie nennt keinen Anlass.**
+Ob selbst das noch in eine E-Mail gehört oder besser nur als Hinweis „es gibt Neues in
+der Liste" verschickt wird, ist in Schritt 7 mit dem Datenschutzbeauftragten zu prüfen.
