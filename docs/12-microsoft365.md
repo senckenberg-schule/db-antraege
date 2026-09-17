@@ -152,3 +152,84 @@ Personalrat und Datenschutz gelten unverändert — gleich in welcher Technik.
 [Erste Schritte mit Power Automate-Genehmigungen](https://learn.microsoft.com/de-de/power-automate/get-started-approvals) ·
 [Power Automate Lizenzierung FAQ](https://learn.microsoft.com/de-de/power-platform/admin/power-automate-licensing/faqs) ·
 [Microsoft 365 Education Lizenzen](https://learn.microsoft.com/de-de/microsoft-365/education/guide/0-start/all-license)
+
+---
+
+## 7. Erfahrung aus einem früheren Flow: E-Mails kamen nicht an
+
+Ein früher an der Schule gebauter Power-Automate-Flow verschickte E-Mails, die **bei
+`@schule.hessen.de` nicht zuverlässig ankamen** und auch bei anderen Adressen blockiert
+wurden. Das ist ein belastbarer Einwand — und er hat eine benennbare Ursache.
+
+### 7.1 Power Automate hat mehrere Versandwege mit sehr unterschiedlichem Verhalten
+
+| Aktion im Flow | Absender | Zustellung |
+|---|---|---|
+| **„E-Mail senden (V2)"** — Connector *Office 365 Outlook* | **das Postfach der Person, die den Flow verbunden hat** — eine echte Adresse der Schule | **gut.** Technisch eine gewöhnliche Exchange-Mail, nicht von einer normalen Mail zu unterscheiden |
+| **„E-Mail-Benachrichtigung senden"** — Connector *Mail* | eine allgemeine Microsoft-Absenderadresse (`…@powerapps.com` o. ä.) | **schlecht.** Wird von strengen Filtern regelmäßig zurückgewiesen |
+| **Benachrichtigungen des Genehmigungsdienstes** | Microsoft-Benachrichtigungsadresse | **schlecht**, aus demselben Grund |
+
+**Wahrscheinliche Ursache des damaligen Problems:** Es wurde der *Mail*-Connector oder die
+automatische Genehmigungs-Benachrichtigung verwendet — beide versenden von einer fremden
+Microsoft-Adresse, die mit der Schuldomäne nichts zu tun hat. Ein streng eingestellter
+Mailserver, und der Landesdienst dürfte streng eingestellt sein, wirft so etwas aus.
+
+**Zu prüfen im alten Flow:** Welche Aktion wurde verwendet? Steht dort *Office 365 Outlook*
+oder *Mail*? Das ist in wenigen Minuten nachzusehen und entscheidet, ob das Problem gelöst
+oder grundsätzlich ist.
+
+### 7.2 Die zweite mögliche Ursache: zwei getrennte Welten
+
+Vermutlich sind das **zwei verschiedene Systeme**:
+
+* das **Microsoft-365-Konto** der Schule (eigener Mandant, eigene Domäne),
+* die **dienstliche Adresse** `@schule.hessen.de` beim Land.
+
+Eine Mail aus dem Mandanten an `@schule.hessen.de` verlässt damit die eigene Organisation
+und trifft auf die Filter des Landesdienstes. Selbst bei korrektem Absender ist das
+störanfälliger als eine Mail innerhalb derselben Organisation.
+
+### 7.3 Die eigentliche Lösung: den Ablauf ohne E-Mail führen
+
+**Alle Beteiligten sind im Mandanten.** Damit braucht der interne Ablauf **gar keine
+E-Mail**:
+
+| Empfänger | Statt E-Mail |
+|---|---|
+| **Schulleitung, Stellvertretung** | **Teams-Nachricht mit Adaptive Card** — Antrag, *Genehmigen*, *Ablehnen*, *Rückfrage* und Kommentarfeld direkt in der Karte. Alternativ die **Genehmigungen-App in Teams**, in der alle offenen Anträge stehen |
+| **Stundenplanung** | Teams-Nachricht plus die **SharePoint-Liste** als Arbeitsgrundlage — was ohnehin so entschieden war (E-5.1: „die Liste ist der Arbeitsplatz, die Mail nur ein Wecker") |
+| **Antragstellende Person** | Teams-Nachricht über Eingang und Entscheidung |
+
+**Nichts davon verlässt den Mandanten.** Kein Spamfilter, kein SPF, kein DKIM, keine
+Zustellungsfrage — und datenschutzseitig sogar besser, weil keine Inhalte über
+ungesicherte Transportwege laufen (Regel D-03 wird damit von selbst erfüllt).
+
+**Das damalige Problem wäre damit nicht behoben, sondern beseitigt.**
+
+### 7.4 Die Frage, an der es hängt
+
+> **Nutzt das Kollegium Teams tatsächlich — oder liest es seine dienstliche Post
+> ausschließlich unter `@schule.hessen.de`?**
+
+Das ist jetzt die entscheidende Frage des ganzen Vorhabens.
+
+| Antwort | Folge |
+|---|---|
+| **Teams wird genutzt** | Der Weg über Microsoft 365 ist klar die beste Lösung: echte Anmeldung, kein Server, keine Kosten, **und kein Zustellungsproblem** |
+| **Teams wird nicht genutzt, Post nur beim Land** | Benachrichtigungen müssen per E-Mail an `@schule.hessen.de` — dann ist der Versandweg aus 7.1 zwingend richtig zu wählen und **vorab zu testen**. Gelingt das nicht, spricht es gegen Microsoft 365 und für eigenes Hosting |
+
+**Der Test ist klein:** Einen Flow mit *einer* Aktion bauen — „E-Mail senden (V2)" über
+*Office 365 Outlook* — und an die eigene `@schule.hessen.de`-Adresse schicken. Kommt sie
+an, ist die Frage beantwortet. Das ist eine Viertelstunde Arbeit und entscheidet über die
+gesamte technische Richtung.
+
+### 7.5 Und dieselbe Frage gilt für den anderen Weg
+
+Falls die Entscheidung auf eigenes Hosting fällt, besteht das Zustellungsproblem
+**genauso** — dann sogar ohne den Ausweg über Teams. Ein eigener Webserver, der Mails an
+`@schule.hessen.de` schickt, muss korrekte SPF- und DKIM-Einträge haben und wird bei
+strengen Filtern ebenfalls auffällig.
+
+**Die Zustellbarkeit an `@schule.hessen.de` ist damit kein Microsoft-Problem, sondern die
+zentrale technische Voraussetzung des ganzen Vorhabens** — bei jedem Weg. Sie gehört
+getestet, bevor irgendetwas gebaut wird.

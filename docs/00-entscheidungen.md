@@ -957,3 +957,24 @@ Abwesenheitsgründen.
 **Das Fachkonzept bleibt in beiden Fällen unverändert gültig.**
 
 Einzelheiten, Verluste und Prüfliste: [12-microsoft365.md](12-microsoft365.md).
+
+### Vorrangig zu klären: Zustellbarkeit und Teams-Nutzung
+
+Aus der Erfahrung eines früheren Power-Automate-Flows: Dessen E-Mails kamen bei
+`@schule.hessen.de` nicht zuverlässig an.
+
+**Zwei Erkenntnisse daraus:**
+
+1. **Die Zustellbarkeit an `@schule.hessen.de` ist die zentrale technische Voraussetzung
+   des Vorhabens — bei jedem Umsetzungsweg.** Sie ist zu testen, bevor gebaut wird.
+   Der Test kostet eine Viertelstunde (Einzelaktion „E-Mail senden (V2)" über den
+   Connector *Office 365 Outlook*, nicht über *Mail*).
+2. **In Microsoft 365 lässt sich das Problem umgehen statt lösen:** Alle Beteiligten sind
+   im Mandanten, also können Benachrichtigungen über **Teams** statt per E-Mail laufen —
+   Genehmigungen als Adaptive Card mit Kommentarfeld. Nichts verlässt den Mandanten,
+   Regel D-03 ist von selbst erfüllt.
+
+**Entscheidungsfrage: Nutzt das Kollegium Teams tatsächlich, oder liest es dienstliche
+Post ausschließlich unter `@schule.hessen.de`?** Davon hängt die technische Richtung ab.
+
+Einzelheiten: [12-microsoft365.md](12-microsoft365.md), Abschnitt 7.
