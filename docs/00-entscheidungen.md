@@ -37,7 +37,13 @@ Die Benachrichtigung geht deshalb an ein **Rollenpostfach**, nicht an eine pers�
 Adresse, und die Übersicht genehmigter Abwesenheiten ist auch für die Schulleitung
 einsehbar — damit bei Ausfall jemand übernehmen kann.
 
-### E-1.4 Sekretariat
+### E-1.4 Sekretariat — *aufgehoben durch E-5.5*
+
+> **Diese Entscheidung ist überholt.** Die Sekretariate werden gar nicht beteiligt,
+> weil sie die Abwesenheiten ohnehin im Stunden-/Vertretungsplan sehen. Siehe **E-5.5**.
+> Der ursprüngliche Wortlaut bleibt zur Nachvollziehbarkeit stehen.
+
+### E-1.4 (ursprünglich) Sekretariat
 **Zwei Sekretariate, je Standort eines.** Aufgabe im Workflow: **ausschließlich
 Kenntnisnahme** — wissen, wer wann nicht im Haus ist (Telefon, Besucher, Auskunft).
 Keine Kostenabwicklung, keine Veranstaltungsorganisation über dieses System.
@@ -60,7 +66,7 @@ und weiteres Personal bleiben zunächst im bisherigen Verfahren.
 | Schulleitung | 1 | keine (beide Standorte) | entscheiden, alle Anträge sehen |
 | Stellvertretende Schulleitung | 1 | keine | identisch — für Abwesenheitsfälle |
 | Vertretungsplanung | 1 | keine (beide Standorte) | genehmigte Abwesenheiten in reduzierter Sicht |
-| Sekretariat | 2 | **je Standort** | Minimalsicht, nur eigener Standort |
+| ~~Sekretariat~~ | — | — | *entfällt vollständig, siehe E-5.5* |
 | Administration | 1–2 | — | Benutzer/Stammdaten, kein Zugriff auf Antragsinhalte |
 
 ### Offen aus Schritt 1 — später zu klären
@@ -419,28 +425,9 @@ wäre der teurere Weg.
 Arbeitsmittel. Eine übersehene Mail darf nie bedeuten, dass eine Vertretung fehlt — in der
 Liste steht alles, auch das, was im Postfach untergegangen ist.
 
-### E-5.2 Sekretariate: keine E-Mails, sondern eine Tagesliste
+### E-5.2 Sekretariate werden nicht beteiligt — *ersetzt durch E-5.5*
 
-**Die Sekretariate erhalten überhaupt keine Benachrichtigungen.** Stattdessen eine jederzeit
-abrufbare Ansicht *„Heute abwesend — Runkel"* bzw. *„… — Villmar"*.
-
-*Begründung:* Der Bedarf der Sekretariate ist **tagesbezogen, nicht ereignisbezogen**
-(E-1.4: Kenntnisnahme für Telefon und Besucher). Eine Mail, die am 20. April eintrifft und
-eine Abwesenheit am 12. Mai ankündigt, hilft am 12. Mai niemandem — niemand durchsucht sein
-Postfach, wenn das Telefon klingelt. Gebraucht wird die Antwort auf „ist die Kollegin heute
-da?", und die steht in einer Liste, nicht in einem Posteingang.
-
-**Hinzu kommt ein Datenschutzgrund, der die Entscheidung erzwingt.** Naheliegend wäre eine
-Morgenmail mit den Abwesenheiten des Tages. Die enthielte aber eine **namentliche Liste
-abwesender Beschäftigter** — und damit genau das, was Regel D-03 aus dem
-Datenschutzkonzept ausschließt: personenbezogene Inhalte im ungesicherten Transportweg
-E-Mail. Über die Zeit entstünde in den Postfächern beider Sekretariate ein
-Abwesenheitsarchiv des gesamten Kollegiums, das niemand mehr löscht.
-
-Die Liste im System löst beides zugleich: aktueller, nützlicher **und** datenschutzkonform.
-Sie zeigt nur den laufenden Tag und nur den eigenen Standort.
-
-*Nebeneffekt:* Zwei Benachrichtigungswege weniger zu bauen und zu pflegen.
+Siehe **E-5.5**: weder E-Mail noch Tagesliste, die Rolle entfällt vollständig.
 
 ### E-5.3 Eingangsbestätigung: ja
 
@@ -456,16 +443,16 @@ das.
 
 **✉** = E-Mail · **○** = im System sichtbar · **—** = keine Information
 
-| Ereignis | Antragsteller | Schulleitung | Vertretungsplanung | Sekretariat (betroffener Standort) |
-|---|---|---|---|---|
-| Antrag eingereicht | ✉ Eingangsbestätigung | ✉ | — | — |
-| Rückfrage gestellt | ✉ | ○ | — | — |
-| Rückfrage beantwortet | ○ | ✉ | — | — |
-| **Genehmigt** | ✉ | ○ | ✉ | ○ Tagesliste |
-| Abgelehnt | ✉ | ○ | — | — |
-| Zurückgezogen (vor Entscheidung) | ○ | ✉ | — | — |
-| **Storniert** | ✉ | ✉ | ✉ | ○ Tagesliste |
-| Erinnerung: offener Antrag beginnt bald | — | ✉ | — | — |
+| Ereignis | Antragsteller | Schulleitung | Vertretungsplanung |
+|---|---|---|---|
+| Antrag eingereicht | ✉ Eingangsbestätigung | ✉ | — |
+| Rückfrage gestellt | ✉ | ○ | — |
+| Rückfrage beantwortet | ○ | ✉ | — |
+| **Genehmigt** | ✉ | ○ | ✉ |
+| Abgelehnt | ✉ | ○ | — |
+| Zurückgezogen (vor Entscheidung) | ○ | ✉ | — |
+| **Storniert** | ✉ | ✉ | ✉ |
+| Erinnerung: offener Antrag beginnt bald | — | ✉ | — |
 
 Wer storniert, bekommt darüber keine Mail — nur die jeweils andere Seite (E-4.3).
 
@@ -480,3 +467,45 @@ Die einzige Ausnahme ist die Meldung an die Vertretungsplanung, die Name, Zeitra
 Standort benötigt, um überhaupt nützlich zu sein. **Auch sie nennt keinen Anlass.**
 Ob selbst das noch in eine E-Mail gehört oder besser nur als Hinweis „es gibt Neues in
 der Liste" verschickt wird, ist in Schritt 7 mit dem Datenschutzbeauftragten zu prüfen.
+
+### E-5.5 Die Sekretariate entfallen vollständig
+
+**Weder E-Mail noch Tagesliste. Die Sekretariate sind keine Rolle im System.**
+
+*Begründung:* Die Abwesenheiten erscheinen ohnehin im Stunden- bzw. Vertretungsplan, den
+die Sekretariate einsehen. Eine zweite Quelle für dieselbe Information wäre nicht nur
+überflüssig, sondern schädlich — zwei Listen, die auseinanderlaufen können, und die Frage,
+welcher man glaubt.
+
+### Tragweite dieser Entscheidung
+
+Sie ist die weitreichendste Vereinfachung des bisherigen Konzepts:
+
+| Entfällt | Folge |
+|---|---|
+| Rolle „Sekretariat" | Von sechs Rollen bleiben vier: Antragsteller, Schulleitung (mit Stellvertretung), Vertretungsplanung, Administration |
+| Zwei Benutzerkonten bzw. Rollenpostfächer | Weniger Zugänge, weniger Rechtevergabe, weniger Angriffsfläche |
+| Ansicht „Heute abwesend" je Standort | Eine Oberfläche weniger zu bauen und zu pflegen |
+| **Standortbezogene Berechtigungsprüfung** | Niemand darf mehr „nur den eigenen Standort" sehen — die Trennung wird nirgends mehr gebraucht. Anforderung zur Mandantentrennung der Standorte entfällt |
+| Zwei Benachrichtigungswege | Die Matrix hat nur noch drei Empfänger |
+
+**Kein Empfänger im System hängt mehr vom Standort ab.** Die Benachrichtigungen gehen an
+den Antragsteller, die Schulleitung und die Vertretungsplanung — alle drei unabhängig
+vom Standort.
+
+### E-5.6 Damit ändert sich die Begründung für das Standortfeld
+
+Das Feld bleibt, aber sein Zweck ist ein anderer als in E-3.1 angenommen. Es steuert
+**keinen Empfänger mehr**, sondern dient nur noch dem Inhalt:
+
+| Antragsart | Zweck des Standortfelds | Bewertung |
+|---|---|---|
+| **2 — Unterrichtsgang / Veranstaltung** | Unterscheidet gleichnamige Lerngruppen beider Standorte (E-3.4/E-3.7) | **unverzichtbar** |
+| **1 — Dienst-/Unterrichtsbefreiung** | Zeigt auf einen Blick, in welchem Haus die Person fehlt | nützlich, aber nicht mehr zwingend — die Vertretungsplanung entnimmt es auch dem Stundenplan |
+
+**Empfehlung: beibehalten.** Ein Antrag sollte aus sich heraus verständlich sein, ohne dass
+man ein zweites System heranziehen muss — auch in der Übersicht und im Archiv, Monate
+später. Der Preis ist ein Klick.
+
+*Zur Entscheidung durch den Auftraggeber:* Wer diesen Klick sparen will, kann das Feld bei
+Antragsart 1 weglassen. Bei Antragsart 2 geht es nicht.
