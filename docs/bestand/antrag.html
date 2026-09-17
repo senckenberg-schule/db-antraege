@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Antrag stellen – Senckenberg-Schule</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div>
+    <div class="logo">Johann-Christian-Senckenberg-Schule</div>
+    <div class="sub">Dienstbefreiungssystem</div>
+  </div>
+  <nav>
+    <a href="/">Start</a>
+    <a href="/antrag" class="aktiv">Antrag stellen</a>
+    <a href="/schulleiter">Schulleiter</a>
+    <a href="/archiv">Archiv</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Antrag auf Dienst-/Unterrichtsbefreiung</h1>
+
+  <div id="meldung"></div>
+
+  <form id="antragForm" enctype="multipart/form-data">
+
+    <!-- Basisdaten -->
+    <div class="card">
+      <h2>Antragsteller/in</h2>
+      <div class="form-group">
+        <label for="name">Name der Lehrkraft *</label>
+        <input type="text" id="name" name="name" required placeholder="Vorname Nachname">
+      </div>
+      <p style="font-size:.84rem;color:#6b7280">
+        Datum der Antragstellung: <strong id="heuteDatum"></strong>
+      </p>
+    </div>
+
+    <!-- Befreiungszeitraum -->
+    <div class="card">
+      <h2>Der Unterricht ist zu vertreten …</h2>
+
+      <div class="form-group">
+        <div class="radio-group">
+          <label>
+            <input type="radio" name="zeitraum_typ" value="tag" checked onchange="zeitraumWechsel()">
+            … an einem einzelnen Tag
+          </label>
+          <label>
+            <input type="radio" name="zeitraum_typ" value="zeitraum" onchange="zeitraumWechsel()">
+            … über einen Zeitraum (mehrere Tage)
+          </label>
+        </div>
+      </div>
+
+      <!-- Einzelner Tag -->
+      <div id="bereich_tag" class="bedingt sichtbar">
+        <div class="row2">
+          <div class="form-group">
+            <label for="datum_von_tag">Datum *</label>
+            <input type="date" id="datum_von_tag" name="datum_von">
+          </div>
+          <div class="form-group">
+            <label>Umfang</label>
+            <div class="inline-check" style="margin-top:.6rem">
+              <input type="checkbox" id="ganztags" name="ganztags">
+              <label for="ganztags">Ganztags</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" id="stundenGruppe">
+          <label for="stunden">In folgenden Stunden</label>
+          <input type="text" id="stunden" name="stunden" placeholder="z. B. 1–3">
+        </div>
+        <div class="form-group">
+          <label for="pausenaufsichten">Betroffene Pausenaufsichten davor/danach</label>
+          <input type="text" id="pausenaufsichten" name="pausenaufsichten" placeholder="Falls zutreffend">
+        </div>
+      </div>
+
+      <!-- Zeitraum -->
+      <div id="bereich_zeitraum" class="bedingt">
+        <div class="row2">
+          <div class="form-group">
+            <label for="datum_von_zr">Von *</label>
+            <input type="date" id="datum_von_zr">
+          </div>
+          <div class="form-group">
+            <label for="datum_bis">Bis *</label>
+            <input type="date" id="datum_bis" name="datum_bis">
+          </div>
+        </div>
+        <div class="inline-check">
+          <input type="checkbox" id="beide_standorte" name="beide_standorte">
+          <label for="beide_standorte">An beiden Standorten</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Begründung -->
+    <div class="card">
+      <h2>Begründung</h2>
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="begruendung_typ" value="fortbildung" required onchange="begruendungWechsel()">
+          <span>
+            <strong>Fortbildung</strong><br>
+            <small style="color:#6b7280">(Bitte Ort + Thema angeben und Bestätigung/Programm anhängen!)</small>
+          </span>
+        </label>
+        <div id="detail_fortbildung" class="bedingt">
+          <label for="detail_fort">Ort und Thema *</label>
+          <input type="text" id="detail_fort" placeholder="z. B. Frankfurt – Neue Lehrplanentwicklung">
+        </div>
+
+        <label>
+          <input type="radio" name="begruendung_typ" value="dienstlich" onchange="begruendungWechsel()">
+          <strong>Dienstliche Gründe</strong>
+          <span style="color:#6b7280;font-weight:normal"> (Dienstbesprechung / Teamsitzung / Klassenkonferenz / …)</span>
+        </label>
+
+        <label>
+          <input type="radio" name="begruendung_typ" value="arzt" onchange="begruendungWechsel()">
+          <strong>Arztbesuch</strong>
+          <span style="color:#6b7280;font-weight:normal"> (da kein Termin in der unterrichtsfreien Zeit möglich ist)</span>
+        </label>
+
+        <label>
+          <input type="radio" name="begruendung_typ" value="persoenlich" onchange="begruendungWechsel()">
+          <strong>Persönliche Gründe</strong>
+        </label>
+        <div id="detail_persoenlich" class="bedingt">
+          <label for="detail_pers">Bitte Grund angeben *</label>
+          <input type="text" id="detail_pers" placeholder="Kurze Beschreibung">
+        </div>
+
+        <label>
+          <input type="radio" name="begruendung_typ" value="sonstiges" onchange="begruendungWechsel()">
+          <strong>Sonstiges</strong>
+        </label>
+        <div id="detail_sonstiges" class="bedingt">
+          <label for="detail_sonst">Bitte Grund angeben *</label>
+          <input type="text" id="detail_sonst" placeholder="Kurze Beschreibung">
+        </div>
+      </div>
+    </div>
+
+    <!-- Unterlagen -->
+    <div class="card">
+      <h2>Unterlagen für die Vertretung</h2>
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="unterlagen_typ" value="beiliegend" required>
+          … liegen dem Antrag bei
+        </label>
+        <label>
+          <input type="radio" name="unterlagen_typ" value="kollegium">
+          … werden den Kolleginnen/Kollegen ausgehändigt (vereinbarter Ablageort)
+        </label>
+        <label>
+          <input type="radio" name="unterlagen_typ" value="schulportal">
+          … werden im Schulportal hinterlegt
+        </label>
+      </div>
+
+      <div class="form-group" style="margin-top:1.2rem">
+        <label for="anhang">Anhang (optional – z. B. Fortbildungsbestätigung, max. 10 MB)</label>
+        <input type="file" id="anhang" name="anhang"
+               accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+               style="padding:.4rem .6rem">
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;gap:.8rem">
+      <a href="/" class="btn btn-ghost">Abbrechen</a>
+      <button type="submit" class="btn btn-primary" id="submitBtn">
+        <span class="spinner" id="spinner"></span>
+        Antrag einreichen
+      </button>
+    </div>
+
+  </form>
+</main>
+
+<script>
+// Heutiges Datum anzeigen
+const heute = new Date();
+document.getElementById('heuteDatum').textContent =
+  heute.toLocaleDateString('de-DE', { day:'2-digit', month:'2-digit', year:'numeric' });
+
+// Zeitraum-Umschalter
+function zeitraumWechsel() {
+  const typ = document.querySelector('[name="zeitraum_typ"]:checked').value;
+  document.getElementById('bereich_tag').classList.toggle('sichtbar', typ === 'tag');
+  document.getElementById('bereich_zeitraum').classList.toggle('sichtbar', typ === 'zeitraum');
+}
+
+// Ganztags-Checkbox → Stunden-Feld ausblenden
+document.getElementById('ganztags').addEventListener('change', function() {
+  document.getElementById('stundenGruppe').style.display = this.checked ? 'none' : 'block';
+});
+
+// Datum vom Zeitraum-Bereich → verstecktes Feld befüllen
+document.getElementById('datum_von_zr').addEventListener('change', function() {
+  document.getElementById('datum_von_tag').value = this.value;
+});
+
+// Begründungs-Detail-Felder ein-/ausblenden
+const detailMap = {
+  fortbildung: 'detail_fortbildung',
+  persoenlich: 'detail_persoenlich',
+  sonstiges:   'detail_sonstiges'
+};
+function begruendungWechsel() {
+  Object.values(detailMap).forEach(id =>
+    document.getElementById(id).classList.remove('sichtbar'));
+  const typ = document.querySelector('[name="begruendung_typ"]:checked')?.value;
+  if (typ && detailMap[typ]) document.getElementById(detailMap[typ]).classList.add('sichtbar');
+}
+
+// Bedingte Felder in FormData einsammeln
+function detailWert() {
+  const typ = document.querySelector('[name="begruendung_typ"]:checked')?.value;
+  if (typ === 'fortbildung')  return document.getElementById('detail_fort').value;
+  if (typ === 'persoenlich')  return document.getElementById('detail_pers').value;
+  if (typ === 'sonstiges')    return document.getElementById('detail_sonst').value;
+  return '';
+}
+
+// Formular absenden
+document.getElementById('antragForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const spinner = document.getElementById('spinner');
+  btn.disabled = true;
+  spinner.classList.add('aktiv');
+
+  const fd = new FormData(e.target);
+
+  // Zeitraum-Typ-spezifische Anpassungen
+  const typ = fd.get('zeitraum_typ');
+  if (typ === 'zeitraum') {
+    fd.set('datum_von', document.getElementById('datum_von_zr').value);
+  }
+
+  // Begründungs-Detail hinzufügen
+  fd.set('begruendung_detail', detailWert());
+
+  try {
+    const res = await fetch('/api/antrag', { method: 'POST', body: fd });
+    const data = await res.json();
+    if (data.ok) {
+      document.getElementById('meldung').innerHTML =
+        `<div class="alert alert-success">
+          ✅ <strong>Antrag erfolgreich eingereicht!</strong><br>
+          Der Schulleiter wurde per E-Mail informiert. Du erhältst nach der Bearbeitung eine Rückmeldung.
+        </div>`;
+      e.target.reset();
+      zeitraumWechsel();
+      begruendungWechsel();
+      window.scrollTo(0,0);
+    } else {
+      throw new Error(data.fehler || 'Unbekannter Fehler');
+    }
+  } catch (err) {
+    document.getElementById('meldung').innerHTML =
+      `<div class="alert alert-error">❌ Fehler: ${err.message}</div>`;
+  } finally {
+    btn.disabled = false;
+    spinner.classList.remove('aktiv');
+  }
+});
+</script>
+</body>
+</html>
