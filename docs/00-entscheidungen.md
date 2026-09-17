@@ -928,7 +928,10 @@ wird für E-8.2 ohnehin gebaut und nimmt dem Betrieb die Rücksetzaufgabe ab.
   Zwei Wege: **A** IONOS-Webhosting dazubuchen (ein Anbieter, eine Rechnung) oder
   **B** anderer Hoster mit DNS-Verweis. **Entscheidend ist allein, ob zeitgesteuerte
   Aufgaben enthalten sind** — ohne sie läuft der Löschlauf nicht.
-  Einzelheiten in [11-hosting.md](11-hosting.md), Abschnitt 8.
+  **Recherchiert:** Zeitgesteuerte Aufgaben gibt es erst ab dem Tarif **Plus**
+  (ca. 11 €/Monat nach dem ersten Jahr), nicht im Tarif *Standard*. Damit ist
+  **IONOS Webhosting Plus** der kleinste brauchbare Tarif und erfüllt alle Anforderungen.
+  Einzelheiten in [11-hosting.md](11-hosting.md), Abschnitte 8 bis 10.
   Empfehlung: zuerst Schulträger und Medienzentrum anfragen, sonst Managed Hosting bei
   einem deutschen Anbieter. **Kein Root-Server ohne zweite Person**, kein Server an der
   Schule. Vertrag auf die Schule, nicht privat.

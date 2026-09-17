@@ -335,3 +335,74 @@ Die Empfehlung ist nicht in Stein:
 **Was in keinem Fall passt:** ein Dienst, dessen Verarbeitungsort nicht sicher in der EU
 liegt, und ein kostenloser Tarif, der bei Inaktivität pausiert. Ein Bestätigungslink, der
 nicht funktioniert, weil die Anwendung schlief, verhindert den Antrag vollständig.
+
+---
+
+## 10. Recherche: welcher IONOS-Webhosting-Tarif taugt
+
+Recherchiert wurden die **öffentlichen Tarifangaben** (Stand September 2026). Nicht
+einsehbar von außen: der Inhalt des vorhandenen Kundenkontos.
+
+### 10.1 Das Ergebnis in einem Satz
+
+**Zeitgesteuerte Aufgaben („Cronjobs") sind erst ab dem Tarif *Plus* enthalten, nicht im
+Tarif *Standard*.** Da ohne sie der automatische Löschlauf nicht läuft (E-7.1), ist
+**Plus der kleinste brauchbare Tarif.**
+
+### 10.2 Die Tarife im Vergleich
+
+| Tarif | Datenbanken | Zeitgesteuerte Aufgaben | Eignung |
+|---|---|---|---|
+| **Standard** | 10 | **nein** | **untauglich** — ohne Löschlauf |
+| **Plus** | 100 | **ja** | **ausreichend und empfohlen** |
+| Premium | 250 | ja | überdimensioniert |
+| Ultimate | 500 | ja | überdimensioniert |
+
+Zehn Datenbanken hätten für dieses Vorhaben genügt — es braucht **eine**. Der Tarifwechsel
+ist also nicht wegen der Menge nötig, sondern **allein wegen der zeitgesteuerten Aufgaben**.
+
+### 10.3 Was sonst geklärt ist
+
+| Punkt | Stand |
+|---|---|
+| **Rechenzentren in Deutschland** | IONOS betreibt eigene Rechenzentren in Deutschland; bei der Einrichtung dennoch ausdrücklich prüfen und dokumentieren |
+| **PHP** | in allen Webhosting-Tarifen enthalten |
+| **MySQL/MariaDB** | in allen Tarifen, je Datenbank auf 2 GB begrenzt — für dieses Vorhaben um Größenordnungen ausreichend |
+| **SSH-Zugang** | Angaben der Vergleichsportale widersprechen sich (Standard oder erst Plus). Da ohnehin Plus gebraucht wird, ist die Frage gegenstandslos |
+| **Preis** | *Plus* wird mit etwa 1 €/Monat im ersten Jahr beworben, danach etwa **11 €/Monat**. Der Aktionspreis ist einmalig — für die Haushaltsplanung zählt der **Folgepreis** |
+
+### 10.4 Was nur im Kundenkonto zu sehen ist
+
+| Frage | Wo |
+|---|---|
+| Erlaubt die **DNS-Verwaltung** des MyWebsite-Basic-Vertrags eigene Unteradressen mit freiem Ziel? | *Domains & SSL → senckenberg-schule.de → DNS* |
+| Läuft das Konto auf die **Schule** oder auf eine Privatperson? | *Konto → Vertragsdaten* |
+| Sind die beiden MyWebsite-Verträge beide in Gebrauch? | Vertragsübersicht |
+
+### 10.5 Ergebnis für die Entscheidung
+
+**IONOS Webhosting Plus erfüllt die Anforderungen** — Datenbank, zeitgesteuerte Aufgaben,
+PHP, Rechenzentrum in Deutschland, Auftragsverarbeitungsvertrag verfügbar. Bei etwa
+11 €/Monat nach dem ersten Jahr liegt es in derselben Größenordnung wie Uberspace, hat aber
+den Vorteil, **beim vorhandenen Anbieter zu bleiben**: ein Konto, eine Rechnung, eine
+Stelle im Störungsfall.
+
+**Vor dem Abschluss noch zu tun:**
+
+1. **Auftragsverarbeitungsvertrag anfordern** und ablegen (für die Unterlagen nach
+   Dokument 08).
+2. **Serverstandort Deutschland** bei der Einrichtung prüfen und festhalten.
+3. **Vertragsinhaber** klären — bei Bedarf auf die Schule umstellen.
+4. **DNS-Verwaltung prüfen** (10.4). Sind Unteradressen mit freiem Ziel nicht möglich,
+   ist das kein Hindernis: Läuft die Anwendung ohnehin bei IONOS, wird die Unteradresse
+   dort eingerichtet.
+
+*Quellen der Tarifangaben:*
+[IONOS Webhosting](https://www.ionos.com/hosting/web-hosting) ·
+[Cronjobs erstellen und verwalten — IONOS Hilfe](https://www.ionos.com/help/hosting/cron-jobs/cron-job-manager/) ·
+[hosttest.de — IONOS Webhosting Kosten](https://www.hosttest.de/vergleich/ionos-webhosting.html) ·
+[experte.de — IONOS Webhosting im Test](https://www.experte.de/webhosting/ionos) ·
+[trusted.de — IONOS Webhosting](https://trusted.de/1-1-webhosting) ·
+[Handelsblatt Software — IONOS Webhosting](https://www.handelsblatt.com/software/ionos-webhosting/)
+
+Preise und Leistungsumfang ändern sich; vor Abschluss auf der Anbieterseite bestätigen.
