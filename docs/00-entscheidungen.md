@@ -1025,3 +1025,18 @@ Einzelheiten: [12-microsoft365.md](12-microsoft365.md), Abschnitt 8.4.
 kennen?** Davon hängt ab, ob der Weg über Microsoft 365 überhaupt trägt — sein Hauptvorteil
 ist die vorhandene Anmeldung. Wird der Mandant nur von einzelnen genutzt, während das
 Kollegium mit der Landesadresse arbeitet, fällt dieser Vorteil weg.
+
+### Nächster Schritt: der Zehn-Minuten-Test
+
+Das Forms-Formular des früheren Versuchs war auf „Jeder mit dem Link" eingestellt, also
+anonym. Die Kernfrage — haben die Lehrkräfte nutzbare Microsoft-365-Konten — ist damit
+**nicht** beantwortet, und der damalige Aufbau hatte dieselbe Identitätsschwäche wie der
+PHP-Entwurf.
+
+**Zu tun, vor jeder weiteren Technikentscheidung:** Ein Testformular in Forms anlegen, auf
+**„Nur Personen in meiner Organisation"** mit **Namenserfassung** stellen und an zwei bis
+drei Personen schicken, darunter die Schulleitung und eine Stundenplanung.
+
+Tragen die Antworten die Namen der Ausfüllenden, ist die Anmeldung gelöst und Microsoft 365
+der Weg. Einzelheiten und Auswertung: [12-microsoft365.md](12-microsoft365.md),
+Abschnitt 8.8.

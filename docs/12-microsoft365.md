@@ -403,3 +403,51 @@ In dieser Reihenfolge:
 **Frage 1 ist die entscheidende.** Wird Microsoft 365 an der Schule nur von einzelnen
 genutzt, während das Kollegium mit der Landesadresse arbeitet, dann ist die Anmeldung
 **nicht** gelöst — und der Hauptgrund für diesen Weg fällt weg.
+
+### 8.7 Nachtrag: das damalige Formular war anonym
+
+Das Forms-Formular des früheren Flows war auf **„Jeder mit dem Link kann antworten"**
+eingestellt.
+
+**Zwei Folgerungen:**
+
+1. **Die Kernfrage aus 8.6 ist damit nicht beantwortet.** Anonyme Formulare verlangen keine
+   Anmeldung — der Versuch sagt also nichts darüber, ob die Lehrkräfte nutzbare
+   Microsoft-365-Konten haben.
+2. **Der damalige Aufbau hatte dieselbe Schwäche wie der PHP-Entwurf:** Ohne Anmeldung
+   musste der Name in ein Feld getippt werden, und jeder mit dem Link konnte einen Antrag
+   unter jedem Namen stellen. Das war kein Fehler — nur die Folge der anonymen Einstellung.
+
+Die Maildiagnose bleibt davon unberührt: „E-Mail senden (V2)" versendet aus dem Postfach
+der Person, die den Flow verbunden hat — also aus der Mandantendomäne. Fehlen dort SPF und
+DKIM, wird die Mail bei Gmail und beim Landesdienst gleichermaßen abgewiesen.
+
+### 8.8 Der Zehn-Minuten-Test, der die Kernfrage beantwortet
+
+Statt die Mandantenverwaltung zu fragen, lässt sich das selbst prüfen — und zwar besser,
+weil der Test nicht nur klärt, ob Konten **existieren**, sondern ob die Leute sich
+tatsächlich **anmelden können**.
+
+**Ablauf:**
+
+1. Ein neues Formular in Microsoft Forms anlegen, eine einzige Frage genügt.
+2. In den Einstellungen umstellen auf **„Nur Personen in meiner Organisation können
+   antworten"** — und dort **„Namen erfassen"** aktivieren.
+3. Den Link an **zwei oder drei Personen** schicken, darunter möglichst die Schulleitung
+   und eine der beiden Stundenplanungen. Also an die Menschen, auf die es ankommt.
+4. Fragen: *„Kannst du das aufmachen und abschicken?"*
+
+**Auswertung:**
+
+| Ergebnis | Bedeutung |
+|---|---|
+| Alle können ausfüllen, und die Antworten tragen ihre Namen | **Die Anmeldung ist gelöst.** Microsoft 365 ist der Weg: Identität aus der Anmeldung, kein Namensfeld, kein Bestätigungslink, keine Domänenprüfung, keine Hostingkosten |
+| Einzelne kommen nicht hinein oder kennen ihre Anmeldung nicht | Konten sind vorhanden, aber nicht in Gebrauch. **Lösbar** — aber es ist Einführungsarbeit im Kollegium, keine technische Frage. Bei vier entscheidenden Personen überschaubar |
+| Niemand kann sich anmelden | Der Weg trägt nicht. Zurück zu Schulportal, IServ oder eigenem Hosting mit dem anmeldungsfreien Entwurf |
+
+**Dass die Antworten die Namen tragen, ist der eigentliche Prüfpunkt.** Erscheint dort
+„Müller, Anna" statt „Anonym", liefert Forms genau die Identität, die dieses System
+braucht — und der schwierigste Teil des ganzen Vorhabens ist damit erledigt.
+
+Dieser Test kostet nichts, verändert nichts und ist in einer Freistunde erledigt.
+**Er sollte vor jeder weiteren Technikentscheidung stehen.**
