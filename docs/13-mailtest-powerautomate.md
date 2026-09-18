@@ -1,113 +1,120 @@
-# 13 — Mailversand in Power Automate: Test und Einstellungen
+# 13 — Mailversand in Power Automate: vorhandenen Flow überarbeiten
 
-Ziel: herausfinden, **warum** die Mails nicht ankamen, und es abstellen. Der Test ist
-bewusst der kleinstmögliche — ein Flow mit einer einzigen Aktion. Alles andere kommt erst,
-wenn die Zustellung steht.
+Ziel: die Maileinstellungen im **bestehenden Flow** so ändern, dass die Nachrichten
+ankommen — ohne einen separaten Testflow.
 
----
-
-## Vorbemerkung: Power Automate hat kaum Einstellungen zur Zustellbarkeit
-
-Das ist wichtig für die Erwartung. An der Zustellung ändert im Flow selbst fast nichts —
-entscheidend sind drei Dinge:
-
-1. **Welche Aktion** verwendet wird (`E-Mail senden (V2)` vom Connector *Office 365 Outlook*),
-2. **welches Konto** die Verbindung herstellt — das bestimmt den **Absender**,
-3. ob die **Absenderdomäne** zum Versand über Microsoft berechtigt ist (SPF, DKIM).
-
-Punkt 3 liegt außerhalb von Power Automate. Der Test klärt, ob es daran liegt.
+> **Erwartung vorweg:** Power Automate hat genau **drei** Stellschrauben, die auf die
+> Zustellung wirken: **Aktion**, **Verbindung** und **Inhalt**. Sind die in Ordnung und es
+> kommt weiterhin nichts an, liegt die Ursache außerhalb des Flows (SPF/DKIM, siehe
+> unten). Dann hilft keine weitere Einstellung.
 
 ---
 
-## Schritt 1 — Testflow anlegen
+## Teil 1 — Am Flow ändern
 
-1. [make.powerautomate.com](https://make.powerautomate.com) öffnen, mit dem **Schulkonto**
-   anmelden.
-2. Oben rechts prüfen, in welcher **Umgebung** Sie sind — es sollte die der Schule sein,
-   nicht eine private.
-3. Links **Erstellen** → **Sofortiger Cloud Flow**.
-4. Name: `Mailtest`. Auslöser: **Flow manuell auslösen**. → **Erstellen**.
+### 1. Flow öffnen
+[make.powerautomate.com](https://make.powerautomate.com) mit dem Schulkonto →
+**Meine Flows** → den Flow auswählen → **Bearbeiten**.
 
-## Schritt 2 — Die richtige Aktion wählen
+### 2. Prüfen, welche Aktion tatsächlich versendet
 
-5. **+ Neuer Schritt**.
-6. Ins Suchfeld `Office 365 Outlook` eingeben.
-7. Aus der Liste **„E-Mail senden (V2)"** wählen.
+Die Sendeaktion aufklappen und auf den **Connector-Namen** achten — nicht auf den Titel
+der Aktion, den kann man umbenannt haben.
 
-> **Wichtig:** Es darf **nicht** die Aktion *„E-Mail-Benachrichtigung senden"* sein
-> (Connector *Mail*) und auch nicht *„Genehmigung starten"*. Beide versenden von einer
-> Microsoft-Adresse und werden von strengen Filtern verworfen. Sie erkennen die richtige
-> Aktion am Symbol und am Connector-Namen **Office 365 Outlook**.
-
-## Schritt 3 — Verbindung prüfen: wer ist der Absender?
-
-8. Beim ersten Mal fragt Power Automate nach einer Verbindung. Im Drei-Punkte-Menü der
-   Aktion → **Meine Verbindungen** steht, **mit welchem Konto** verbunden ist.
-9. **Dieses Konto ist der Absender.** Notieren Sie die Adresse — sie ist der Schlüssel zur
-   Diagnose.
-
-Ist dort ein privates oder fremdes Konto hinterlegt, auf das Schulkonto wechseln.
-
-## Schritt 4 — Erste Testmail: an sich selbst im Mandanten
-
-10. **An:** die eigene Adresse **im Mandanten** (dieselbe wie in Schritt 9).
-11. **Betreff:** `Test 1 intern`
-12. **Text:** ein Satz, **ohne Link und ohne Anhang**.
-13. Speichern, dann **Testen** → **Manuell** → **Testen** → **Flow ausführen**.
-
-**Diese Mail muss ankommen.** Sie verlässt den Mandanten nicht und unterliegt keiner
-externen Prüfung.
-
-> Das Postfach erreichen Sie über [outlook.office.com](https://outlook.office.com) mit dem
-> Schulkonto — auch wenn Sie es sonst nie benutzen. **Genau dort liegen auch die
-> Unzustellbarkeitsnachrichten der damaligen Versuche.** Wahrscheinlich haben Sie sie nie
-> gesehen.
-
-| Ergebnis | Bedeutung |
+| Was dort steht | Bewertung |
 |---|---|
-| Kommt an | Der Versandweg funktioniert. Weiter mit Schritt 5 |
-| Kommt **nicht** an | Kein Zustellungsproblem, sondern ein Rechte- oder Postfachproblem. Hat das Konto überhaupt ein Exchange-Postfach? |
+| **Office 365 Outlook — E-Mail senden (V2)** | richtig |
+| **Mail — E-Mail-Benachrichtigung senden (V3)** | **ersetzen**, versendet von einer Microsoft-Adresse |
+| **Genehmigungen — Genehmigung starten** | Die Benachrichtigung kommt vom Genehmigungsdienst, nicht aus Ihrem Postfach. **Zusätzlich** eine eigene Mail per Outlook-Aktion senden |
 
-## Schritt 5 — Zweite Testmail: an die Dienstadresse
+**Falls zu ersetzen:** Aktion löschen, **+ Neuer Schritt**, `Office 365 Outlook` suchen,
+**E-Mail senden (V2)** einfügen, Felder neu füllen. Die dynamischen Inhalte aus dem
+Formular stehen unverändert zur Verfügung.
 
-14. Im selben Flow die Empfängeradresse ändern auf Ihre **`@schule.hessen.de`**-Adresse.
-15. Betreff: `Test 2 dienstlich`. Erneut ausführen.
-16. **Zehn Minuten warten**, dann **auch den Spam-Ordner prüfen**.
+### 3. Verbindung prüfen — das ist der Absender
 
-## Schritt 6 — Dritte Testmail: an eine externe Adresse
+Im **Drei-Punkte-Menü** der Sendeaktion → **Meine Verbindungen**.
 
-17. Empfänger auf eine Gmail-Adresse ändern, Betreff `Test 3 extern`, ausführen.
+Dort steht das Konto, mit dem versendet wird. **Diese Adresse ist der Absender Ihrer
+Mails.** Notieren Sie sie.
 
-*(Nur zur Diagnose. Für den Betrieb sind private Adressen ausgeschlossen — siehe E-8.6.)*
+* Steht dort ein **privates oder fremdes Konto** → auf das Schulkonto umstellen
+  (**Verbindung hinzufügen**).
+* Steht dort das Schulkonto → in Ordnung, weiter.
 
-## Schritt 7 — Auswerten
+### 4. „Von (Senden als)" kontrollieren
 
-| Test 1 (intern) | Test 2 (Land) | Test 3 (Gmail) | Diagnose |
-|---|---|---|---|
-| ✅ | ✅ | ✅ | **Gelöst.** Damals wurde vermutlich doch eine andere Aktion verwendet |
-| ✅ | ❌ | ❌ | **Absenderdomäne nicht berechtigt** — SPF/DKIM fehlen. Weiter unten |
-| ✅ | ❌ | ✅ | Der Landesdienst filtert gezielt. Eine Freigabe dort erfragen, oder auf Teams ausweichen |
-| ✅ | ✅ | ❌ | Für uns unerheblich — private Adressen sind ohnehin ausgeschlossen |
-| ❌ | ❌ | ❌ | Postfach- oder Rechteproblem, kein Zustellungsproblem |
+In der Aktion auf **Erweiterte Optionen anzeigen**.
 
-**Der wahrscheinlichste Fall ist Zeile 2** — er erklärt genau Ihre damalige Beobachtung.
+Das Feld **Von (Senden als)** muss **leer** sein — es sei denn, das Konto hat für die
+eingetragene Adresse ausdrücklich die Berechtigung „Senden als". Ein Eintrag ohne diese
+Berechtigung lässt den Versand entweder scheitern oder die Mail unglaubwürdig erscheinen.
 
-## Schritt 8 — Die Unzustellbarkeitsnachricht lesen
+**Im Zweifel: Feld leeren.**
 
-Bei jedem ❌: im Postfach aus Schritt 9 nachsehen. Der Ausführungsverlauf in Power Automate
-zeigt nur, dass **abgeschickt** wurde — die Abweisung kommt Sekunden bis Minuten später per
-Mail zurück.
+### 5. Empfänger auf ein kontrollierbares Ziel setzen
 
-| Text in der Nachricht | Bedeutung |
+Solange geprüft wird, **nicht** an die Adresse aus dem Formular senden, sondern fest an
+die eigene **`@schule.hessen.de`**-Adresse. So wissen Sie, wo die Mail landen sollte.
+
+Die dynamische Empfängeradresse kommt zurück, sobald es funktioniert.
+
+### 6. Inhalt entschärfen
+
+Für den ersten Durchgang so schlicht wie möglich — Inhalt beeinflusst die Spam-Bewertung
+spürbar:
+
+| Feld | Für den Versuch |
 |---|---|
-| `SPF validation failed`, `550 5.7.23`, `does not designate ... as permitted sender` | SPF fehlt für die Absenderdomäne |
+| **Betreff** | kurz und sachlich, z. B. `Antrag eingegangen`. Keine Großbuchstaben, keine Ausrufezeichen, kein „Wichtig" |
+| **Text** | zwei Sätze reiner Text. **Keine Links**, keine Bilder, keine Tabellen |
+| **Wichtigkeit** | auf *Normal* (unter den erweiterten Optionen) |
+| **Anlagen** | keine |
+
+Links sind der häufigste Auslöser. Kommt die schlichte Mail an, fügen Sie den Link im
+zweiten Durchgang wieder ein — dann wissen Sie, woran es lag.
+
+### 7. Speichern und auslösen — ohne neues Formular
+
+**Ausführungsverlauf** des Flows öffnen, einen früheren Lauf anklicken und oben
+**Erneut übermitteln** wählen. Der Flow läuft mit denselben Formulardaten noch einmal.
+
+Damit brauchen Sie weder ein neues Formular noch einen Testflow.
+
+### 8. Ergebnis ansehen — an der richtigen Stelle
+
+Der Ausführungsverlauf zeigt nur, dass **abgeschickt** wurde. Eine Abweisung kommt Sekunden
+bis Minuten später **als Mail in das Postfach aus Schritt 3** zurück.
+
+Dieses Postfach öffnen Sie über [outlook.office.com](https://outlook.office.com) mit dem
+Schulkonto. **Dort liegen auch die Unzustellbarkeitsnachrichten der damaligen Versuche** —
+sehr wahrscheinlich ungelesen.
+
+---
+
+## Teil 2 — Auswerten
+
+| Beobachtung | Bedeutung | Nächster Schritt |
+|---|---|---|
+| Mail kommt an | Es lag an Aktion, Verbindung oder Inhalt | Link und dynamischen Empfänger schrittweise zurückbauen, nach jedem Schritt prüfen |
+| Mail im **Spam-Ordner** | Zustellung funktioniert, Ruf des Absenders ist schwach | SPF und DKIM (Teil 3) |
+| **Unzustellbarkeitsnachricht** | Der Text nennt den Grund | Tabelle unten |
+| Nichts kommt an, keine Rückmeldung | Stille Aussortierung beim Empfänger | SPF und DKIM (Teil 3) |
+
+### Was in der Unzustellbarkeitsnachricht stehen kann
+
+| Text | Bedeutung |
+|---|---|
+| `SPF validation failed`, `550 5.7.23`, `does not designate … as permitted sender` | SPF fehlt für die Absenderdomäne |
 | `DMARC`, `policy violation` | DMARC weist ab, weil SPF und DKIM fehlen |
-| `550 5.7.1`, `blocked`, `spam` ohne weitere Angabe | Ruf des Absenders; meist ebenfalls SPF/DKIM |
-| Keine Nachricht, Mail liegt im Spam-Ordner | Nicht abgewiesen, nur einsortiert — SPF/DKIM beheben das ebenfalls |
+| `550 5.7.1`, `blocked`, `spam` ohne Näheres | Ruf des Absenders — meist ebenfalls SPF/DKIM |
+| `5.7.60`, `not allowed to send as` | Das Feld „Von (Senden als)" aus Schritt 4 ist gesetzt, ohne dass die Berechtigung besteht |
 
 ---
 
-## Was bei Zeile 2 zu tun ist
+## Teil 3 — Wenn es am Flow nicht liegt
+
+### Dann liegt es an der Absenderdomäne
 
 ### A. Absenderadresse ansehen (aus Schritt 9)
 
